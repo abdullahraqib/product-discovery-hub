@@ -79,7 +79,7 @@ export const Route = createFileRoute("/roll-ends/$sku")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData();
+  const { product } = Route.useLoaderData() as { product: Product };
   const [imageIdx, setImageIdx] = useState(0);
   const [sizeIdx, setSizeIdx] = useState<number | "">("");
   const [customW, setCustomW] = useState("");
