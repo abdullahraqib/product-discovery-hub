@@ -9,38 +9,148 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ReturnsPolicyRouteImport } from './routes/returns-policy'
+import { Route as MeasuringGuideRouteImport } from './routes/measuring-guide'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RollEndsSkuRouteImport } from './routes/roll-ends.$sku'
+import { Route as CarpetsCategoryRouteImport } from './routes/carpets.$category'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnsPolicyRoute = ReturnsPolicyRouteImport.update({
+  id: '/returns-policy',
+  path: '/returns-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeasuringGuideRoute = MeasuringGuideRouteImport.update({
+  id: '/measuring-guide',
+  path: '/measuring-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RollEndsSkuRoute = RollEndsSkuRouteImport.update({
+  id: '/roll-ends/$sku',
+  path: '/roll-ends/$sku',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarpetsCategoryRoute = CarpetsCategoryRouteImport.update({
+  id: '/carpets/$category',
+  path: '/carpets/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/measuring-guide': typeof MeasuringGuideRoute
+  '/returns-policy': typeof ReturnsPolicyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/carpets/$category': typeof CarpetsCategoryRoute
+  '/roll-ends/$sku': typeof RollEndsSkuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/measuring-guide': typeof MeasuringGuideRoute
+  '/returns-policy': typeof ReturnsPolicyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/carpets/$category': typeof CarpetsCategoryRoute
+  '/roll-ends/$sku': typeof RollEndsSkuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/measuring-guide': typeof MeasuringGuideRoute
+  '/returns-policy': typeof ReturnsPolicyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/carpets/$category': typeof CarpetsCategoryRoute
+  '/roll-ends/$sku': typeof RollEndsSkuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/measuring-guide'
+    | '/returns-policy'
+    | '/sitemap.xml'
+    | '/carpets/$category'
+    | '/roll-ends/$sku'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/measuring-guide'
+    | '/returns-policy'
+    | '/sitemap.xml'
+    | '/carpets/$category'
+    | '/roll-ends/$sku'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/measuring-guide'
+    | '/returns-policy'
+    | '/sitemap.xml'
+    | '/carpets/$category'
+    | '/roll-ends/$sku'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  MeasuringGuideRoute: typeof MeasuringGuideRoute
+  ReturnsPolicyRoute: typeof ReturnsPolicyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  CarpetsCategoryRoute: typeof CarpetsCategoryRoute
+  RollEndsSkuRoute: typeof RollEndsSkuRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/returns-policy': {
+      id: '/returns-policy'
+      path: '/returns-policy'
+      fullPath: '/returns-policy'
+      preLoaderRoute: typeof ReturnsPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/measuring-guide': {
+      id: '/measuring-guide'
+      path: '/measuring-guide'
+      fullPath: '/measuring-guide'
+      preLoaderRoute: typeof MeasuringGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +158,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/roll-ends/$sku': {
+      id: '/roll-ends/$sku'
+      path: '/roll-ends/$sku'
+      fullPath: '/roll-ends/$sku'
+      preLoaderRoute: typeof RollEndsSkuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carpets/$category': {
+      id: '/carpets/$category'
+      path: '/carpets/$category'
+      fullPath: '/carpets/$category'
+      preLoaderRoute: typeof CarpetsCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  MeasuringGuideRoute: MeasuringGuideRoute,
+  ReturnsPolicyRoute: ReturnsPolicyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  CarpetsCategoryRoute: CarpetsCategoryRoute,
+  RollEndsSkuRoute: RollEndsSkuRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
