@@ -81,7 +81,7 @@ export const Route = createFileRoute("/roll-ends/$sku")({
 function ProductPage() {
   const { product } = Route.useLoaderData() as { product: Product };
   const [imageIdx, setImageIdx] = useState(0);
-  const [sizeIdx, setSizeIdx] = useState<number | "">("");
+  const [sizeChoice, setSizeChoice] = useState<string>("");
   const [customW, setCustomW] = useState("");
   const [customL, setCustomL] = useState("");
 
@@ -91,10 +91,13 @@ function ProductPage() {
   }, [product.sku, product.name]);
 
   const url = `/roll-ends/${product.sku}`;
-  const selected = sizeIdx === "" ? null : product.sizes[sizeIdx];
+  const selectedIdx = /^\d+$/.test(sizeChoice) ? Number(sizeChoice) : -1;
+  const selected = selectedIdx >= 0 ? product.sizes[selectedIdx] : null;
+  const isCustom = sizeChoice === "custom";
 
+  const firstSize = product.sizes[0];
   const customArea = Number(customW) * Number(customL);
-  const pricePerSqm = product.fromPrice / (product.sizes[0]?.widthM * product.sizes[0]?.lengthM);
+  const pricePerSqm = firstSize ? firstSize.price / (firstSize.widthM * firstSize.lengthM) : 0;
   const customPrice = customArea > 0 ? Math.round(customArea * pricePerSqm) : 0;
 
   return (
@@ -173,13 +176,13 @@ function ProductPage() {
               Choose a size
             </div>
             <select
-              value={sizeIdx}
-              onChange={(e) => setSizeIdx(e.target.value === "" ? "" : Number(e.target.value))}
+              value={sizeChoice}
+              onChange={(e) => setSizeChoice(e.target.value)}
               className="w-full px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
             >
               <option value="">— Select a size —</option>
               {product.sizes.map((s, i) => (
-                <option key={s.label} value={i}>
+                <option key={s.label} value={String(i)}>
                   {s.label} — £{s.price}
                 </option>
               ))}
@@ -193,7 +196,7 @@ function ProductPage() {
               </div>
             )}
 
-            {sizeIdx === ("custom" as unknown as number) && (
+            {isCustom && (
               <div className="mt-3 bg-secondary border border-border rounded-md p-4">
                 <p className="text-sm text-mid mb-3">
                   Measure the <strong className="text-charcoal">widest point</strong> of your room
