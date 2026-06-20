@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { PRODUCTS } from "@/data/products";
+import { PRODUCTS, type Product } from "@/data/products";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ImageZoom } from "@/components/ImageZoom";
 import { ShareButtons } from "@/components/ShareButtons";
