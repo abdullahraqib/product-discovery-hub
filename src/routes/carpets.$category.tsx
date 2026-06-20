@@ -39,7 +39,10 @@ export const Route = createFileRoute("/carpets/$category")({
 });
 
 function CategoryPage() {
-  const { cat, items } = Route.useLoaderData();
+  const { cat, items } = Route.useLoaderData() as {
+    cat: (typeof CATEGORIES)[number];
+    items: typeof PRODUCTS;
+  };
   return (
     <div className="container-page py-6 md:py-10">
       <Breadcrumbs items={[{ label: "Roll Ends", to: "/" }, { label: cat.name }]} />
@@ -58,7 +61,7 @@ function CategoryPage() {
         </div>
       ) : (
         <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((p: typeof PRODUCTS[number]) => (
+          {items.map((p) => (
             <ProductCard key={p.sku} product={p} />
           ))}
         </div>
