@@ -16,7 +16,7 @@ export const REVIEWS: Review[] = [
     name: "James W.",
     rating: 5,
     source: "Google",
-    text: "From ordering to fitting this company was amazing — friendly and professional staff, amazing carpets and an unbeatable price!",
+    text: "Friendly and professional staff, amazing carpets and an unbeatable price — couldn't have asked for more.",
   },
   {
     name: "Aisha K.",
@@ -40,7 +40,7 @@ export const REVIEWS: Review[] = [
     name: "Daniel T.",
     rating: 5,
     source: "Google",
-    text: "The service was impeccable right from my original contact with them, through to the sales guy and down to the fitters.",
+    text: "The service was impeccable right from my original contact with them through to the sales team — really knowledgeable and patient.",
   },
   {
     name: "Iqra M.",

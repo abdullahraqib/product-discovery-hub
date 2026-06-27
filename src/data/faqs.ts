@@ -8,8 +8,8 @@ export const FAQS = [
     a: "Yes. Call us on 01274 057433 or email info@srcarpetsandfloors.co.uk and we'll hold a roll end for up to 48 hours while you decide.",
   },
   {
-    q: "Do you offer a fitting service?",
-    a: "Yes — our experienced fitters cover Bradford and the surrounding area. Mention fitting when you enquire and we'll quote you on the day.",
+    q: "What sizes do you stock?",
+    a: "Most of our roll ends come in standard 4m and 5m widths with varying lengths. Each listing shows the exact sizes available — and we get new pieces in every week.",
   },
   {
     q: "How do I measure my room?",
@@ -21,6 +21,6 @@ export const FAQS = [
   },
   {
     q: "Do you deliver?",
-    a: "We offer click & collect from our Valley Road store, and we can arrange local delivery for fitted orders. Ask when you enquire.",
+    a: "We offer click & collect from our Valley Road store, and we can arrange local delivery on request. Ask when you enquire.",
   },
 ];

@@ -16,9 +16,11 @@ export function SiteFooter() {
       <div className="container-page py-12 grid gap-10 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <div className="h-10 w-10 rounded-full bg-brand text-white grid place-items-center font-black">
-              SR
-            </div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdm_w79XcWl9VNwkxr1nuuxff4B7Y4HG2zZdbZXr-F91kFdNVCQ1i9mPAZ&s=10"
+              alt={`${SITE.name} logo`}
+              className="h-10 w-auto block bg-white/5 rounded p-1"
+            />
             <span className="text-white font-black">{SITE.name}</span>
           </div>
           <p className="text-sm text-neutral-400 leading-relaxed">

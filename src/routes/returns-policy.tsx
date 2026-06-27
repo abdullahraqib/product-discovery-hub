@@ -42,8 +42,8 @@ function ReturnsPage() {
         <Section title="Payment & collection">
           <p>
             Roll ends are paid for in store or over the phone. Once paid, we'll wrap the roll for
-            click &amp; collect from our Valley Road shop or arrange delivery / fitting at a date
-            that works for you.
+            click &amp; collect from our Valley Road shop or arrange local delivery on a date that
+            works for you.
           </p>
         </Section>
 
@@ -56,13 +56,6 @@ function ReturnsPage() {
           <p>
             If a roll end is faulty or different to what we described, contact us within{" "}
             <strong>14 days</strong> and we'll replace it or refund it in full.
-          </p>
-        </Section>
-
-        <Section title="Fitting service">
-          <p>
-            Fitting is quoted separately. Once fitting starts the carpet is considered accepted —
-            we'll always show you the roll before unrolling it in your home.
           </p>
         </Section>
 
