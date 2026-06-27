@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
-import { PRODUCTS, type Product } from "@/data/products";
+import { useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { productsQuery } from "@/lib/products";
+import { colourOptionsFrom, widthOptionsFrom, type Product } from "@/data/products";
 import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import { Filters, type FilterState } from "@/components/Filters";
 import { TrustBadges } from "@/components/TrustBadges";
@@ -55,14 +57,14 @@ function sortProducts(items: Product[], sort: FilterState["sort"]): Product[] {
     case "size":
       return arr.sort(
         (a, b) =>
-          Math.max(...b.sizes.map((s) => s.widthM * s.lengthM)) -
-          Math.max(...a.sizes.map((s) => s.widthM * s.lengthM)),
+          Math.max(0, ...b.sizes.map((s) => s.widthM * s.lengthM)) -
+          Math.max(0, ...a.sizes.map((s) => s.widthM * s.lengthM)),
       );
   }
 }
 
 function HomePage() {
-  const [loading, setLoading] = useState(true);
+  const { data: products = [], isLoading } = useQuery(productsQuery());
   const [state, setState] = useState<FilterState>({
     search: "",
     colour: "",
@@ -70,14 +72,12 @@ function HomePage() {
     sort: "popularity",
   });
 
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 300);
-    return () => clearTimeout(t);
-  }, []);
+  const colourOptions = useMemo(() => colourOptionsFrom(products), [products]);
+  const widthOptions = useMemo(() => widthOptionsFrom(products), [products]);
 
   const filtered = useMemo(() => {
     const q = state.search.trim().toLowerCase();
-    let items = PRODUCTS.filter((p) => {
+    let items = products.filter((p) => {
       if (state.colour && p.colour !== state.colour) return false;
       if (state.width && !p.widthsM.includes(Number(state.width))) return false;
       if (q) {
@@ -88,11 +88,10 @@ function HomePage() {
     });
     items = sortProducts(items, state.sort);
     return items;
-  }, [state]);
+  }, [products, state]);
 
   return (
     <>
-      {/* Hero */}
       <section className="relative overflow-hidden text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-brand to-brand-dark" aria-hidden />
         <div
@@ -117,37 +116,36 @@ function HomePage() {
             first served.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-2 text-sm">
-            {["Massive Discounts", "4m & 5m Widths", "Bradford Based", "Click & Collect"].map(
-              (t) => (
-                <span
-                  key={t}
-                  className="bg-white/10 border border-white/15 px-3 py-1 rounded-full font-bold"
-                >
-                  ✓ {t}
-                </span>
-              ),
-            )}
+            {["Massive Discounts", "4m & 5m Widths", "Bradford Based", "Click & Collect"].map((t) => (
+              <span key={t} className="bg-white/10 border border-white/15 px-3 py-1 rounded-full font-bold">
+                ✓ {t}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
       <TrustBadges />
 
-      {/* Listing */}
       <section className="container-page" aria-labelledby="listing-heading">
         <div className="flex items-baseline justify-between flex-wrap gap-2 mb-4">
           <h2 id="listing-heading" className="text-xl md:text-2xl font-black">
             Current Roll Ends
           </h2>
           <span className="text-sm text-mid font-bold">
-            {loading ? "Loading…" : `${filtered.length} available`}
+            {isLoading ? "Loading…" : `${filtered.length} available`}
           </span>
         </div>
 
-        <Filters state={state} onChange={setState} />
+        <Filters
+          state={state}
+          onChange={setState}
+          colourOptions={colourOptions}
+          widthOptions={widthOptions}
+        />
 
         <div className="mt-6 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {loading
+          {isLoading
             ? Array.from({ length: 6 }).map((_, i) => <ProductCardSkeleton key={i} />)
             : filtered.length === 0
               ? (
@@ -167,7 +165,6 @@ function HomePage() {
 
       <ReviewCarousel />
 
-      {/* Visit + Hours */}
       <section className="container-page my-16 grid gap-6 lg:grid-cols-[1.4fr_1fr]" aria-label="Visit us">
         <LocationMap />
         <OpeningHours />
@@ -175,7 +172,6 @@ function HomePage() {
 
       <FAQ />
 
-      {/* CTA */}
       <section className="container-page my-16">
         <div className="card-surface p-8 md:p-12 text-center bg-charcoal text-white">
           <h2 className="text-2xl md:text-3xl font-black">Found one you like?</h2>

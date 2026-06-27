@@ -3,16 +3,19 @@ import { useState } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { track } from "@/lib/analytics";
+import { useAuth } from "@/lib/use-auth";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { isAdmin } = useAuth();
 
   const nav = [
     { to: "/", label: "Roll Ends" },
     { to: "/measuring-guide", label: "Measuring Guide" },
     { to: "/returns-policy", label: "Returns" },
     { to: "/contact", label: "Contact" },
-  ] as const;
+    ...(isAdmin ? [{ to: "/admin" as const, label: "Admin" }] : []),
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b-[3px] border-brand shadow-sm">
