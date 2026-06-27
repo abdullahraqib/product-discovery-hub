@@ -21,6 +21,6 @@ export const FAQS = [
   },
   {
     q: "Do you deliver?",
-    a: "We offer click & collect from our Valley Road store, and we can arrange local delivery for fitted orders. Ask when you enquire.",
+    a: "We offer click & collect from our Valley Road store, and we can arrange local delivery on request. Ask when you enquire.",
   },
 ];
