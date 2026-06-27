@@ -3,7 +3,7 @@ export const SITE = {
   shortName: "SR Carpets",
   tagline: "Bradford's Best Roll Ends",
   description:
-    "Quality carpet roll ends and off-cuts in Bradford. 4m & 5m widths, all styles, unbeatable prices. Half a century of family experience and free fitting service.",
+    "Quality carpet roll ends and off-cuts in Bradford. 4m & 5m widths, all styles, unbeatable prices. A family business with half a century of carpet experience.",
   phone: "01274 057433",
   phoneTel: "tel:01274057433",
   email: "info@srcarpetsandfloors.co.uk",
