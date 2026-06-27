@@ -40,7 +40,7 @@ export const REVIEWS: Review[] = [
     name: "Daniel T.",
     rating: 5,
     source: "Google",
-    text: "The service was impeccable right from my original contact with them, through to the sales guy and down to the fitters.",
+    text: "The service was impeccable right from my original contact with them through to the sales team — really knowledgeable and patient.",
   },
   {
     name: "Iqra M.",
