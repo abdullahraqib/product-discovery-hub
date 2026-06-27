@@ -1,6 +1,8 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { PRODUCTS, type Product } from "@/data/products";
+import { useQuery } from "@tanstack/react-query";
+import { productQuery } from "@/lib/products";
+import type { Product } from "@/data/products";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ImageZoom } from "@/components/ImageZoom";
 import { ShareButtons } from "@/components/ShareButtons";
@@ -11,8 +13,8 @@ import { track } from "@/lib/analytics";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/roll-ends/$sku")({
-  loader: ({ params }) => {
-    const product = PRODUCTS.find((p) => p.sku === params.sku);
+  loader: async ({ params, context }) => {
+    const product = await context.queryClient.ensureQueryData(productQuery(params.sku));
     if (!product) throw notFound();
     return { product };
   },
@@ -79,45 +81,43 @@ export const Route = createFileRoute("/roll-ends/$sku")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData() as { product: Product };
+  const { sku } = Route.useParams();
+  const { data: product } = useQuery({ ...productQuery(sku) });
+  const initial = (Route.useLoaderData() as { product: Product }).product;
+  const p = product ?? initial;
+
   const [imageIdx, setImageIdx] = useState(0);
   const [sizeChoice, setSizeChoice] = useState<string>("");
   const [customW, setCustomW] = useState("");
   const [customL, setCustomL] = useState("");
 
   useEffect(() => {
-    addRecentlyViewed(product.sku);
-    track("product_view", { sku: product.sku, name: product.name });
-  }, [product.sku, product.name]);
+    addRecentlyViewed(p.sku);
+    track("product_view", { sku: p.sku, name: p.name });
+  }, [p.sku, p.name]);
 
-  const url = `/roll-ends/${product.sku}`;
+  const url = `/roll-ends/${p.sku}`;
   const selectedIdx = /^\d+$/.test(sizeChoice) ? Number(sizeChoice) : -1;
-  const selected = selectedIdx >= 0 ? product.sizes[selectedIdx] : null;
+  const selected = selectedIdx >= 0 ? p.sizes[selectedIdx] : null;
   const isCustom = sizeChoice === "custom";
 
-  const firstSize = product.sizes[0];
+  const firstSize = p.sizes[0];
   const customArea = Number(customW) * Number(customL);
   const pricePerSqm = firstSize ? firstSize.price / (firstSize.widthM * firstSize.lengthM) : 0;
   const customPrice = customArea > 0 ? Math.round(customArea * pricePerSqm) : 0;
 
   return (
     <article className="container-page py-6 md:py-8">
-      <Breadcrumbs
-        items={[
-          { label: "Roll Ends", to: "/" },
-          { label: product.name },
-        ]}
-      />
+      <Breadcrumbs items={[{ label: "Roll Ends", to: "/" }, { label: p.name }]} />
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
-        {/* Gallery */}
         <div>
-          <ImageZoom src={product.images[imageIdx]} alt={product.name} />
-          {product.images.length > 1 && (
+          {p.images[imageIdx] && <ImageZoom src={p.images[imageIdx]} alt={p.name} />}
+          {p.images.length > 1 && (
             <div className="flex gap-2 mt-3">
-              {product.images.map((src, i) => (
+              {p.images.map((src, i) => (
                 <button
-                  key={src}
+                  key={src + i}
                   type="button"
                   onClick={() => setImageIdx(i)}
                   aria-label={`Show image ${i + 1}`}
@@ -132,106 +132,99 @@ function ProductPage() {
           )}
         </div>
 
-        {/* Details */}
         <div>
-          <div className="text-xs font-black uppercase tracking-[0.2em] text-mid">
-            Ref {product.sku}
-          </div>
-          <h1 className="text-2xl md:text-3xl font-black mt-1">{product.name}</h1>
+          <div className="text-xs font-black uppercase tracking-[0.2em] text-mid">Ref {p.sku}</div>
+          <h1 className="text-2xl md:text-3xl font-black mt-1">{p.name}</h1>
 
           <div className="flex items-center gap-3 mt-3">
             <span
               className="h-7 w-7 rounded-full border border-border"
-              style={{ background: product.colourHex }}
+              style={{ background: p.colourHex }}
               aria-hidden
             />
-            <span className="text-sm font-bold">{product.colour}</span>
+            <span className="text-sm font-bold">{p.colour}</span>
           </div>
 
-          <p className="text-mid mt-4 leading-relaxed">{product.description}</p>
+          <p className="text-mid mt-4 leading-relaxed">{p.description}</p>
 
           <dl className="grid grid-cols-2 gap-3 mt-6 text-sm">
-            <Detail label="Material" value={product.material} />
-            <Detail label="Pile" value={product.pile} />
-            <Detail label="Widths" value={`${product.widthsM.join("m, ")}m`} />
-            <Detail label="From" value={`£${product.fromPrice}`} />
+            <Detail label="Material" value={p.material} />
+            <Detail label="Pile" value={p.pile} />
+            <Detail label="Widths" value={p.widthsM.length ? `${p.widthsM.join("m, ")}m` : "—"} />
+            <Detail label="From" value={`£${p.fromPrice}`} />
           </dl>
 
-          {product.features.length > 0 && (
+          {p.features.length > 0 && (
             <ul className="mt-4 flex flex-wrap gap-2">
-              {product.features.map((f) => (
-                <li
-                  key={f}
-                  className="text-xs font-bold bg-secondary px-2.5 py-1 rounded-full text-charcoal"
-                >
+              {p.features.map((f) => (
+                <li key={f} className="text-xs font-bold bg-secondary px-2.5 py-1 rounded-full text-charcoal">
                   ✓ {f}
                 </li>
               ))}
             </ul>
           )}
 
-          {/* Size selector */}
-          <div className="mt-6 card-surface p-5">
-            <div className="text-xs font-black uppercase tracking-wider text-mid mb-2">
-              Choose a size
-            </div>
-            <select
-              value={sizeChoice}
-              onChange={(e) => setSizeChoice(e.target.value)}
-              className="w-full px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
-            >
-              <option value="">— Select a size —</option>
-              {product.sizes.map((s, i) => (
-                <option key={s.label} value={String(i)}>
-                  {s.label} — £{s.price}
-                </option>
-              ))}
-              <option value="custom">Custom size…</option>
-            </select>
-
-            {selected && (
-              <div className="mt-3 flex items-center justify-between border-l-4 border-brand bg-secondary px-4 py-3 rounded-r-md">
-                <span className="text-sm font-bold text-mid">{selected.label}</span>
-                <span className="text-xl font-black text-brand">£{selected.price}</span>
+          {p.sizes.length > 0 && (
+            <div className="mt-6 card-surface p-5">
+              <div className="text-xs font-black uppercase tracking-wider text-mid mb-2">
+                Choose a size
               </div>
-            )}
+              <select
+                value={sizeChoice}
+                onChange={(e) => setSizeChoice(e.target.value)}
+                className="w-full px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+              >
+                <option value="">— Select a size —</option>
+                {p.sizes.map((s, i) => (
+                  <option key={s.label + i} value={String(i)}>
+                    {s.label} — £{s.price}
+                  </option>
+                ))}
+                <option value="custom">Custom size…</option>
+              </select>
 
-            {isCustom && (
-              <div className="mt-3 bg-secondary border border-border rounded-md p-4">
-                <p className="text-sm text-mid mb-3">
-                  Measure the <strong className="text-charcoal">widest point</strong> of your room
-                  (include doorways and bays) and add 10cm.
-                </p>
-                <div className="flex gap-2 items-end flex-wrap">
-                  <Field label="Width (m)" value={customW} onChange={setCustomW} />
-                  <Field label="Length (m)" value={customL} onChange={setCustomL} />
+              {selected && (
+                <div className="mt-3 flex items-center justify-between border-l-4 border-brand bg-secondary px-4 py-3 rounded-r-md">
+                  <span className="text-sm font-bold text-mid">{selected.label}</span>
+                  <span className="text-xl font-black text-brand">£{selected.price}</span>
                 </div>
-                {customPrice > 0 && (
-                  <div className="mt-3 bg-white border-2 border-brand rounded-md p-3 text-sm">
-                    Estimate for {customW}m × {customL}m:
-                    <span className="block text-2xl font-black text-brand mt-1">
-                      ~£{customPrice}
-                    </span>
-                    <span className="text-xs text-mid block mt-1">
-                      Indicative only — call us to confirm and reserve.
-                    </span>
+              )}
+
+              {isCustom && (
+                <div className="mt-3 bg-secondary border border-border rounded-md p-4">
+                  <p className="text-sm text-mid mb-3">
+                    Measure the <strong className="text-charcoal">widest point</strong> of your room
+                    (include doorways and bays) and add 10cm.
+                  </p>
+                  <div className="flex gap-2 items-end flex-wrap">
+                    <Field label="Width (m)" value={customW} onChange={setCustomW} />
+                    <Field label="Length (m)" value={customL} onChange={setCustomL} />
                   </div>
-                )}
-              </div>
-            )}
-          </div>
+                  {customPrice > 0 && (
+                    <div className="mt-3 bg-white border-2 border-brand rounded-md p-3 text-sm">
+                      Estimate for {customW}m × {customL}m:
+                      <span className="block text-2xl font-black text-brand mt-1">~£{customPrice}</span>
+                      <span className="text-xs text-mid block mt-1">
+                        Indicative only — call us to confirm and reserve.
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
 
           <div className="mt-6">
-            <EnquireButtons productName={product.name} sku={product.sku} />
+            <EnquireButtons productName={p.name} sku={p.sku} />
           </div>
 
           <div className="mt-6 pt-6 border-t border-border">
-            <ShareButtons url={url} title={product.name} />
+            <ShareButtons url={url} title={p.name} />
           </div>
         </div>
       </div>
 
-      <RecentlyViewed exclude={product.sku} />
+      <RecentlyViewed exclude={p.sku} />
     </article>
   );
 }

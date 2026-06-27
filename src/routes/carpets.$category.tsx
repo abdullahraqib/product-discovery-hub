@@ -1,6 +1,8 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { CATEGORIES, PRODUCTS, categoryToFilter } from "@/data/products";
-import { ProductCard } from "@/components/ProductCard";
+import { useQuery } from "@tanstack/react-query";
+import { CATEGORIES, categoryToFilter } from "@/data/products";
+import { productsQuery } from "@/lib/products";
+import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TrustBadges } from "@/components/TrustBadges";
 import { EnquireButtons } from "@/components/EnquireButtons";
@@ -10,9 +12,7 @@ export const Route = createFileRoute("/carpets/$category")({
   loader: ({ params }) => {
     const cat = CATEGORIES.find((c) => c.slug === params.category);
     if (!cat) throw notFound();
-    const cats = categoryToFilter(cat.slug);
-    const items = PRODUCTS.filter((p) => cats.includes(p.category));
-    return { cat, items };
+    return { cat };
   },
   head: ({ loaderData }) => {
     const cat = loaderData?.cat;
@@ -39,10 +39,11 @@ export const Route = createFileRoute("/carpets/$category")({
 });
 
 function CategoryPage() {
-  const { cat, items } = Route.useLoaderData() as {
-    cat: (typeof CATEGORIES)[number];
-    items: typeof PRODUCTS;
-  };
+  const { cat } = Route.useLoaderData();
+  const { data: products = [], isLoading } = useQuery(productsQuery());
+  const cats = categoryToFilter(cat.slug);
+  const items = products.filter((p) => cats.includes(p.category));
+
   return (
     <div className="container-page py-6 md:py-10">
       <Breadcrumbs items={[{ label: "Roll Ends", to: "/" }, { label: cat.name }]} />
@@ -51,7 +52,11 @@ function CategoryPage() {
         <p className="text-mid mt-3 leading-relaxed">{cat.description}</p>
       </header>
 
-      {items.length === 0 ? (
+      {isLoading ? (
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, i) => <ProductCardSkeleton key={i} />)}
+        </div>
+      ) : items.length === 0 ? (
         <div className="card-surface p-10 text-center">
           <p className="font-black mb-2">No stock in this category right now</p>
           <p className="text-sm text-mid mb-4">

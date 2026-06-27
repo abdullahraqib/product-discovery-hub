@@ -1,13 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type {} from "@tanstack/react-start";
-import { PRODUCTS, CATEGORIES } from "@/data/products";
-
-const BASE_URL = "";
+import { createClient } from "@supabase/supabase-js";
+import { CATEGORIES } from "@/data/products";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const supabase = createClient(
+          process.env.SUPABASE_URL!,
+          process.env.SUPABASE_PUBLISHABLE_KEY!,
+          { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } },
+        );
+        const { data } = await supabase.from("products").select("sku").eq("is_active", true);
+        const skus = (data ?? []).map((r) => r.sku);
+
         const entries: { path: string; changefreq?: string; priority?: string }[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/contact", changefreq: "monthly", priority: "0.6" },
@@ -18,8 +24,8 @@ export const Route = createFileRoute("/sitemap.xml")({
             changefreq: "weekly",
             priority: "0.7",
           })),
-          ...PRODUCTS.map((p) => ({
-            path: `/roll-ends/${p.sku}`,
+          ...skus.map((sku) => ({
+            path: `/roll-ends/${sku}`,
             changefreq: "weekly",
             priority: "0.8",
           })),
@@ -28,7 +34,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const urls = entries
           .map(
             (e) =>
-              `  <url>\n    <loc>${BASE_URL}${e.path}</loc>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
+              `  <url>\n    <loc>${e.path}</loc>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
           )
           .join("\n");
 

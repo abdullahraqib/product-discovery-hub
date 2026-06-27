@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { getRecentlyViewed } from "@/lib/recently-viewed";
-import { PRODUCTS } from "@/data/products";
+import { productsQuery } from "@/lib/products";
 import { ProductCard } from "./ProductCard";
 
 export function RecentlyViewed({ exclude }: { exclude?: string }) {
   const [skus, setSkus] = useState<string[]>([]);
+  const { data: products = [] } = useQuery(productsQuery());
+
   useEffect(() => {
     setSkus(getRecentlyViewed().filter((s) => s !== exclude));
   }, [exclude]);
 
   const items = skus
-    .map((sku) => PRODUCTS.find((p) => p.sku === sku))
-    .filter((p): p is (typeof PRODUCTS)[number] => Boolean(p));
+    .map((sku) => products.find((p) => p.sku === sku))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   if (items.length === 0) return null;
 

@@ -1,6 +1,5 @@
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { useState } from "react";
-import { COLOUR_OPTIONS, WIDTH_OPTIONS } from "@/data/products";
 
 export type SortKey = "popularity" | "newest" | "price-asc" | "price-desc" | "size";
 
@@ -22,9 +21,13 @@ const SORT_LABELS: Record<SortKey, string> = {
 export function Filters({
   state,
   onChange,
+  colourOptions,
+  widthOptions,
 }: {
   state: FilterState;
   onChange: (s: FilterState) => void;
+  colourOptions: { colour: string; hex: string }[];
+  widthOptions: number[];
 }) {
   const [open, setOpen] = useState(false);
 
@@ -34,16 +37,14 @@ export function Filters({
   const Controls = (
     <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
       <label className="block">
-        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">
-          Colour
-        </span>
+        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour</span>
         <select
           value={state.colour}
           onChange={(e) => onChange({ ...state, colour: e.target.value })}
           className="w-full md:w-44 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
         >
           <option value="">All colours</option>
-          {COLOUR_OPTIONS.map((c) => (
+          {colourOptions.map((c) => (
             <option key={c.colour} value={c.colour}>
               {c.colour}
             </option>
@@ -52,16 +53,14 @@ export function Filters({
       </label>
 
       <label className="block">
-        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">
-          Width
-        </span>
+        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Width</span>
         <select
           value={state.width}
           onChange={(e) => onChange({ ...state, width: e.target.value })}
           className="w-full md:w-32 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
         >
           <option value="">Any width</option>
-          {WIDTH_OPTIONS.map((w) => (
+          {widthOptions.map((w) => (
             <option key={w} value={String(w)}>
               {w}m
             </option>
@@ -70,9 +69,7 @@ export function Filters({
       </label>
 
       <label className="block">
-        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">
-          Sort by
-        </span>
+        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Sort by</span>
         <select
           value={state.sort}
           onChange={(e) => onChange({ ...state, sort: e.target.value as SortKey })}
@@ -90,18 +87,11 @@ export function Filters({
 
   return (
     <div className="card-surface p-3 md:p-4">
-      {/* Top row: search + filter button (mobile) / inline controls (desktop) */}
       <div className="flex flex-col gap-3 md:flex-row md:items-end">
         <label className="block flex-1">
-          <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">
-            Search
-          </span>
+          <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Search</span>
           <div className="relative">
-            <Search
-              size={16}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-mid"
-              aria-hidden
-            />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-mid" aria-hidden />
             <input
               type="search"
               value={state.search}
@@ -113,7 +103,6 @@ export function Filters({
           </div>
         </label>
 
-        {/* Mobile filter trigger */}
         <button
           type="button"
           onClick={() => setOpen(true)}
@@ -130,11 +119,9 @@ export function Filters({
           )}
         </button>
 
-        {/* Desktop inline controls */}
         <div className="hidden md:block">{Controls}</div>
       </div>
 
-      {/* Mobile drawer */}
       {open && (
         <div
           className="md:hidden fixed inset-0 z-[60] bg-charcoal/60 flex items-end"
