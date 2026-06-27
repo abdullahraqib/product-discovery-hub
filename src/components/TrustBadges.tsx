@@ -9,7 +9,7 @@ const ITEMS = [
   {
     icon: ShieldCheck,
     title: "Family Business",
-    desc: "Bradford-born, independently run",
+    desc: "Yorkshire-born, independently run",
   },
   {
     icon: Ruler,
