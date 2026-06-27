@@ -18,9 +18,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 bg-white border-b-[3px] border-brand shadow-sm">
       <div className="container-page flex items-center justify-between gap-4 h-[72px]">
         <Link to="/" className="flex items-center gap-3 shrink-0" aria-label={`${SITE.name} home`}>
-          <div className="h-12 w-12 rounded-full bg-brand text-white grid place-items-center font-black text-lg">
-            SR
-          </div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdm_w79XcWl9VNwkxr1nuuxff4B7Y4HG2zZdbZXr-F91kFdNVCQ1i9mPAZ&s=10"
+            alt={`${SITE.name} logo`}
+            className="h-12 w-auto block"
+          />
           <div className="leading-tight hidden sm:block">
             <strong className="block text-charcoal text-[15px] font-black tracking-wide">
               {SITE.name}
