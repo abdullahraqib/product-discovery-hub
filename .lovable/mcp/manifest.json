@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://tcfdxolnscjschqohdpk.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "sr-carpets-mcp",
+      "version": "0.1.0",
+      "title": "SR Carpets & Floors"
+    },
+    "tools": [
+      {
+        "name": "list_products",
+        "title": "List products",
+        "description": "List carpet roll-end products. Returns active products by default.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "include_inactive": {
+              "description": "Include inactive products (admins only).",
+              "type": "boolean"
+            },
+            "category": {
+              "description": "Filter by category slug (e.g. saxony, berber, twist).",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Max results, default 50.",
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_product",
+        "title": "Get product",
+        "description": "Fetch a single product by SKU.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "sku": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Product SKU."
+            }
+          },
+          "required": [
+            "sku"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "search_products",
+        "title": "Search products",
+        "description": "Search products by name, colour, material, or description.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Search text."
+            },
+            "limit": {
+              "description": "Max results, default 25.",
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "query"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "create_product",
+        "title": "Create product",
+        "description": "Create a new product. Admin-only (enforced by database RLS).",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "sku": {
+              "type": "string",
+              "minLength": 1
+            },
+            "slug": {
+              "type": "string",
+              "minLength": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "colour": {
+              "type": "string"
+            },
+            "colour_hex": {
+              "type": "string"
+            },
+            "widths_m": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "material": {
+              "type": "string"
+            },
+            "pile": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "popularity": {
+              "type": "number"
+            },
+            "from_price": {
+              "type": "number"
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": {
+              "type": "string"
+            },
+            "features": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sizes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "widthM": {
+                    "type": "number"
+                  },
+                  "lengthM": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "label",
+                  "widthM",
+                  "lengthM",
+                  "price"
+                ]
+              }
+            }
+          },
+          "required": [
+            "sku",
+            "slug",
+            "name",
+            "colour",
+            "colour_hex",
+            "widths_m",
+            "material",
+            "pile",
+            "category",
+            "from_price",
+            "description"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "update_product",
+        "title": "Update product",
+        "description": "Update fields on a product by SKU. Admin-only (enforced by database RLS).",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "sku": {
+              "type": "string",
+              "minLength": 1,
+              "description": "SKU of the product to update."
+            },
+            "patch": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {},
+              "description": "Object of columns to update (snake_case)."
+            }
+          },
+          "required": [
+            "sku",
+            "patch"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "delete_product",
+        "title": "Delete product",
+        "description": "Delete a product by SKU. Admin-only (enforced by database RLS).",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "sku": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "sku"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
