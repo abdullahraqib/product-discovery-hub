@@ -10,11 +10,21 @@ export const Route = createFileRoute("/auth")({
       { name: "robots", content: "noindex,nofollow" },
     ],
   }),
+  validateSearch: (s: Record<string, unknown>) => ({
+    next: typeof s.next === "string" ? s.next : "",
+  }),
   component: AuthPage,
 });
 
+function safeNext(next: string): string | null {
+  if (!next.startsWith("/") || next.startsWith("//")) return null;
+  return next;
+}
+
 function AuthPage() {
   const navigate = useNavigate();
+  const { next } = Route.useSearch();
+  const target = safeNext(next);
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,11 +43,17 @@ function AuthPage() {
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: window.location.origin + "/admin" },
+          options: {
+            emailRedirectTo: window.location.origin + (target ?? "/admin"),
+          },
         });
         if (error) throw error;
       }
-      navigate({ to: "/admin" });
+      if (target) {
+        window.location.href = target;
+      } else {
+        navigate({ to: "/admin" });
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
