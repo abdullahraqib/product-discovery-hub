@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { CATEGORY_VALUES, type Product, type Size } from "@/data/products";
+import { type Product, type Size } from "@/data/products";
 import { Trash2, Plus, Upload } from "lucide-react";
 
 type Mode = "create" | "edit";
@@ -106,12 +106,8 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         slug,
         name: p.name.trim(),
         colour: p.colour.trim(),
-        colour_hex: p.colourHex,
         widths_m: p.widthsM,
         material: p.material,
-        pile: p.pile,
-        category: p.category,
-        popularity: Number(p.popularity) || 0,
         from_price: Number(p.fromPrice) || 0,
         images: p.images,
         description: p.description,
@@ -152,12 +148,6 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
             onChange={(v) => set("slug", v)}
             placeholder="auto from name"
           />
-          <Select
-            label="Category"
-            value={p.category}
-            onChange={(v) => set("category", v)}
-            options={CATEGORY_VALUES.map((c) => ({ value: c, label: c }))}
-          />
         </Grid>
         <Textarea label="Description" value={p.description} onChange={(v) => set("description", v)} rows={4} />
       </Section>
@@ -165,25 +155,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
       <Section title="Colour & spec">
         <Grid>
           <Input label="Colour name" value={p.colour} onChange={(v) => set("colour", v)} />
-          <label className="block">
-            <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour swatch</span>
-            <div className="flex items-center gap-2">
-              <input
-                type="color"
-                value={p.colourHex}
-                onChange={(e) => set("colourHex", e.target.value)}
-                className="h-10 w-14 rounded border-2 border-border"
-              />
-              <input
-                type="text"
-                value={p.colourHex}
-                onChange={(e) => set("colourHex", e.target.value)}
-                className="flex-1 px-3 py-2 text-sm font-bold border-2 border-border rounded-md bg-white"
-              />
-            </div>
-          </label>
           <Input label="Material" value={p.material} onChange={(v) => set("material", v)} />
-          <Input label="Pile" value={p.pile} onChange={(v) => set("pile", v)} />
           <Input
             label="Widths (m, comma-separated)"
             value={p.widthsM.join(", ")}
@@ -202,12 +174,6 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
             type="number"
             value={String(p.fromPrice)}
             onChange={(v) => set("fromPrice", Number(v) || 0)}
-          />
-          <Input
-            label="Popularity (0–100)"
-            type="number"
-            value={String(p.popularity)}
-            onChange={(v) => set("popularity", Math.max(0, Math.min(100, Number(v) || 0)))}
           />
           <Input
             label="Features (comma-separated)"
