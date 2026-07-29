@@ -14,6 +14,7 @@ export type Product = {
   popularity: number;
   dateAdded: string;
   fromPrice: number;
+  pricePerSqm: number;
   images: string[];
   description: string;
   features: string[];
