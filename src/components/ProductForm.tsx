@@ -93,7 +93,6 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
     next[i] = { ...next[i], price: calcPrice(next[i].widthM, next[i].lengthM, p.pricePerSqm) };
     set("sizes", next);
   }
-  void resetSizePrice;
 
   function addSize() {
     set("sizes", [
@@ -307,6 +306,15 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                 value={String(s.price)}
                 onChange={(v) => setSizePrice(i, Number(v) || 0)}
               />
+              {manualPrices.has(i) && (
+                <button
+                  type="button"
+                  onClick={() => resetSizePrice(i)}
+                  className="h-10 px-3 rounded-md border-2 border-border text-xs font-black uppercase"
+                >
+                  Auto
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => removeSize(i)}
