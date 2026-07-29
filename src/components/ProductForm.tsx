@@ -20,11 +20,16 @@ const blank: Product = {
   popularity: 50,
   dateAdded: new Date().toISOString(),
   fromPrice: 0,
+  pricePerSqm: 0,
   images: [],
   description: "",
   features: [],
   sizes: [],
 };
+
+function calcPrice(w: number, l: number, rate: number) {
+  return Math.round((Number(w) || 0) * (Number(l) || 0) * (Number(rate) || 0) * 100) / 100;
+}
 
 function slugify(s: string) {
   return s
@@ -41,6 +46,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   const qc = useQueryClient();
   const [p, setP] = useState<Product>(product ?? blank);
   const [imageUrl, setImageUrl] = useState("");
+  const [manualPrices, setManualPrices] = useState<Set<number>>(new Set());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -53,16 +59,51 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
     next[i] = { ...next[i], ...patch };
     if (patch.widthM !== undefined || patch.lengthM !== undefined) {
       next[i].label = `${next[i].widthM}m × ${next[i].lengthM}m`;
+      if (!manualPrices.has(i)) {
+        next[i].price = calcPrice(next[i].widthM, next[i].lengthM, p.pricePerSqm);
+      }
     }
     set("sizes", next);
   }
 
+  function setPricePerSqm(v: number) {
+    setP((prev) => ({
+      ...prev,
+      pricePerSqm: v,
+      sizes: prev.sizes.map((s, i) =>
+        manualPrices.has(i) ? s : { ...s, price: calcPrice(s.widthM, s.lengthM, v) },
+      ),
+    }));
+  }
+
+  function setSizePrice(i: number, price: number) {
+    setManualPrices((prev) => new Set(prev).add(i));
+    const next = [...p.sizes];
+    next[i] = { ...next[i], price };
+    set("sizes", next);
+  }
+
+  function resetSizePrice(i: number) {
+    setManualPrices((prev) => {
+      const n = new Set(prev);
+      n.delete(i);
+      return n;
+    });
+    const next = [...p.sizes];
+    next[i] = { ...next[i], price: calcPrice(next[i].widthM, next[i].lengthM, p.pricePerSqm) };
+    set("sizes", next);
+  }
+
   function addSize() {
-    set("sizes", [...p.sizes, { label: "4m × 4m", widthM: 4, lengthM: 4, price: 0 }]);
+    set("sizes", [
+      ...p.sizes,
+      { label: "4m × 4m", widthM: 4, lengthM: 4, price: calcPrice(4, 4, p.pricePerSqm) },
+    ]);
   }
 
   function removeSize(i: number) {
     set("sizes", p.sizes.filter((_, idx) => idx !== i));
+    setManualPrices(new Set());
   }
 
   async function uploadFile(file: File) {
@@ -108,7 +149,10 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         colour: p.colour.trim(),
         widths_m: p.widthsM,
         material: p.material,
-        from_price: Number(p.fromPrice) || 0,
+        price_per_sqm: Number(p.pricePerSqm) || 0,
+        from_price: p.sizes.length
+          ? Math.min(...p.sizes.map((s) => Number(s.price) || 0))
+          : Number(p.pricePerSqm) || 0,
         images: p.images,
         description: p.description,
         features: p.features,
@@ -170,10 +214,10 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
             }
           />
           <Input
-            label="From price (£)"
+            label="Price per m² (£)"
             type="number"
-            value={String(p.fromPrice)}
-            onChange={(v) => set("fromPrice", Number(v) || 0)}
+            value={String(p.pricePerSqm)}
+            onChange={(v) => setPricePerSqm(Number(v) || 0)}
           />
           <Input
             label="Features (comma-separated)"
@@ -238,9 +282,12 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
       </Section>
 
       <Section title="Available sizes & pricing">
+        <p className="text-xs font-bold text-mid">
+          Prices are calculated from width × length × price per m². Edit any price to override it.
+        </p>
         <div className="space-y-3">
           {p.sizes.map((s, i) => (
-            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_auto] gap-2 items-end">
+            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_auto_auto] gap-2 items-end">
               <Input
                 label="Width (m)"
                 type="number"
@@ -254,11 +301,20 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                 onChange={(v) => updateSize(i, { lengthM: Number(v) || 0 })}
               />
               <Input
-                label="Price (£)"
+                label={manualPrices.has(i) ? "Price (£) · manual" : "Price (£) · auto"}
                 type="number"
                 value={String(s.price)}
-                onChange={(v) => updateSize(i, { price: Number(v) || 0 })}
+                onChange={(v) => setSizePrice(i, Number(v) || 0)}
               />
+              {manualPrices.has(i) && (
+                <button
+                  type="button"
+                  onClick={() => resetSizePrice(i)}
+                  className="h-10 px-3 rounded-md border-2 border-border text-xs font-black uppercase"
+                >
+                  Auto
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => removeSize(i)}

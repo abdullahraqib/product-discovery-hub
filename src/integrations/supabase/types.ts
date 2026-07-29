@@ -31,6 +31,7 @@ export type Database = {
           name: string
           pile: string
           popularity: number
+          price_per_sqm: number
           sizes: Json
           sku: string
           slug: string
@@ -53,6 +54,7 @@ export type Database = {
           name: string
           pile?: string
           popularity?: number
+          price_per_sqm?: number
           sizes?: Json
           sku: string
           slug: string
@@ -75,6 +77,7 @@ export type Database = {
           name?: string
           pile?: string
           popularity?: number
+          price_per_sqm?: number
           sizes?: Json
           sku?: string
           slug?: string
