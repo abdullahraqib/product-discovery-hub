@@ -35,6 +35,7 @@ export type ProductRow = {
   popularity: number;
   date_added: string;
   from_price: number;
+  price_per_sqm: number;
   images: string[] | null;
   description: string;
   features: string[] | null;
@@ -57,6 +58,7 @@ export function rowToProduct(r: ProductRow): Product {
     popularity: r.popularity,
     dateAdded: r.date_added,
     fromPrice: Number(r.from_price),
+    pricePerSqm: Number(r.price_per_sqm ?? 0),
     images: r.images ?? [],
     description: r.description,
     features: r.features ?? [],
