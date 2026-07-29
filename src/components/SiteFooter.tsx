@@ -120,7 +120,13 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="container-page py-5 text-xs text-neutral-500 flex flex-wrap justify-between gap-2">
-          <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
+          <Link
+            to="/admin"
+            aria-label={`© ${new Date().getFullYear()} ${SITE.name}. All rights reserved.`}
+            className="hover:text-neutral-400 transition-colors cursor-default"
+          >
+            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+          </Link>
           <span>Bradford • West Yorkshire</span>
         </div>
       </div>
