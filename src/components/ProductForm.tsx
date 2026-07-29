@@ -93,6 +93,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
     next[i] = { ...next[i], price: calcPrice(next[i].widthM, next[i].lengthM, p.pricePerSqm) };
     set("sizes", next);
   }
+  void resetSizePrice;
 
   function addSize() {
     set("sizes", [
