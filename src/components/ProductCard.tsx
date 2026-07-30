@@ -1,7 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "@/data/products";
+import { firstImage, isVideo } from "@/lib/media";
+import { Play } from "lucide-react";
 
 export function ProductCard({ product }: { product: Product }) {
+  const cover = firstImage(product.images);
+  const video = product.images.find(isVideo);
   return (
     <Link
       to="/roll-ends/$sku"
@@ -9,13 +13,28 @@ export function ProductCard({ product }: { product: Product }) {
       className="card-surface overflow-hidden flex flex-col group hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
-        <img
-          src={product.images[0]}
-          alt={product.name}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {cover ? (
+          <img
+            src={cover}
+            alt={product.name}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : video ? (
+          <video
+            src={video}
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          />
+        ) : null}
+        {video && (
+          <span className="absolute bottom-2 right-2 bg-charcoal/80 text-white rounded-full p-1.5">
+            <Play size={12} />
+          </span>
+        )}
         <span className="absolute top-2 left-2 bg-charcoal text-white text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded">
           {product.sku}
         </span>
