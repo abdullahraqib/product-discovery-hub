@@ -7,12 +7,22 @@ const MAX_SCALE = 5;
 
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 
-export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
+export function MediaGallery({
+  media,
+  alt,
+  alts = [],
+}: {
+  media: string[];
+  alt: string;
+  alts?: string[];
+}) {
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
 
   if (media.length === 0) return null;
-  const current = media[Math.min(index, media.length - 1)];
+  const safeIndex = Math.min(index, media.length - 1);
+  const current = media[safeIndex];
+  const altFor = (i: number) => alts[i]?.trim() || alt;
 
   return (
     <div>
@@ -23,6 +33,7 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
             controls
             playsInline
             preload="metadata"
+            aria-label={altFor(safeIndex)}
             className="w-full aspect-video rounded-lg bg-black object-contain"
           />
         ) : (
@@ -34,7 +45,7 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
           >
             <img
               src={current}
-              alt={alt}
+              alt={altFor(safeIndex)}
               className="w-full h-full object-contain"
             />
             <span className="absolute bottom-3 right-3 bg-charcoal/80 text-white rounded-full p-2">
@@ -63,7 +74,7 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
               key={src + i}
               type="button"
               onClick={() => setIndex(i)}
-              aria-label={`Show ${isVideo(src) ? "video" : "image"} ${i + 1}`}
+              aria-label={alts[i]?.trim() || `Show ${isVideo(src) ? "video" : "image"} ${i + 1}`}
               aria-current={i === index}
               className={`relative w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
                 i === index ? "border-brand" : "border-transparent"
@@ -71,7 +82,7 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
             >
               {isVideo(src) ? (
                 <>
-                  <video src={src} muted playsInline preload="metadata" className="w-full h-full object-cover" />
+                  <video src={src} muted playsInline preload="metadata" aria-label={altFor(i)} className="w-full h-full object-cover" />
                   <span className="absolute inset-0 grid place-items-center bg-black/30 text-white">
                     <Play size={16} />
                   </span>
@@ -88,6 +99,7 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
         <Lightbox
           media={media}
           alt={alt}
+          alts={alts}
           index={Math.min(index, media.length - 1)}
           onIndexChange={setIndex}
           onClose={() => setOpen(false)}
@@ -100,12 +112,14 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
 function Lightbox({
   media,
   alt,
+  alts = [],
   index,
   onIndexChange,
   onClose,
 }: {
   media: string[];
   alt: string;
+  alts?: string[];
   index: number;
   onIndexChange: (i: number) => void;
   onClose: () => void;
@@ -117,6 +131,7 @@ function Lightbox({
   const pointers = useRef(new Map<number, { x: number; y: number }>());
 
   const src = media[index];
+  const currentAlt = alts[index]?.trim() || alt;
   const video = isVideo(src);
   const multiple = media.length > 1;
 
@@ -274,12 +289,13 @@ function Lightbox({
             controls
             autoPlay
             playsInline
+            aria-label={currentAlt}
             className="max-w-[92vw] max-h-[85vh] object-contain"
           />
         ) : (
           <img
             src={src}
-            alt={alt}
+            alt={currentAlt}
             draggable={false}
             className="max-w-[92vw] max-h-[80vh] w-auto h-auto object-contain"
             style={{

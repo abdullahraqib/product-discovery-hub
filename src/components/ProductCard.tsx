@@ -6,6 +6,11 @@ import { Play } from "lucide-react";
 export function ProductCard({ product }: { product: Product }) {
   const cover = firstImage(product.images);
   const video = product.images.find(isVideo);
+  const altFor = (src?: string) => {
+    if (!src) return product.name;
+    const i = product.images.indexOf(src);
+    return product.imageAlts?.[i]?.trim() || product.name;
+  };
   return (
     <Link
       to="/roll-ends/$sku"
@@ -16,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
         {cover ? (
           <img
             src={cover}
-            alt={product.name}
+            alt={altFor(cover)}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -24,6 +29,7 @@ export function ProductCard({ product }: { product: Product }) {
         ) : video ? (
           <video
             src={video}
+            aria-label={altFor(video)}
             muted
             playsInline
             preload="metadata"

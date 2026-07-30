@@ -23,6 +23,7 @@ const blank: Product = {
   fromPrice: 0,
   pricePerSqm: 0,
   images: [],
+  imageAlts: [],
   description: "",
   features: [],
   sizes: [],
@@ -121,7 +122,13 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         .from("product-images")
         .createSignedUrl(path, TEN_YEARS);
       if (signErr) throw signErr;
-      if (data?.signedUrl) set("images", [...p.images, data.signedUrl]);
+      if (data?.signedUrl) {
+        setP((prev) => ({
+          ...prev,
+          images: [...prev.images, data.signedUrl],
+          imageAlts: [...prev.imageAlts, ""],
+        }));
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
@@ -132,12 +139,25 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   function addImageUrl() {
     const u = imageUrl.trim();
     if (!u) return;
-    set("images", [...p.images, u]);
+    setP((prev) => ({ ...prev, images: [...prev.images, u], imageAlts: [...prev.imageAlts, ""] }));
     setImageUrl("");
   }
 
   function removeImage(i: number) {
-    set("images", p.images.filter((_, idx) => idx !== i));
+    setP((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, idx) => idx !== i),
+      imageAlts: prev.imageAlts.filter((_, idx) => idx !== i),
+    }));
+  }
+
+  function setImageAlt(i: number, value: string) {
+    setP((prev) => {
+      const next = [...prev.imageAlts];
+      while (next.length < prev.images.length) next.push("");
+      next[i] = value;
+      return { ...prev, imageAlts: next };
+    });
   }
 
   async function save(e: React.FormEvent) {
@@ -158,6 +178,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           ? Math.min(...p.sizes.map((s) => Number(s.price) || 0))
           : Number(p.pricePerSqm) || 0,
         images: p.images,
+        image_alts: p.images.map((_, i) => p.imageAlts[i] ?? ""),
         description: p.description,
         features: p.features,
         sizes: p.sizes,
@@ -238,22 +259,33 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
       <Section title="Photos & videos">
         <div className="space-y-3">
           {p.images.map((src, i) => (
-            <div key={src + i} className="flex items-center gap-3 bg-secondary rounded-md p-2">
+            <div key={src + i} className="flex items-start gap-3 bg-secondary rounded-md p-2">
               {isVideo(src) ? (
                 <video src={src} muted playsInline preload="metadata" className="w-20 h-16 object-cover rounded bg-black" />
               ) : (
                 <img src={src} alt="" className="w-20 h-16 object-cover rounded" />
               )}
-              <div className="flex-1 text-xs break-all">
-                <span className="font-black uppercase tracking-wider text-mid mr-2">
-                  {isVideo(src) ? "Video" : "Image"}
-                </span>
-                {src}
+              <div className="flex-1 space-y-2 min-w-0">
+                <div className="text-xs break-all">
+                  <span className="font-black uppercase tracking-wider text-mid mr-2">
+                    {isVideo(src) ? "Video" : "Image"}
+                  </span>
+                  {src}
+                </div>
+                <input
+                  type="text"
+                  value={p.imageAlts[i] ?? ""}
+                  onChange={(e) => setImageAlt(i, e.target.value)}
+                  maxLength={200}
+                  placeholder={`Alt text (describe this ${isVideo(src) ? "video" : "image"}) — defaults to product name`}
+                  className="w-full px-3 py-2 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+                  aria-label={`Alt text for ${isVideo(src) ? "video" : "image"} ${i + 1}`}
+                />
               </div>
               <button
                 type="button"
                 onClick={() => removeImage(i)}
-                className="text-brand"
+                className="text-brand mt-1"
                 aria-label="Remove media"
               >
                 <Trash2 size={16} />
