@@ -165,7 +165,7 @@ function ProductPage() {
               {selected && (
                 <div className="mt-3 flex items-center justify-between border-l-4 border-brand bg-secondary px-4 py-3 rounded-r-md">
                   <span className="text-sm font-bold text-mid">
-                    {selected.label}
+                    {sizeLabel(selected)}
                     <span className="block text-xs font-black uppercase tracking-wider text-brand mt-0.5">
                       Reference number: {sizeRef(selected)}
                     </span>
