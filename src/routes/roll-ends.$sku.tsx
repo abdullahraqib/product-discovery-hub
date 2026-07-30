@@ -32,8 +32,8 @@ export const Route = createFileRoute("/roll-ends/$sku")({
         { property: "og:description", content: p.description },
         { property: "og:url", content: url },
         { property: "og:type", content: "product" },
-        { property: "og:image", content: p.images[0] },
-        { name: "twitter:image", content: p.images[0] },
+        { property: "og:image", content: firstImage(p.images) ?? "" },
+        { name: "twitter:image", content: firstImage(p.images) ?? "" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
