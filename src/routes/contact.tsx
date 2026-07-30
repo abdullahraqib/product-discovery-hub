@@ -28,8 +28,8 @@ function ContactPage() {
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
       <h1 className="text-3xl md:text-4xl font-black mt-6">Get in touch</h1>
       <p className="text-mid mt-2 max-w-2xl">
-        Call, email, or pop into the shop. We're happy to talk you through what's in stock and help
-        you reserve a roll end.
+        Call or pop into the shop. We're happy to talk you through what's in stock — roll ends are
+        reserved once paid for and collected from our Valley Road store.
       </p>
 
       <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] mt-8">
