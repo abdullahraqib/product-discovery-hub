@@ -18,10 +18,10 @@ import { FAQS } from "@/data/faqs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `${SITE.name} — Quality Carpet Roll Ends in Bradford` },
-      { name: "description", content: SITE.description },
-      { property: "og:title", content: `${SITE.name} — Carpet Roll Ends in Bradford` },
-      { property: "og:description", content: SITE.description },
+      { title: `Yorkshire's No1 Offcut Outlet — Clearance Carpet Roll Ends | ${SITE.name}` },
+      { name: "description", content: "Heavily discounted carpet roll ends and offcuts at clearance prices. Grab a bargain — first come, first served at our Bradford outlet." },
+      { property: "og:title", content: `Yorkshire's No1 Offcut Outlet — ${SITE.name}` },
+      { property: "og:description", content: "Heavily discounted carpet roll ends and offcuts at clearance prices. Grab a bargain — first come, first served." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -94,40 +94,61 @@ function HomePage() {
   }, [products, state]);
 
 
+  const minPrice = products.length
+    ? Math.min(...products.map((p) => p.fromPrice))
+    : null;
+
   return (
     <>
-      <section className="relative overflow-hidden text-white">
+      <section className="relative overflow-hidden text-white border-y-8 md:border-y-[10px] border-pop">
         <div className="absolute inset-0 bg-gradient-to-br from-brand to-brand-dark" aria-hidden />
+        {/* Clearance SALE watermark */}
         <div
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 hidden md:flex items-center justify-center select-none pointer-events-none"
           aria-hidden
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(-45deg, transparent 0 38px, rgba(255,255,255,0.5) 38px 40px)",
-          }}
-        />
-        <div className="relative container-page py-10 md:py-20 text-center">
-          <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight">
-            Quality Carpet Roll Ends
-            <br />
-            <span className="text-white/80">at Unbeatable Prices</span>
-          </h1>
-          <p className="mt-4 max-w-xl mx-auto text-white/85 text-base md:text-lg">
-            Off-cuts and roll ends in all sizes and styles — direct from {SITE.name}. First come,
-            first served.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            {["Massive Discounts", "Bradford Based"].map((t) => (
-              <span
-                key={t}
-                className="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-2.5 rounded-full text-sm md:text-lg font-bold"
-              >
-                {t}
-              </span>
-            ))}
+        >
+          <span className="font-impact text-[20rem] text-white opacity-10 leading-none">SALE</span>
+        </div>
+
+        {/* Clearance! badge */}
+        <div className="absolute top-5 right-4 md:right-8 rotate-12 bg-pop text-pop-foreground font-black py-2.5 px-5 md:px-8 text-lg md:text-2xl border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,1)] uppercase z-10">
+          Clearance!
+        </div>
+        {/* Bradford Based badge */}
+        <div className="absolute bottom-5 left-4 md:left-8 -rotate-6 bg-pop text-pop-foreground font-black py-1.5 px-4 md:px-6 text-base md:text-xl border-2 border-charcoal uppercase tracking-tight z-10">
+          Bradford Based
+        </div>
+
+        <div className="relative container-page py-12 md:py-20 text-center flex flex-col items-center">
+          <div className="inline-block bg-charcoal text-white px-4 py-1 mb-4 font-black uppercase tracking-widest text-xs md:text-sm z-10">
+            Everything must go
           </div>
 
+          <h1 className="font-impact uppercase italic leading-[0.9] text-4xl md:text-8xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
+            Yorkshire's No1
+            <br />
+            <span className="text-pop">offcut outlet</span>
+          </h1>
+
+          <p className="mt-5 max-w-2xl text-white font-black text-lg md:text-2xl uppercase tracking-tight z-10">
+            Massive savings on{" "}
+            <span className="bg-pop text-pop-foreground px-2">carpet roll ends</span> & clearance stock
+          </p>
+
+          <a href="#listing-heading" className="btn-pop mt-7 text-xl md:text-2xl">
+            Shop the deals
+          </a>
         </div>
+
+        {/* From £ price tag */}
+        {minPrice != null && (
+          <div className="absolute bottom-5 right-4 md:right-10 hidden md:flex flex-col items-center z-10">
+            <div className="w-24 h-24 bg-pop rounded-full flex flex-col items-center justify-center border-4 border-charcoal -rotate-12 shadow-xl">
+              <span className="text-pop-foreground font-black text-[10px] uppercase leading-none">From</span>
+              <span className="text-pop-foreground font-impact text-3xl leading-none">£{minPrice}</span>
+            </div>
+          </div>
+        )}
       </section>
 
       <TrustBadges />
@@ -177,7 +198,7 @@ function HomePage() {
       <FAQ />
 
       <section className="container-page my-10 md:my-16">
-        <div className="card-surface p-8 md:p-12 text-center bg-charcoal text-white">
+        <div className="card-surface p-8 md:p-12 text-center bg-charcoal text-white border-y-8 border-pop">
           <h2 className="text-2xl md:text-3xl font-black">See something you like?</h2>
           <p className="text-neutral-300 mt-2 mb-6">
             Roll ends sell fast. Give us a call and we'll hold it for you.
