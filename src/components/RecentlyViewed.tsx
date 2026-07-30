@@ -19,7 +19,7 @@ export function RecentlyViewed({ exclude }: { exclude?: string }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="container-page my-12" aria-label="Recently viewed">
+    <section className="container-page my-10 md:my-12" aria-label="Recently viewed">
       <h2 className="text-xl font-black mb-4">Recently viewed</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {items.slice(0, 4).map((p) => (
