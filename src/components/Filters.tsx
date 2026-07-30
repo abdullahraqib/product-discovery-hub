@@ -189,7 +189,14 @@ export function Filters({
               <button
                 type="button"
                 onClick={() =>
-                  onChange({ search: state.search, colour: "", width: "", sort: "name" })
+                  onChange({
+                    search: state.search,
+                    colour: "",
+                    width: "",
+                    roomLength: "",
+                    roomWidth: "",
+                    sort: "name",
+                  })
                 }
                 className="flex-1 h-11 rounded-md border-2 border-border text-sm font-black uppercase tracking-wider"
               >
