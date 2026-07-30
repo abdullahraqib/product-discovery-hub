@@ -110,16 +110,12 @@ function HomePage() {
           <span className="font-impact text-[20rem] text-white opacity-10 leading-none">SALE</span>
         </div>
 
-        {/* Clearance! badge */}
-        <div className="absolute top-5 right-4 md:right-8 rotate-12 bg-pop text-pop-foreground font-black py-2.5 px-5 md:px-8 text-lg md:text-2xl border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,1)] uppercase z-10">
-          Clearance!
-        </div>
-        {/* Bradford Based badge */}
-        <div className="absolute bottom-5 left-4 md:left-8 -rotate-6 bg-pop text-pop-foreground font-black py-1.5 px-4 md:px-6 text-base md:text-xl border-2 border-charcoal uppercase tracking-tight z-10">
-          Bradford Based
+        {/* Clearance! banner */}
+        <div className="absolute top-5 right-4 md:right-8 rotate-6 bg-pop text-pop-foreground font-black py-1.5 px-4 md:px-5 text-sm md:text-lg border-2 border-charcoal uppercase tracking-tight z-10">
+          Clearance
         </div>
 
-        <div className="relative container-page py-12 md:py-20 text-center flex flex-col items-center">
+        <div className="relative container-page py-10 md:py-16 text-center flex flex-col items-center">
           <div className="inline-block bg-charcoal text-white px-4 py-1 mb-4 font-black uppercase tracking-widest text-xs md:text-sm z-10">
             Everything must go
           </div>
