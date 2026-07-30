@@ -34,7 +34,7 @@ function ReturnsPage() {
 
         <Section title="Reserving a roll end">
           <p>
-            We'll hold any roll end for <strong>up to 48 hours</strong> after you call or email.
+            We'll hold any roll end for <strong>up to 48 hours</strong> after you call.
             We'll let you know if anyone else has expressed interest so you can decide quickly.
           </p>
         </Section>
