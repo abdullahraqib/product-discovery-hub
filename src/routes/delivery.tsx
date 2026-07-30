@@ -34,7 +34,7 @@ function DeliveryPage() {
     {
       icon: Truck,
       title: "Delivery",
-      body: "We can arrange delivery for your roll end. Give us a call with your reference number and postcode, and we'll let you know what's available and the cost.",
+      body: "We can arrange delivery for your roll end across West Yorkshire. Give us a call with your reference number and postcode, and we'll let you know what's available and the cost.\n*Delivery address must match address on the card used to pay",
     },
     {
       icon: CreditCard,
