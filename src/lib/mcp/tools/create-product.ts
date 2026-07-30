@@ -26,6 +26,7 @@ export default defineTool({
     popularity: z.number().optional(),
     from_price: z.number(),
     images: z.array(z.string()).optional(),
+    image_alts: z.array(z.string()).optional().describe("Alt text per image, same order as images."),
     description: z.string(),
     features: z.array(z.string()).optional(),
     sizes: z.array(size).optional(),
