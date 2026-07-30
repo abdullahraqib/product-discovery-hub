@@ -25,7 +25,7 @@ function ReturnsPage() {
     <div className="container-page py-6 md:py-10">
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Returns & Reservations" }]} />
 
-      <article className="prose mt-6 max-w-3xl">
+      <article className="mt-6 max-w-3xl">
         <h1 className="text-3xl md:text-4xl font-black">Returns &amp; Reservations</h1>
         <p className="text-mid mt-2 leading-relaxed">
           Our roll ends and remnants are one-off pieces. Please read this short policy before you

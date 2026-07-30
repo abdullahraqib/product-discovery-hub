@@ -32,7 +32,7 @@ function ContactPage() {
         reserved once paid for and collected from our Valley Road store.
       </p>
 
-      <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] mt-8">
+      <div className="grid gap-5 md:gap-6 lg:grid-cols-[1.3fr_1fr] mt-8">
         <div className="space-y-4">
           <LocationMap />
           <div className="card-surface p-6 grid sm:grid-cols-3 gap-4">

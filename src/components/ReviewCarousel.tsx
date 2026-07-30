@@ -12,7 +12,7 @@ export function ReviewCarousel() {
   const review = REVIEWS[i];
 
   return (
-    <section className="container-page my-16" aria-label="Customer reviews">
+    <section className="container-page my-10 md:my-16" aria-label="Customer reviews">
       <div className="text-center mb-6">
         <div className="inline-flex items-center gap-1 mb-2" aria-label="5 out of 5 stars">
           {Array.from({ length: 5 }).map((_, k) => (

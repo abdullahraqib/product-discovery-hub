@@ -56,7 +56,7 @@ export function SiteHeader() {
             <Phone size={16} aria-hidden /> <span>Call Us</span>
           </a>
           <button
-            className="md:hidden p-2 rounded-md text-charcoal"
+            className="md:hidden p-2.5 rounded-md text-charcoal"
             aria-label="Open menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -74,8 +74,8 @@ export function SiteHeader() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="py-2 text-base font-bold text-charcoal"
-                activeProps={{ className: "py-2 text-base font-bold text-brand" }}
+                className="py-3 text-base font-bold text-charcoal"
+                activeProps={{ className: "py-3 text-base font-bold text-brand" }}
               >
                 {n.label}
               </Link>

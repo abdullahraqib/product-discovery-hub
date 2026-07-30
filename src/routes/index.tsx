@@ -106,7 +106,7 @@ function HomePage() {
               "repeating-linear-gradient(-45deg, transparent 0 38px, rgba(255,255,255,0.5) 38px 40px)",
           }}
         />
-        <div className="relative container-page py-14 md:py-20 text-center">
+        <div className="relative container-page py-10 md:py-20 text-center">
           <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight">
             Quality Carpet Roll Ends
             <br />
@@ -169,14 +169,14 @@ function HomePage() {
 
       <ReviewCarousel />
 
-      <section className="container-page my-16 grid gap-6 lg:grid-cols-[1.4fr_1fr]" aria-label="Visit us">
+      <section className="container-page my-10 md:my-16 grid gap-5 md:gap-6 lg:grid-cols-[1.4fr_1fr]" aria-label="Visit us">
         <LocationMap />
         <OpeningHours />
       </section>
 
       <FAQ />
 
-      <section className="container-page my-16">
+      <section className="container-page my-10 md:my-16">
         <div className="card-surface p-8 md:p-12 text-center bg-charcoal text-white">
           <h2 className="text-2xl md:text-3xl font-black">See something you like?</h2>
           <p className="text-neutral-300 mt-2 mb-6">

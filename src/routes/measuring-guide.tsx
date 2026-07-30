@@ -60,8 +60,8 @@ function GuidePage() {
         />
       </div>
 
-      <header className="mt-6 mb-6 flex flex-wrap justify-between items-end gap-4">
-        <div className="flex-1 min-w-[260px]">
+      <header className="mt-6 mb-6 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end">
+        <div className="flex-1 min-w-0">
           <div className="inline-flex items-center gap-2 text-brand text-xs font-black uppercase tracking-[0.2em]">
             <Ruler size={14} /> Free Guide
           </div>
@@ -77,7 +77,7 @@ function GuidePage() {
         <button
           type="button"
           onClick={() => window.print()}
-          className="btn-brand no-print"
+          className="btn-brand no-print w-full sm:w-auto"
           aria-label="Print or save as PDF"
         >
           <Printer size={18} /> Download / Print PDF

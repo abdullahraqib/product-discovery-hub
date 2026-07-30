@@ -34,6 +34,11 @@ export function Filters({
     (state.roomLength || state.roomWidth ? 1 : 0) +
     (state.sort !== "name" ? 1 : 0);
 
+  const inputCls =
+    "w-full px-3 py-2.5 text-base md:text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white";
+  const selectCls = inputCls + " md:w-44";
+  const numCls = inputCls + " md:w-24";
+
   const Controls = (
     <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
       <label className="block">
@@ -41,7 +46,7 @@ export function Filters({
         <select
           value={state.colour}
           onChange={(e) => onChange({ ...state, colour: e.target.value })}
-          className="w-full md:w-44 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+          className={selectCls}
         >
           <option value="">All colours</option>
           {colourOptions.map((c) => (
@@ -66,7 +71,7 @@ export function Filters({
             onChange={(e) => onChange({ ...state, roomLength: e.target.value })}
             placeholder="Length"
             aria-label="Required room length in metres"
-            className="w-full md:w-24 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+            className={numCls}
           />
           <span className="text-sm font-black text-mid" aria-hidden>
             ×
@@ -80,7 +85,7 @@ export function Filters({
             onChange={(e) => onChange({ ...state, roomWidth: e.target.value })}
             placeholder="Width"
             aria-label="Required room width in metres"
-            className="w-full md:w-24 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+            className={numCls}
           />
         </div>
       </div>
@@ -91,7 +96,7 @@ export function Filters({
         <select
           value={state.sort}
           onChange={(e) => onChange({ ...state, sort: e.target.value as SortKey })}
-          className="w-full md:w-44 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+          className={selectCls}
         >
           {Object.entries(SORT_LABELS).map(([k, v]) => (
             <option key={k} value={k}>
@@ -116,7 +121,7 @@ export function Filters({
               onChange={(e) => onChange({ ...state, search: e.target.value })}
               placeholder="Search roll ends…"
               aria-label="Search roll ends"
-              className="w-full pl-9 pr-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+              className="w-full pl-9 pr-3 py-2.5 text-base md:text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
             />
           </div>
         </label>
