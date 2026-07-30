@@ -111,7 +111,7 @@ function ProductPage() {
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         <div>
-          <MediaGallery media={p.images} alt={p.name} />
+          <MediaGallery media={p.images} alt={p.name} alts={p.imageAlts} />
         </div>
 
 

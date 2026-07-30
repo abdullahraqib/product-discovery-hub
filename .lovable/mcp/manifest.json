@@ -160,6 +160,13 @@
                 "type": "string"
               }
             },
+            "image_alts": {
+              "description": "Alt text per image, same order as images.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
             "description": {
               "type": "string"
             },

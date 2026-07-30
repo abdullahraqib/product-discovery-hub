@@ -16,6 +16,7 @@ export type Product = {
   fromPrice: number;
   pricePerSqm: number;
   images: string[];
+  imageAlts: string[];
   description: string;
   features: string[];
   sizes: Size[];
@@ -38,6 +39,7 @@ export type ProductRow = {
   from_price: number;
   price_per_sqm: number;
   images: string[] | null;
+  image_alts: string[] | null;
   description: string;
   features: string[] | null;
   sizes: unknown;
@@ -61,6 +63,7 @@ export function rowToProduct(r: ProductRow): Product {
     fromPrice: Number(r.from_price),
     pricePerSqm: Number(r.price_per_sqm ?? 0),
     images: r.images ?? [],
+    imageAlts: r.image_alts ?? [],
     description: r.description,
     features: r.features ?? [],
     sizes: Array.isArray(r.sizes) ? (r.sizes as Size[]) : [],
