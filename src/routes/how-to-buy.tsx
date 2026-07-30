@@ -52,13 +52,7 @@ function HowToBuyPage() {
     <div className="container-page py-6 md:py-10">
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "How to Buy" }]} />
 
-      <header className="mt-6 mb-8">
-        <h1 className="text-3xl md:text-4xl font-black">How to Buy</h1>
-        <p className="text-mid mt-2 max-w-2xl leading-relaxed">
- Buying a carpet roll end from {SITE.shortName} is quick and simple. Three steps — that's all it
- takes to grab a bargain.
-        </p>
-      </header>
+      <h1 className="text-3xl md:text-4xl font-black mt-6 mb-8">How to Buy</h1>
 
       <div className="grid gap-5 md:gap-6">
         {STEPS.map((s, i) => {
