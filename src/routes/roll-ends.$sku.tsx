@@ -167,7 +167,7 @@ function ProductPage() {
                 <option value="">— Select a size —</option>
                 {p.sizes.map((s, i) => (
                   <option key={s.label + i} value={String(i)}>
-                    {s.label} — £{s.price} — Ref {sizeRef(s)}
+                    {s.label} — £{s.price}
                   </option>
                 ))}
               </select>
