@@ -88,8 +88,6 @@ function ProductPage() {
 
   const [imageIdx, setImageIdx] = useState(0);
   const [sizeChoice, setSizeChoice] = useState<string>("");
-  const [customW, setCustomW] = useState("");
-  const [customL, setCustomL] = useState("");
 
   useEffect(() => {
     addRecentlyViewed(p.sku);
@@ -99,12 +97,9 @@ function ProductPage() {
   const url = `/roll-ends/${p.sku}`;
   const selectedIdx = /^\d+$/.test(sizeChoice) ? Number(sizeChoice) : -1;
   const selected = selectedIdx >= 0 ? p.sizes[selectedIdx] : null;
-  const isCustom = sizeChoice === "custom";
+  const sizeRef = (s: { widthM: number; lengthM: number }) =>
+    `${p.sku}${Number(s.widthM)}${Number(s.lengthM)}`;
 
-  const firstSize = p.sizes[0];
-  const customArea = Number(customW) * Number(customL);
-  const pricePerSqm = firstSize ? firstSize.price / (firstSize.widthM * firstSize.lengthM) : 0;
-  const customPrice = customArea > 0 ? Math.round(customArea * pricePerSqm) : 0;
 
   return (
     <article className="container-page py-6 md:py-8">

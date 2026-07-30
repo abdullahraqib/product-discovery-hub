@@ -1,9 +1,8 @@
-import { Phone, Mail } from "lucide-react";
-import { SITE, emailEnquiryLink } from "@/lib/site";
+import { Phone } from "lucide-react";
+import { SITE } from "@/lib/site";
 import { track } from "@/lib/analytics";
 
 export function EnquireButtons({
-  productName,
   sku,
   size = "lg",
 }: {
@@ -20,13 +19,6 @@ export function EnquireButtons({
         className={`btn-brand ${padding}`}
       >
         <Phone size={size === "lg" ? 18 : 16} /> Call {SITE.phone}
-      </a>
-      <a
-        href={emailEnquiryLink(productName, sku)}
-        onClick={() => track("enquiry_click", { method: "email", sku })}
-        className={`btn-outline-charcoal ${padding}`}
-      >
-        <Mail size={size === "lg" ? 18 : 16} /> Email enquiry
       </a>
     </div>
   );
