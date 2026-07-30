@@ -29,18 +29,19 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="relative block w-full aspect-video rounded-lg overflow-hidden bg-neutral-200 group"
+            className="relative block w-full aspect-video rounded-lg overflow-hidden bg-neutral-100 group"
             aria-label="Open full-size image"
           >
             <img
               src={current}
               alt={alt}
-              className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform"
+              className="w-full h-full object-contain"
             />
             <span className="absolute bottom-3 right-3 bg-charcoal/80 text-white rounded-full p-2">
               <ZoomIn size={16} />
             </span>
           </button>
+
         )}
 
         {isVideo(current) && (
@@ -123,6 +124,13 @@ function Lightbox({
     setScale(1);
     setOffset({ x: 0, y: 0 });
   }, []);
+
+  // Always open (and switch) at 100% — fully visible, never pre-zoomed.
+  useEffect(() => {
+    setScale(1);
+    setOffset({ x: 0, y: 0 });
+  }, [src]);
+
 
   const go = useCallback(
     (delta: number) => {
@@ -273,12 +281,14 @@ function Lightbox({
             src={src}
             alt={alt}
             draggable={false}
-            className="max-w-[92vw] max-h-[85vh] object-contain transition-transform duration-75"
+            className="max-w-[92vw] max-h-[80vh] w-auto h-auto object-contain"
             style={{
               transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${scale})`,
+              transformOrigin: "center center",
               cursor: scale > 1 ? "grab" : "zoom-in",
             }}
           />
+
         )}
       </div>
 
