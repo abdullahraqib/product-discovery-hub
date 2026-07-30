@@ -114,7 +114,7 @@ function HomePage() {
           <h1 className="font-impact uppercase italic leading-[0.9] text-4xl md:text-8xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
             Yorkshire's No1
             <br />
-            <span className="text-pop">offcut outlet</span>
+            <span className="text-pop">carpet outlet</span>
           </h1>
 
           <p className="mt-5 max-w-2xl text-white font-black text-lg md:text-2xl uppercase tracking-tight z-10">
