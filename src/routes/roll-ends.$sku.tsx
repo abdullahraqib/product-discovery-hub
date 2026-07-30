@@ -11,6 +11,8 @@ import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { addRecentlyViewed } from "@/lib/recently-viewed";
 import { track } from "@/lib/analytics";
 import { SITE } from "@/lib/site";
+import { isVideo, firstImage } from "@/lib/media";
+import { Play } from "lucide-react";
 
 export const Route = createFileRoute("/roll-ends/$sku")({
   loader: async ({ params, context }) => {
@@ -30,8 +32,8 @@ export const Route = createFileRoute("/roll-ends/$sku")({
         { property: "og:description", content: p.description },
         { property: "og:url", content: url },
         { property: "og:type", content: "product" },
-        { property: "og:image", content: p.images[0] },
-        { name: "twitter:image", content: p.images[0] },
+        { property: "og:image", content: firstImage(p.images) ?? "" },
+        { name: "twitter:image", content: firstImage(p.images) ?? "" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -43,7 +45,7 @@ export const Route = createFileRoute("/roll-ends/$sku")({
             sku: p.sku,
             name: p.name,
             description: p.description,
-            image: p.images,
+            image: p.images.filter((m) => !isVideo(m)),
             color: p.colour,
             material: p.material,
             brand: { "@type": "Brand", name: SITE.name },
@@ -107,25 +109,46 @@ function ProductPage() {
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         <div>
-          {p.images[imageIdx] && <ImageZoom src={p.images[imageIdx]} alt={p.name} />}
+          {p.images[imageIdx] &&
+            (isVideo(p.images[imageIdx]) ? (
+              <video
+                src={p.images[imageIdx]}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full aspect-video rounded-lg bg-black object-contain"
+              />
+            ) : (
+              <ImageZoom src={p.images[imageIdx]} alt={p.name} />
+            ))}
           {p.images.length > 1 && (
-            <div className="flex gap-2 mt-3">
+            <div className="flex gap-2 mt-3 flex-wrap">
               {p.images.map((src, i) => (
                 <button
                   key={src + i}
                   type="button"
                   onClick={() => setImageIdx(i)}
-                  aria-label={`Show image ${i + 1}`}
-                  className={`w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
+                  aria-label={`Show ${isVideo(src) ? "video" : "image"} ${i + 1}`}
+                  className={`relative w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
                     i === imageIdx ? "border-brand" : "border-transparent"
                   }`}
                 >
-                  <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  {isVideo(src) ? (
+                    <>
+                      <video src={src} muted playsInline preload="metadata" className="w-full h-full object-cover" />
+                      <span className="absolute inset-0 grid place-items-center bg-black/30 text-white">
+                        <Play size={16} />
+                      </span>
+                    </>
+                  ) : (
+                    <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  )}
                 </button>
               ))}
             </div>
           )}
         </div>
+
 
         <div>
           <div className="text-xs font-black uppercase tracking-[0.2em] text-brand">Ref {p.sku}</div>

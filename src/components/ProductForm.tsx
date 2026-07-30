@@ -4,6 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { type Product, type Size } from "@/data/products";
 import { Trash2, Plus, Upload } from "lucide-react";
+import { isVideo } from "@/lib/media";
 
 type Mode = "create" | "edit";
 
@@ -234,17 +235,26 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         </Grid>
       </Section>
 
-      <Section title="Images">
+      <Section title="Photos & videos">
         <div className="space-y-3">
           {p.images.map((src, i) => (
             <div key={src + i} className="flex items-center gap-3 bg-secondary rounded-md p-2">
-              <img src={src} alt="" className="w-20 h-16 object-cover rounded" />
-              <div className="flex-1 text-xs break-all">{src}</div>
+              {isVideo(src) ? (
+                <video src={src} muted playsInline preload="metadata" className="w-20 h-16 object-cover rounded bg-black" />
+              ) : (
+                <img src={src} alt="" className="w-20 h-16 object-cover rounded" />
+              )}
+              <div className="flex-1 text-xs break-all">
+                <span className="font-black uppercase tracking-wider text-mid mr-2">
+                  {isVideo(src) ? "Video" : "Image"}
+                </span>
+                {src}
+              </div>
               <button
                 type="button"
                 onClick={() => removeImage(i)}
                 className="text-brand"
-                aria-label="Remove image"
+                aria-label="Remove media"
               >
                 <Trash2 size={16} />
               </button>
@@ -255,10 +265,10 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <label className="card-surface p-4 cursor-pointer flex items-center gap-3 text-sm font-bold">
             <Upload size={18} className="text-brand" />
-            <span>{busy ? "Uploading…" : "Upload from device"}</span>
+            <span>{busy ? "Uploading…" : "Upload photo or video"}</span>
             <input
               type="file"
-              accept="image/*"
+              accept="image/*,video/*"
               className="hidden"
               onChange={(e) => {
                 const file = e.target.files?.[0];
@@ -272,7 +282,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
               type="url"
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="Paste image URL"
+              placeholder="Paste image or video URL"
               className="flex-1 px-3 py-2 text-sm font-bold border-2 border-border rounded-md bg-white"
             />
             <button
@@ -285,6 +295,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           </div>
         </div>
       </Section>
+
 
       <Section title="Available sizes & pricing">
         <p className="text-xs font-bold text-mid">
