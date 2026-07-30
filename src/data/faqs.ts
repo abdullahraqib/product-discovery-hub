@@ -5,7 +5,7 @@ export const FAQS = [
   },
   {
     q: "Can I reserve a roll end?",
-    a: "Yes. Call us on 01274 057433 and we'll hold a roll end for up to 48 hours while you decide.",
+    a: "A roll end is only reserved once it's been paid for. Call us on 01274 057433 to pay over the phone or pop in to the store — we'll then set it aside for you.",
   },
   {
     q: "What sizes do you stock?",
@@ -20,7 +20,7 @@ export const FAQS = [
     a: "Roll ends are sold as a one-off, but if there's a fault we'll always make it right. See our returns & reservation policy for full details.",
   },
   {
-    q: "Do you deliver?",
-    a: "We offer click & collect from our Valley Road store, and we can arrange local delivery on request. Ask when you enquire.",
+    q: "Do you deliver or fit?",
+    a: "No — roll ends are collection only from our Valley Road store, and we don't offer a fitting service. You're welcome to arrange your own fitter.",
   },
 ];
