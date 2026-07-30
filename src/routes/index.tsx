@@ -63,6 +63,8 @@ function HomePage() {
     search: "",
     colour: "",
     width: "",
+    roomLength: "",
+    roomWidth: "",
     sort: "name",
   });
 
@@ -71,9 +73,17 @@ function HomePage() {
 
   const filtered = useMemo(() => {
     const q = state.search.trim().toLowerCase();
+    const needL = Number(state.roomLength) || 0;
+    const needW = Number(state.roomWidth) || 0;
     let items = products.filter((p) => {
       if (state.colour && p.colour !== state.colour) return false;
       if (state.width && !p.widthsM.includes(Number(state.width))) return false;
+      if (needL > 0 || needW > 0) {
+        const fits = p.sizes.some(
+          (s) => Number(s.lengthM) >= needL && Number(s.widthM) >= needW,
+        );
+        if (!fits) return false;
+      }
       if (q) {
         const blob = `${p.name} ${p.colour} ${p.material} ${p.pile} ${p.sku}`.toLowerCase();
         if (!blob.includes(q)) return false;
@@ -83,6 +93,7 @@ function HomePage() {
     items = sortProducts(items, state.sort);
     return items;
   }, [products, state]);
+
 
   return (
     <>
