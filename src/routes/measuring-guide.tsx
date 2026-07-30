@@ -65,8 +65,9 @@ function GuidePage() {
             How to Measure a Room for Carpet
           </h1>
           <p className="text-mid mt-2 max-w-2xl">
-            Five quick steps to get the right size carpet roll end first time. Always measure from
-            the widest point — doorways included.
+            Six quick steps to get the right size carpet roll end first time. Always measure from
+            the widest point — doorways included. Roll ends are collection only and we don't fit,
+            so accurate measurements matter.
           </p>
         </div>
         <button
