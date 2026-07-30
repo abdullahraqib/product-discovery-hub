@@ -62,14 +62,12 @@ function HomePage() {
   const [state, setState] = useState<FilterState>({
     search: "",
     colour: "",
-    width: "",
     roomLength: "",
     roomWidth: "",
     sort: "name",
   });
 
   const colourOptions = useMemo(() => colourOptionsFrom(products), [products]);
-  const widthOptions = useMemo(() => widthOptionsFrom(products), [products]);
 
   const filtered = useMemo(() => {
     const q = state.search.trim().toLowerCase();
@@ -77,7 +75,6 @@ function HomePage() {
     const needW = Number(state.roomWidth) || 0;
     let items = products.filter((p) => {
       if (state.colour && p.colour !== state.colour) return false;
-      if (state.width && !p.widthsM.includes(Number(state.width))) return false;
       if (needL > 0 || needW > 0) {
         const fits = p.sizes.some(
           (s) =>
@@ -149,7 +146,6 @@ function HomePage() {
           state={state}
           onChange={setState}
           colourOptions={colourOptions}
-          widthOptions={widthOptions}
         />
 
         <div className="mt-6 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
