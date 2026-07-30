@@ -41,6 +41,10 @@ const STEPS = [
     title: "5. Bring or send your measurements",
     body: `Email your sketch to ${SITE.email} or pop in to the Valley Road store and we'll match you to the right roll end.`,
   },
+  {
+    title: "6. Collection and fitting",
+    body: "We don't fit carpet and we don't deliver. Once your roll end is paid for we'll set it aside for you to collect from our Valley Road store, and you arrange your own fitter — so measure carefully and allow a little extra.",
+  },
 ];
 
 function GuidePage() {
