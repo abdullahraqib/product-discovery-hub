@@ -155,10 +155,13 @@ function ProductPage() {
               >
                 <option value="">— Select a size —</option>
                 {p.sizes.map((s, i) => (
-                  <option key={s.label + i} value={String(i)}>
-                    {sizeLabel(s)} — £{s.price}
+                  <option
+                    key={s.label + i}
+                    value={String(i)}
+                    style={{ color: "#dc2626" }}
+                  >
+                    {sizeLabel(s)} — £{s.price}  ({sizeRef(s)})
                   </option>
-
                 ))}
               </select>
 
