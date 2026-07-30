@@ -127,8 +127,8 @@ function HomePage() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-white font-black text-lg md:text-2xl uppercase tracking-tight z-10">
-            Massive savings on{" "}
-            <span className="bg-pop text-pop-foreground px-2">carpet roll ends</span> & clearance stock
+            MASSIVE SAVINGS ON{" "}
+            <span className="bg-pop text-pop-foreground px-2">CARPET ROLL ENDS</span>&nbsp;
           </p>
 
           <a href="#listing-heading" className="btn-pop mt-7 text-xl md:text-2xl">
