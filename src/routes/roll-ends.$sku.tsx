@@ -167,40 +167,23 @@ function ProductPage() {
                 <option value="">— Select a size —</option>
                 {p.sizes.map((s, i) => (
                   <option key={s.label + i} value={String(i)}>
-                    {s.label} — £{s.price}
+                    {s.label} — £{s.price} — Ref {sizeRef(s)}
                   </option>
                 ))}
-                <option value="custom">Custom size…</option>
               </select>
 
               {selected && (
                 <div className="mt-3 flex items-center justify-between border-l-4 border-brand bg-secondary px-4 py-3 rounded-r-md">
-                  <span className="text-sm font-bold text-mid">{selected.label}</span>
+                  <span className="text-sm font-bold text-mid">
+                    {selected.label}
+                    <span className="block text-xs font-black uppercase tracking-wider text-brand mt-0.5">
+                      Ref {sizeRef(selected)}
+                    </span>
+                  </span>
                   <span className="text-xl font-black text-brand">£{selected.price}</span>
                 </div>
               )}
 
-              {isCustom && (
-                <div className="mt-3 bg-secondary border border-border rounded-md p-4">
-                  <p className="text-sm text-mid mb-3">
-                    Measure the <strong className="text-charcoal">widest point</strong> of your room
-                    (include doorways and bays) and add 10cm.
-                  </p>
-                  <div className="flex gap-2 items-end flex-wrap">
-                    <Field label="Width (m)" value={customW} onChange={setCustomW} />
-                    <Field label="Length (m)" value={customL} onChange={setCustomL} />
-                  </div>
-                  {customPrice > 0 && (
-                    <div className="mt-3 bg-white border-2 border-brand rounded-md p-3 text-sm">
-                      Estimate for {customW}m × {customL}m:
-                      <span className="block text-2xl font-black text-brand mt-1">~£{customPrice}</span>
-                      <span className="text-xs text-mid block mt-1">
-                        Indicative only — call us to confirm and reserve.
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
           )}
 
