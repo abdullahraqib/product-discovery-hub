@@ -25,6 +25,7 @@ const blank: Product = {
   description: "",
   features: [],
   sizes: [],
+  isActive: true,
 };
 
 function calcPrice(w: number, l: number, rate: number) {
@@ -46,6 +47,8 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   const qc = useQueryClient();
   const [p, setP] = useState<Product>(product ?? blank);
   const [imageUrl, setImageUrl] = useState("");
+  const [featuresText, setFeaturesText] = useState((product ?? blank).features.join(", "));
+  const [widthsText, setWidthsText] = useState((product ?? blank).widthsM.join(", "));
   const [manualPrices, setManualPrices] = useState<Set<number>>(new Set());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -202,16 +205,17 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           <Input label="Material" value={p.material} onChange={(v) => set("material", v)} />
           <Input
             label="Widths (m, comma-separated)"
-            value={p.widthsM.join(", ")}
-            onChange={(v) =>
+            value={widthsText}
+            onChange={(v) => {
+              setWidthsText(v);
               set(
                 "widthsM",
                 v
                   .split(",")
                   .map((s) => Number(s.trim()))
                   .filter((n) => !isNaN(n) && n > 0),
-              )
-            }
+              );
+            }}
           />
           <Input
             label="Price per m² (£)"
@@ -221,10 +225,11 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           />
           <Input
             label="Features (comma-separated)"
-            value={p.features.join(", ")}
-            onChange={(v) =>
-              set("features", v.split(",").map((s) => s.trim()).filter(Boolean))
-            }
+            value={featuresText}
+            onChange={(v) => {
+              setFeaturesText(v);
+              set("features", v.split(",").map((s) => s.trim()).filter(Boolean));
+            }}
           />
         </Grid>
       </Section>

@@ -19,6 +19,7 @@ export type Product = {
   description: string;
   features: string[];
   sizes: Size[];
+  isActive: boolean;
 };
 
 export type ProductRow = {
@@ -63,6 +64,7 @@ export function rowToProduct(r: ProductRow): Product {
     description: r.description,
     features: r.features ?? [],
     sizes: Array.isArray(r.sizes) ? (r.sizes as Size[]) : [],
+    isActive: r.is_active ?? true,
   };
 }
 

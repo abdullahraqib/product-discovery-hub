@@ -62,19 +62,16 @@ function AdminList() {
                 <div className="text-xs text-mid">{p.material} • {p.pile}</div>
               </td>
               <td className="p-3">
-                <span className="inline-flex items-center gap-2">
-                  <span className="inline-block w-4 h-4 rounded-full border border-border" style={{ background: p.colourHex }} />
-                  {p.colour}
-                </span>
+{p.colour}
               </td>
               <td className="p-3 font-black">£{p.fromPrice}</td>
               <td className="p-3">
                 <button
-                  onClick={() => p.id && toggleActive(p.id, true)}
-                  className="text-xs font-black uppercase tracking-wider px-2 py-1 rounded bg-secondary"
+                  onClick={() => p.id && toggleActive(p.id, p.isActive)}
+                  className={`text-xs font-black uppercase tracking-wider px-2 py-1 rounded ${p.isActive ? "bg-brand text-white" : "bg-secondary text-mid"}`}
                   title="Toggle visibility"
                 >
-                  Toggle
+                  {p.isActive ? "Active" : "Hidden"}
                 </button>
               </td>
               <td className="p-3">

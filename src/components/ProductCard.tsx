@@ -21,14 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
         </span>
       </div>
       <div className="p-4 flex-1 flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <span
-            aria-hidden
-            className="h-4 w-4 rounded-full border border-border shrink-0"
-            style={{ background: product.colourHex }}
-          />
-          <h3 className="font-black text-[15px] leading-tight">{product.name}</h3>
-        </div>
+        <h3 className="font-black text-[15px] leading-tight">{product.name}</h3>
         <p className="text-sm text-mid">
           {product.widthsM.join("m & ")}m widths • {product.material}
         </p>
