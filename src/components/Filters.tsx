@@ -73,6 +73,40 @@ export function Filters({
         </select>
       </label>
 
+      <div className="block">
+        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">
+          Room size (m) — length × width
+        </span>
+        <div className="flex items-center gap-2">
+          <input
+            type="number"
+            inputMode="decimal"
+            min="0"
+            step="0.1"
+            value={state.roomLength}
+            onChange={(e) => onChange({ ...state, roomLength: e.target.value })}
+            placeholder="Length"
+            aria-label="Required room length in metres"
+            className="w-full md:w-24 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+          />
+          <span className="text-sm font-black text-mid" aria-hidden>
+            ×
+          </span>
+          <input
+            type="number"
+            inputMode="decimal"
+            min="0"
+            step="0.1"
+            value={state.roomWidth}
+            onChange={(e) => onChange({ ...state, roomWidth: e.target.value })}
+            placeholder="Width"
+            aria-label="Required room width in metres"
+            className="w-full md:w-24 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+          />
+        </div>
+      </div>
+
+
       <label className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Sort by</span>
         <select
