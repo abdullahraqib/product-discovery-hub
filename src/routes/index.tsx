@@ -109,11 +109,11 @@ function HomePage() {
             Off-cuts and roll ends in all sizes and styles — direct from {SITE.name}. First come,
             first served.
           </p>
-          <div className="mt-5 flex flex-wrap justify-center gap-2">
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             {["Massive Discounts", "Bradford Based"].map((t) => (
               <span
                 key={t}
-                className="border border-white/25 text-white/90 px-3 py-1 rounded-full text-xs md:text-sm font-semibold"
+                className="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-2.5 rounded-full text-sm md:text-lg font-bold"
               >
                 {t}
               </span>
