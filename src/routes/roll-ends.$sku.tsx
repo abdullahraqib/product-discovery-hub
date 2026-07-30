@@ -109,45 +109,9 @@ function ProductPage() {
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         <div>
-          {p.images[imageIdx] &&
-            (isVideo(p.images[imageIdx]) ? (
-              <video
-                src={p.images[imageIdx]}
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full aspect-video rounded-lg bg-black object-contain"
-              />
-            ) : (
-              <ImageZoom src={p.images[imageIdx]} alt={p.name} />
-            ))}
-          {p.images.length > 1 && (
-            <div className="flex gap-2 mt-3 flex-wrap">
-              {p.images.map((src, i) => (
-                <button
-                  key={src + i}
-                  type="button"
-                  onClick={() => setImageIdx(i)}
-                  aria-label={`Show ${isVideo(src) ? "video" : "image"} ${i + 1}`}
-                  className={`relative w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
-                    i === imageIdx ? "border-brand" : "border-transparent"
-                  }`}
-                >
-                  {isVideo(src) ? (
-                    <>
-                      <video src={src} muted playsInline preload="metadata" className="w-full h-full object-cover" />
-                      <span className="absolute inset-0 grid place-items-center bg-black/30 text-white">
-                        <Play size={16} />
-                      </span>
-                    </>
-                  ) : (
-                    <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
-                  )}
-                </button>
-              ))}
-            </div>
-          )}
+          <MediaGallery media={p.images} alt={p.name} />
         </div>
+
 
 
         <div>
