@@ -29,18 +29,19 @@ export function MediaGallery({ media, alt }: { media: string[]; alt: string }) {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="relative block w-full aspect-video rounded-lg overflow-hidden bg-neutral-200 group"
+            className="relative block w-full aspect-video rounded-lg overflow-hidden bg-neutral-100 group"
             aria-label="Open full-size image"
           >
             <img
               src={current}
               alt={alt}
-              className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform"
+              className="w-full h-full object-contain"
             />
             <span className="absolute bottom-3 right-3 bg-charcoal/80 text-white rounded-full p-2">
               <ZoomIn size={16} />
             </span>
           </button>
+
         )}
 
         {isVideo(current) && (
