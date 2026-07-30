@@ -62,7 +62,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
     const next = [...p.sizes];
     next[i] = { ...next[i], ...patch };
     if (patch.widthM !== undefined || patch.lengthM !== undefined) {
-      next[i].label = `${next[i].widthM}m × ${next[i].lengthM}m`;
+      next[i].label = `${next[i].lengthM}m × ${next[i].widthM}m`;
       if (!manualPrices.has(i)) {
         next[i].price = calcPrice(next[i].widthM, next[i].lengthM, p.pricePerSqm);
       }
