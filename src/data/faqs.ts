@@ -15,12 +15,4 @@ export const FAQS = [
     q: "How do I measure my room?",
     a: "Measure the widest point of the room — including any doorways, bays or recesses — and add 10cm for trimming. Our free measuring guide walks you through every step.",
   },
-  {
-    q: "Can I return a roll end?",
-    a: "Roll ends are sold as a one-off, but if there's a fault we'll always make it right. See our returns & reservation policy for full details.",
-  },
-  {
-    q: "Do you deliver or fit?",
-    a: "No — roll ends are collection only from our Valley Road store, and we don't offer a fitting service. You're welcome to arrange your own fitter.",
-  },
 ];
