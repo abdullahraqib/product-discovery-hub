@@ -31,7 +31,7 @@ const STEPS = [
   },
   {
     title: "3. Note down your measurements",
-    body: "Write down the widest measurement for every wall. That's all we need to match you to the right roll end.",
+    body: "Note down the measurements of each room",
   },
   {
     title: "4. Count your stairs",
