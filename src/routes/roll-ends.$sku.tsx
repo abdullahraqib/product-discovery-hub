@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { productQuery } from "@/lib/products";
 import type { Product } from "@/data/products";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ImageZoom } from "@/components/ImageZoom";
+import { MediaGallery } from "@/components/MediaGallery";
 import { ShareButtons } from "@/components/ShareButtons";
 import { EnquireButtons } from "@/components/EnquireButtons";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
@@ -12,7 +12,7 @@ import { addRecentlyViewed } from "@/lib/recently-viewed";
 import { track } from "@/lib/analytics";
 import { SITE } from "@/lib/site";
 import { isVideo, firstImage } from "@/lib/media";
-import { Play } from "lucide-react";
+
 
 export const Route = createFileRoute("/roll-ends/$sku")({
   loader: async ({ params, context }) => {
@@ -88,7 +88,7 @@ function ProductPage() {
   const initial = (Route.useLoaderData() as { product: Product }).product;
   const p = product ?? initial;
 
-  const [imageIdx, setImageIdx] = useState(0);
+  
   const [sizeChoice, setSizeChoice] = useState<string>("");
 
   useEffect(() => {
@@ -109,45 +109,9 @@ function ProductPage() {
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         <div>
-          {p.images[imageIdx] &&
-            (isVideo(p.images[imageIdx]) ? (
-              <video
-                src={p.images[imageIdx]}
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full aspect-video rounded-lg bg-black object-contain"
-              />
-            ) : (
-              <ImageZoom src={p.images[imageIdx]} alt={p.name} />
-            ))}
-          {p.images.length > 1 && (
-            <div className="flex gap-2 mt-3 flex-wrap">
-              {p.images.map((src, i) => (
-                <button
-                  key={src + i}
-                  type="button"
-                  onClick={() => setImageIdx(i)}
-                  aria-label={`Show ${isVideo(src) ? "video" : "image"} ${i + 1}`}
-                  className={`relative w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
-                    i === imageIdx ? "border-brand" : "border-transparent"
-                  }`}
-                >
-                  {isVideo(src) ? (
-                    <>
-                      <video src={src} muted playsInline preload="metadata" className="w-full h-full object-cover" />
-                      <span className="absolute inset-0 grid place-items-center bg-black/30 text-white">
-                        <Play size={16} />
-                      </span>
-                    </>
-                  ) : (
-                    <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
-                  )}
-                </button>
-              ))}
-            </div>
-          )}
+          <MediaGallery media={p.images} alt={p.name} />
         </div>
+
 
 
         <div>
