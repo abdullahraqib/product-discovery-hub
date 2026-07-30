@@ -31,7 +31,7 @@ const STEPS = [
   {
     icon: ClipboardList,
     title: "Note the reference number",
-    body: "Every roll end has a unique reference number (for example, SRC-00148). You'll see it on the listing and in the size dropdown — copy it down so we know exactly which piece you want.",
+    body: "Every roll end has a unique reference number (for example, SRC-00148). You'll see it on the listing and in the size dropdown — note it down so we know exactly which piece you want.",
   },
   {
     icon: Phone,
