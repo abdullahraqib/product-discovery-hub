@@ -6,7 +6,6 @@ export type SortKey = "name" | "newest" | "price-asc" | "price-desc";
 export type FilterState = {
   search: string;
   colour: string;
-  width: string;
   roomLength: string;
   roomWidth: string;
   sort: SortKey;
@@ -23,25 +22,21 @@ export function Filters({
   state,
   onChange,
   colourOptions,
-  widthOptions,
 }: {
   state: FilterState;
   onChange: (s: FilterState) => void;
   colourOptions: { colour: string; hex: string }[];
-  widthOptions: number[];
 }) {
   const [open, setOpen] = useState(false);
 
   const activeCount =
     (state.colour ? 1 : 0) +
-    (state.width ? 1 : 0) +
     (state.roomLength || state.roomWidth ? 1 : 0) +
     (state.sort !== "name" ? 1 : 0);
 
   const Controls = (
-    <div className="grid gap-3 md:grid-cols-[auto_auto_auto_auto] md:items-end">
+    <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
       <label className="block">
-
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour</span>
         <select
           value={state.colour}
@@ -52,22 +47,6 @@ export function Filters({
           {colourOptions.map((c) => (
             <option key={c.colour} value={c.colour}>
               {c.colour}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label className="block">
-        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Width</span>
-        <select
-          value={state.width}
-          onChange={(e) => onChange({ ...state, width: e.target.value })}
-          className="w-full md:w-32 px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
-        >
-          <option value="">Any width</option>
-          {widthOptions.map((w) => (
-            <option key={w} value={String(w)}>
-              {w}m
             </option>
           ))}
         </select>
@@ -192,7 +171,6 @@ export function Filters({
                   onChange({
                     search: state.search,
                     colour: "",
-                    width: "",
                     roomLength: "",
                     roomWidth: "",
                     sort: "name",
