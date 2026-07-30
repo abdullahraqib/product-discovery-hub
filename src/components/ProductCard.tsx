@@ -44,6 +44,9 @@ export function ProductCard({ product }: { product: Product }) {
         <span className="absolute top-2 left-2 bg-charcoal text-white text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded">
           {product.sku}
         </span>
+        <span className="absolute top-2 right-2 bg-pop text-pop-foreground text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded border border-charcoal -rotate-3">
+          Clearance
+        </span>
       </div>
       <div className="p-4 flex-1 flex flex-col gap-2">
         <h3 className="font-black text-[15px] leading-tight">{product.name}</h3>
