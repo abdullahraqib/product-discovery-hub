@@ -30,8 +30,8 @@ const STEPS = [
     body: "Add 10cm (4\") to every measurement that meets a doorway or threshold so you have enough to tuck in cleanly under the door bar.",
   },
   {
-    title: "3. Sketch your room",
-    body: "Draw a quick top-down sketch and label every wall with its measurement. Mark doorways, fireplaces and radiators so you can plan around them.",
+    title: "3. Note down your measurements",
+    body: "Write down the widest measurement for every wall. That's all we need to match you to the right roll end.",
   },
   {
     title: "4. Count your stairs",
