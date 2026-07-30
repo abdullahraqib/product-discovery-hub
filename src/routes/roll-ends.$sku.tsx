@@ -101,6 +101,8 @@ function ProductPage() {
   const selected = selectedIdx >= 0 ? p.sizes[selectedIdx] : null;
   const sizeRef = (s: { widthM: number; lengthM: number }) =>
     `${p.sku}${Number(s.widthM)}${Number(s.lengthM)}`;
+  const sizeLabel = (s: { widthM: number; lengthM: number }) =>
+    `${Number(s.lengthM)}m × ${Number(s.widthM)}m`;
 
 
   return (
