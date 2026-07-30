@@ -76,7 +76,7 @@ function HowToBuyPage() {
                   <span className="font-impact text-3xl text-brand/30 hidden sm:inline">{i + 1}</span>
                   <h2 className="text-xl md:text-2xl font-black">{s.title}</h2>
                 </div>
-                <p className="text-charcoal mt-2 leading-relaxed">{s.body}</p>
+                <div className="text-charcoal mt-2 leading-relaxed">{s.body}</div>
               </div>
             </div>
           );
