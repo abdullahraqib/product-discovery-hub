@@ -52,6 +52,7 @@ function HowToBuyPage() {
     <div className="container-page py-6 md:py-10">
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "How to Buy" }]} />
 
+      <h1 className="text-3xl md:text-4xl font-black mt-6 mb-8">How to Buy</h1>
 
       <div className="grid gap-5 md:gap-6">
         {STEPS.map((s, i) => {
