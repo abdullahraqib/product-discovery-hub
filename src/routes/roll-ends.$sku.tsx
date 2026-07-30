@@ -128,7 +128,7 @@ function ProductPage() {
         </div>
 
         <div>
-          <div className="text-xs font-black uppercase tracking-[0.2em] text-mid">Ref {p.sku}</div>
+          <div className="text-xs font-black uppercase tracking-[0.2em] text-brand">Ref {p.sku}</div>
           <h1 className="text-2xl md:text-3xl font-black mt-1">{p.name}</h1>
 
           <div className="flex items-center gap-3 mt-3">
