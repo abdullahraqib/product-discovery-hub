@@ -26,7 +26,7 @@ const STEPS = [
   {
     icon: ShoppingBag,
     title: "Choose your roll end",
-    body: "Browse our current stock online or in store. Each roll end is a one-off piece — once it's gone, it's gone. Use the search and filters to find a carpet that fits your room.",
+    body: "Browse our stock until you find your match. Each roll end is a one-off piece — once it's gone, it's gone. Use the search and filters to find a carpet that fits your room.",
   },
   {
     icon: ClipboardList,
@@ -36,7 +36,14 @@ const STEPS = [
   {
     icon: Phone,
     title: "Call us to reserve",
-    body: `Ring us on ${SITE.phone} with your reference number. A roll end is only reserved once it's been paid for — we can take payment over the phone or in store. Then arrange pickup or delivery.`,
+    body: (
+      <>
+        Give us a call on {SITE.phone} to check that your roll is still in stock - roll end availability is always changing and it would be impossible to keep our website stock completely accurate 100% of the time!
+        <div className="mt-2">
+          &nbsp;A roll end is only reserved once it's been paid for — we can take payment over the phone or in store. We can then arrange pickup or delivery for you.
+        </div>
+      </>
+    ),
   },
 ];
 
