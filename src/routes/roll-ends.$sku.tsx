@@ -45,7 +45,7 @@ export const Route = createFileRoute("/roll-ends/$sku")({
             sku: p.sku,
             name: p.name,
             description: p.description,
-            image: p.images,
+            image: p.images.filter((m) => !isVideo(m)),
             color: p.colour,
             material: p.material,
             brand: { "@type": "Brand", name: SITE.name },
