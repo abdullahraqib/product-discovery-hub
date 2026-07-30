@@ -3,7 +3,7 @@ import { ShieldCheck, Award, Truck, Ruler } from "lucide-react";
 const ITEMS = [
   {
     icon: Award,
-    title: "50+ Years Experience",
+    title: "50 Years Experience",
     desc: "Half a century of carpet expertise",
   },
   {
