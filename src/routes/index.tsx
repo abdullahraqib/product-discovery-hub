@@ -97,9 +97,6 @@ function HomePage() {
           }}
         />
         <div className="relative container-page py-14 md:py-20 text-center">
-          <span className="inline-block bg-white/15 border border-white/30 text-[11px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded mb-4">
-            {SITE.tagline}
-          </span>
           <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight">
             Quality Carpet Roll Ends
             <br />
