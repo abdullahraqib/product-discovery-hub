@@ -12,7 +12,7 @@ import { addRecentlyViewed } from "@/lib/recently-viewed";
 import { track } from "@/lib/analytics";
 import { SITE } from "@/lib/site";
 import { isVideo, firstImage } from "@/lib/media";
-import { Play } from "lucide-react";
+
 
 export const Route = createFileRoute("/roll-ends/$sku")({
   loader: async ({ params, context }) => {
@@ -88,7 +88,7 @@ function ProductPage() {
   const initial = (Route.useLoaderData() as { product: Product }).product;
   const p = product ?? initial;
 
-  const [imageIdx, setImageIdx] = useState(0);
+  
   const [sizeChoice, setSizeChoice] = useState<string>("");
 
   useEffect(() => {
