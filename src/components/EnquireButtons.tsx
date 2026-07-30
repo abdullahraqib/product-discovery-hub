@@ -18,7 +18,7 @@ export function EnquireButtons({
         onClick={() => track("enquiry_click", { method: "phone", sku })}
         className={`btn-brand ${padding}`}
       >
-        <Phone size={size === "lg" ? 18 : 16} /> Call {SITE.phone}
+        <Phone size={size === "lg" ? 18 : 16} /> Call {SITE.phone} to reserve
       </a>
     </div>
   );
