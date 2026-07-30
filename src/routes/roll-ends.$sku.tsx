@@ -210,28 +210,3 @@ function Detail({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
-
-function Field({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <label className="flex flex-col gap-1 flex-1 min-w-[110px]">
-      <span className="text-[10px] font-black uppercase tracking-wider text-mid">{label}</span>
-      <input
-        type="number"
-        inputMode="decimal"
-        min="0"
-        step="0.1"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="px-3 py-2 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
-      />
-    </label>
-  );
-}
