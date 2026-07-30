@@ -112,7 +112,6 @@ function GuidePage() {
             <li>Always round measurements up to the nearest 10cm.</li>
             <li>Measure twice — it's the cheapest mistake to avoid.</li>
             <li>Take photos of any awkward corners and send them with your enquiry.</li>
-            <li>Roll ends are fixed length — pick the one that beats your longest wall.</li>
           </ul>
         </div>
 
