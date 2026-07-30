@@ -147,6 +147,26 @@
   &:hover { background: var(--color-charcoal); color: white; }
 }
 
+@utility btn-pop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-pop);
+  color: var(--color-pop-foreground);
+  font-family: var(--font-impact);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  padding: 0.9rem 1.75rem;
+  border-radius: var(--radius);
+  border: 3px solid var(--color-charcoal);
+  box-shadow: 5px 5px 0 0 var(--color-charcoal);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.18s ease;
+  cursor: pointer;
+  &:hover { background: oklch(0.96 0.18 98); }
+  &:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 0 var(--color-charcoal); }
+}
+
 @utility card-surface {
   background: var(--color-card);
   border-radius: 0.5rem;
