@@ -7,6 +7,8 @@ export type FilterState = {
   search: string;
   colour: string;
   width: string;
+  roomLength: string;
+  roomWidth: string;
   sort: SortKey;
 };
 
