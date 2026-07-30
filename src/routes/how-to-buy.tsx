@@ -38,10 +38,9 @@ const STEPS = [
     title: "Call us to reserve",
     body: (
       <>
-        Give us a call on {SITE.phone} to check that your roll is still in stock - roll end availability is always changing and it would be impossible to keep our website stock completely accurate 100% of the time!
-        <div className="mt-2">
-          &nbsp;A roll end is only reserved once it's been paid for — we can take payment over the phone or in store. We can then arrange pickup or delivery for you.
-        </div>
+        Give us a call on {SITE.phone} to check that your roll is still in available - roll end availability is always changing and it would be impossible to keep our website stock completely accurate 100% of the time!
+        <br />
+        &nbsp;A roll end is only reserved once it's been paid for — we can take payment over the phone or in store. We can then arrange pickup or delivery for you.
       </>
     ),
   },
