@@ -100,13 +100,18 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/measuring-guide" className="hover:text-white">
-                Measuring Guide
+              <Link to="/how-to-buy" className="hover:text-white">
+                How to Buy
               </Link>
             </li>
             <li>
-              <Link to="/returns-policy" className="hover:text-white">
-                Returns & Reservations
+              <Link to="/delivery" className="hover:text-white">
+                Delivery
+              </Link>
+            </li>
+            <li>
+              <Link to="/measuring-guide" className="hover:text-white">
+                Measuring Guide
               </Link>
             </li>
             <li>

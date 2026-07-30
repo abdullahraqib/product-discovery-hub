@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { SITE } from "@/lib/site";
@@ -6,11 +6,13 @@ import { track } from "@/lib/analytics";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/";
 
   const nav = [
-    { to: "/", label: "Roll Ends" },
+    { to: "/how-to-buy", label: "How to Buy" },
+    { to: "/delivery", label: "Delivery" },
     { to: "/measuring-guide", label: "Measuring Guide" },
-    { to: "/returns-policy", label: "Returns" },
     { to: "/contact", label: "Contact" },
   ];
 
@@ -34,13 +36,22 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
+          <a
+            href="/#listing-heading"
+            className={
+              isHome
+                ? "px-3 py-2 text-sm font-bold text-brand transition-colors"
+                : "px-3 py-2 text-sm font-bold text-charcoal hover:text-brand transition-colors"
+            }
+          >
+            Roll Ends
+          </a>
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
               className="px-3 py-2 text-sm font-bold text-charcoal hover:text-brand transition-colors"
               activeProps={{ className: "px-3 py-2 text-sm font-bold text-brand" }}
-              activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
             </Link>
@@ -69,6 +80,13 @@ export function SiteHeader() {
       {open && (
         <div className="md:hidden border-t border-border bg-white">
           <nav className="container-page py-3 flex flex-col gap-1" aria-label="Mobile">
+            <a
+              href="/#listing-heading"
+              onClick={() => setOpen(false)}
+              className="py-3 text-base font-bold text-charcoal"
+            >
+              Roll Ends
+            </a>
             {nav.map((n) => (
               <Link
                 key={n.to}

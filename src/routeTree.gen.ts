@@ -10,9 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ReturnsPolicyRouteImport } from './routes/returns-policy'
 import { Route as MeasuringGuideRouteImport } from './routes/measuring-guide'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as HowToBuyRouteImport } from './routes/how-to-buy'
+import { Route as DeliveryRouteImport } from './routes/delivery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -33,11 +34,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReturnsPolicyRoute = ReturnsPolicyRouteImport.update({
-  id: '/returns-policy',
-  path: '/returns-policy',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MeasuringGuideRoute = MeasuringGuideRouteImport.update({
   id: '/measuring-guide',
   path: '/measuring-guide',
@@ -46,6 +42,16 @@ const MeasuringGuideRoute = MeasuringGuideRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowToBuyRoute = HowToBuyRouteImport.update({
+  id: '/how-to-buy',
+  path: '/how-to-buy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeliveryRoute = DeliveryRouteImport.update({
+  id: '/delivery',
+  path: '/delivery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -125,9 +131,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/delivery': typeof DeliveryRoute
+  '/how-to-buy': typeof HowToBuyRoute
   '/mcp': typeof McpRoute
   '/measuring-guide': typeof MeasuringGuideRoute
-  '/returns-policy': typeof ReturnsPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -144,9 +151,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/delivery': typeof DeliveryRoute
+  '/how-to-buy': typeof HowToBuyRoute
   '/mcp': typeof McpRoute
   '/measuring-guide': typeof MeasuringGuideRoute
-  '/returns-policy': typeof ReturnsPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -164,9 +172,10 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/delivery': typeof DeliveryRoute
+  '/how-to-buy': typeof HowToBuyRoute
   '/mcp': typeof McpRoute
   '/measuring-guide': typeof MeasuringGuideRoute
-  '/returns-policy': typeof ReturnsPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -185,9 +194,10 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/contact'
+    | '/delivery'
+    | '/how-to-buy'
     | '/mcp'
     | '/measuring-guide'
-    | '/returns-policy'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -204,9 +214,10 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/contact'
+    | '/delivery'
+    | '/how-to-buy'
     | '/mcp'
     | '/measuring-guide'
-    | '/returns-policy'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -223,9 +234,10 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/contact'
+    | '/delivery'
+    | '/how-to-buy'
     | '/mcp'
     | '/measuring-guide'
-    | '/returns-policy'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -244,9 +256,10 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  DeliveryRoute: typeof DeliveryRoute
+  HowToBuyRoute: typeof HowToBuyRoute
   McpRoute: typeof McpRoute
   MeasuringGuideRoute: typeof MeasuringGuideRoute
-  ReturnsPolicyRoute: typeof ReturnsPolicyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -265,13 +278,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/returns-policy': {
-      id: '/returns-policy'
-      path: '/returns-policy'
-      fullPath: '/returns-policy'
-      preLoaderRoute: typeof ReturnsPolicyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/measuring-guide': {
       id: '/measuring-guide'
       path: '/measuring-guide'
@@ -284,6 +290,20 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-to-buy': {
+      id: '/how-to-buy'
+      path: '/how-to-buy'
+      fullPath: '/how-to-buy'
+      preLoaderRoute: typeof HowToBuyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delivery': {
+      id: '/delivery'
+      path: '/delivery'
+      fullPath: '/delivery'
+      preLoaderRoute: typeof DeliveryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -418,9 +438,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  DeliveryRoute: DeliveryRoute,
+  HowToBuyRoute: HowToBuyRoute,
   McpRoute: McpRoute,
   MeasuringGuideRoute: MeasuringGuideRoute,
-  ReturnsPolicyRoute: ReturnsPolicyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
