@@ -5,7 +5,7 @@ export const FAQS = [
   },
   {
     q: "Can I reserve a roll end?",
-    a: "Yes. Call us on 01274 057433 or email info@srcarpetsandfloors.co.uk and we'll hold a roll end for up to 48 hours while you decide.",
+    a: "Yes. Call us on 01274 057433 and we'll hold a roll end for up to 48 hours while you decide.",
   },
   {
     q: "What sizes do you stock?",

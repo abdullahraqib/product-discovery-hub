@@ -88,8 +88,6 @@ function ProductPage() {
 
   const [imageIdx, setImageIdx] = useState(0);
   const [sizeChoice, setSizeChoice] = useState<string>("");
-  const [customW, setCustomW] = useState("");
-  const [customL, setCustomL] = useState("");
 
   useEffect(() => {
     addRecentlyViewed(p.sku);
@@ -99,12 +97,9 @@ function ProductPage() {
   const url = `/roll-ends/${p.sku}`;
   const selectedIdx = /^\d+$/.test(sizeChoice) ? Number(sizeChoice) : -1;
   const selected = selectedIdx >= 0 ? p.sizes[selectedIdx] : null;
-  const isCustom = sizeChoice === "custom";
+  const sizeRef = (s: { widthM: number; lengthM: number }) =>
+    `${p.sku}${Number(s.widthM)}${Number(s.lengthM)}`;
 
-  const firstSize = p.sizes[0];
-  const customArea = Number(customW) * Number(customL);
-  const pricePerSqm = firstSize ? firstSize.price / (firstSize.widthM * firstSize.lengthM) : 0;
-  const customPrice = customArea > 0 ? Math.round(customArea * pricePerSqm) : 0;
 
   return (
     <article className="container-page py-6 md:py-8">
@@ -133,7 +128,7 @@ function ProductPage() {
         </div>
 
         <div>
-          <div className="text-xs font-black uppercase tracking-[0.2em] text-mid">Ref {p.sku}</div>
+          <div className="text-xs font-black uppercase tracking-[0.2em] text-brand">Ref {p.sku}</div>
           <h1 className="text-2xl md:text-3xl font-black mt-1">{p.name}</h1>
 
           <div className="flex items-center gap-3 mt-3">
@@ -172,40 +167,23 @@ function ProductPage() {
                 <option value="">— Select a size —</option>
                 {p.sizes.map((s, i) => (
                   <option key={s.label + i} value={String(i)}>
-                    {s.label} — £{s.price}
+                    {s.label} — £{s.price} — Ref {sizeRef(s)}
                   </option>
                 ))}
-                <option value="custom">Custom size…</option>
               </select>
 
               {selected && (
                 <div className="mt-3 flex items-center justify-between border-l-4 border-brand bg-secondary px-4 py-3 rounded-r-md">
-                  <span className="text-sm font-bold text-mid">{selected.label}</span>
+                  <span className="text-sm font-bold text-mid">
+                    {selected.label}
+                    <span className="block text-xs font-black uppercase tracking-wider text-brand mt-0.5">
+                      Ref {sizeRef(selected)}
+                    </span>
+                  </span>
                   <span className="text-xl font-black text-brand">£{selected.price}</span>
                 </div>
               )}
 
-              {isCustom && (
-                <div className="mt-3 bg-secondary border border-border rounded-md p-4">
-                  <p className="text-sm text-mid mb-3">
-                    Measure the <strong className="text-charcoal">widest point</strong> of your room
-                    (include doorways and bays) and add 10cm.
-                  </p>
-                  <div className="flex gap-2 items-end flex-wrap">
-                    <Field label="Width (m)" value={customW} onChange={setCustomW} />
-                    <Field label="Length (m)" value={customL} onChange={setCustomL} />
-                  </div>
-                  {customPrice > 0 && (
-                    <div className="mt-3 bg-white border-2 border-brand rounded-md p-3 text-sm">
-                      Estimate for {customW}m × {customL}m:
-                      <span className="block text-2xl font-black text-brand mt-1">~£{customPrice}</span>
-                      <span className="text-xs text-mid block mt-1">
-                        Indicative only — call us to confirm and reserve.
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
           )}
 
@@ -230,30 +208,5 @@ function Detail({ label, value }: { label: string; value: string }) {
       <dt className="text-[10px] uppercase tracking-wider text-mid font-black">{label}</dt>
       <dd className="text-sm font-bold mt-0.5">{value}</dd>
     </div>
-  );
-}
-
-function Field({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <label className="flex flex-col gap-1 flex-1 min-w-[110px]">
-      <span className="text-[10px] font-black uppercase tracking-wider text-mid">{label}</span>
-      <input
-        type="number"
-        inputMode="decimal"
-        min="0"
-        step="0.1"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="px-3 py-2 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
-      />
-    </label>
   );
 }
