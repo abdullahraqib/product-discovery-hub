@@ -18,10 +18,10 @@ import { FAQS } from "@/data/faqs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `${SITE.name} — Quality Carpet Roll Ends in Bradford` },
-      { name: "description", content: SITE.description },
-      { property: "og:title", content: `${SITE.name} — Carpet Roll Ends in Bradford` },
-      { property: "og:description", content: SITE.description },
+      { title: `Yorkshire's No1 Offcut Outlet — Clearance Carpet Roll Ends | ${SITE.name}` },
+      { name: "description", content: "Heavily discounted carpet roll ends and offcuts at clearance prices. Grab a bargain — first come, first served at our Bradford outlet." },
+      { property: "og:title", content: `Yorkshire's No1 Offcut Outlet — ${SITE.name}` },
+      { property: "og:description", content: "Heavily discounted carpet roll ends and offcuts at clearance prices. Grab a bargain — first come, first served." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
