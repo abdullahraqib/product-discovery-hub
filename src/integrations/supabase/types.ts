@@ -25,6 +25,7 @@ export type Database = {
           features: string[]
           from_price: number
           id: string
+          image_alts: string[]
           images: string[]
           is_active: boolean
           material: string
@@ -48,6 +49,7 @@ export type Database = {
           features?: string[]
           from_price?: number
           id?: string
+          image_alts?: string[]
           images?: string[]
           is_active?: boolean
           material?: string
@@ -71,6 +73,7 @@ export type Database = {
           features?: string[]
           from_price?: number
           id?: string
+          image_alts?: string[]
           images?: string[]
           is_active?: boolean
           material?: string
