@@ -63,6 +63,8 @@ function HomePage() {
     search: "",
     colour: "",
     width: "",
+    roomLength: "",
+    roomWidth: "",
     sort: "name",
   });
 
