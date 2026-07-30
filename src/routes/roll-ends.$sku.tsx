@@ -177,7 +177,7 @@ function ProductPage() {
                   <span className="text-sm font-bold text-mid">
                     {selected.label}
                     <span className="block text-xs font-black uppercase tracking-wider text-brand mt-0.5">
-                      Ref {sizeRef(selected)}
+                      Reference number: {sizeRef(selected)}
                     </span>
                   </span>
                   <span className="text-xl font-black text-brand">£{selected.price}</span>
