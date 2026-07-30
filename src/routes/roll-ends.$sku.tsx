@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { productQuery } from "@/lib/products";
 import type { Product } from "@/data/products";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ImageZoom } from "@/components/ImageZoom";
+import { MediaGallery } from "@/components/MediaGallery";
 import { ShareButtons } from "@/components/ShareButtons";
 import { EnquireButtons } from "@/components/EnquireButtons";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
