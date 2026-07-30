@@ -10,7 +10,7 @@ export const Route = createFileRoute("/returns-policy")({
       {
         name: "description",
         content:
-          "Clear returns and reservation policy for roll ends from SR Carpets & Floors, Bradford. Reserve for 48 hours and our promise on faulty stock.",
+          "Clear returns and reservation policy for roll ends from SR Carpets & Floors, Bradford. Reserved once paid, collection only, and our promise on faulty stock.",
       },
       { property: "og:title", content: `Returns & Reservation Policy — ${SITE.shortName}` },
       { property: "og:url", content: "/returns-policy" },
