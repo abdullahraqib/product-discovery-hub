@@ -110,8 +110,8 @@ function HomePage() {
           <span className="font-impact text-[20rem] text-white opacity-10 leading-none">SALE</span>
         </div>
 
-        <div className="relative container-page py-10 md:py-16 text-center flex flex-col items-center">
-          <h1 className="font-impact uppercase italic leading-[0.9] text-4xl md:text-8xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
+        <div className="relative container-page py-10 md:py-14 text-center flex flex-col items-center">
+          <h1 className="font-impact uppercase italic leading-[0.9] text-4xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
             Yorkshire's No1
             <br />
             <span className="text-pop">carpet outlet</span>
@@ -122,20 +122,38 @@ function HomePage() {
             <span className="bg-pop text-pop-foreground px-2">CARPET ROLL ENDS</span>&nbsp;
           </p>
 
-          <a href="#listing-heading" className="btn-pop mt-7 text-xl md:text-2xl">
+          <div className="mt-8 z-10 w-full max-w-3xl grid gap-4 md:grid-cols-3 text-left">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-pop text-pop-foreground font-black text-sm">1</span>
+                <span className="font-black uppercase text-sm tracking-wide">Choose your roll end</span>
+              </div>
+              <p className="text-sm text-white/80">Browse our current stock and pick the carpet that suits your room.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-pop text-pop-foreground font-black text-sm">2</span>
+                <span className="font-black uppercase text-sm tracking-wide">Note the reference number</span>
+              </div>
+              <p className="text-sm text-white/80">Each roll has a unique reference — copy it down for when you call.</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-pop text-pop-foreground font-black text-sm">3</span>
+                <span className="font-black uppercase text-sm tracking-wide">Call us to arrange pickup</span>
+              </div>
+              <p className="text-sm text-white/80">
+                Call us on{" "}
+                <a href="tel:01274057433" className="underline decoration-pop font-bold text-white">01274 057433</a>{" "}
+                to reserve and arrange pickup.
+              </p>
+            </div>
+          </div>
+
+          <a href="#listing-heading" className="btn-pop mt-8 text-xl md:text-2xl">
             Shop the deals
           </a>
         </div>
-
-        {/* From £ price tag */}
-        {minPrice != null && (
-          <div className="absolute bottom-5 right-4 md:right-10 hidden md:flex flex-col items-center z-10">
-            <div className="w-24 h-24 bg-pop rounded-full flex flex-col items-center justify-center border-4 border-charcoal -rotate-12 shadow-xl">
-              <span className="text-pop-foreground font-black text-[10px] uppercase leading-none">From</span>
-              <span className="text-pop-foreground font-impact text-3xl leading-none">£{minPrice}</span>
-            </div>
-          </div>
-        )}
       </section>
 
       <TrustBadges />
