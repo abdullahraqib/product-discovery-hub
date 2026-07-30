@@ -33,11 +33,15 @@ export function Filters({
   const [open, setOpen] = useState(false);
 
   const activeCount =
-    (state.colour ? 1 : 0) + (state.width ? 1 : 0) + (state.sort !== "name" ? 1 : 0);
+    (state.colour ? 1 : 0) +
+    (state.width ? 1 : 0) +
+    (state.roomLength || state.roomWidth ? 1 : 0) +
+    (state.sort !== "name" ? 1 : 0);
 
   const Controls = (
-    <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
+    <div className="grid gap-3 md:grid-cols-[auto_auto_auto_auto] md:items-end">
       <label className="block">
+
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour</span>
         <select
           value={state.colour}
