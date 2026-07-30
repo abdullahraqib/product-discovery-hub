@@ -274,12 +274,14 @@ function Lightbox({
             src={src}
             alt={alt}
             draggable={false}
-            className="max-w-[92vw] max-h-[85vh] object-contain transition-transform duration-75"
+            className="max-w-[92vw] max-h-[80vh] w-auto h-auto object-contain"
             style={{
               transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${scale})`,
+              transformOrigin: "center center",
               cursor: scale > 1 ? "grab" : "zoom-in",
             }}
           />
+
         )}
       </div>
 
