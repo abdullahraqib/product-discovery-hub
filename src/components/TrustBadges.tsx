@@ -19,7 +19,7 @@ const ITEMS = [
   {
     icon: Truck,
     title: "Click & Collect",
-    desc: "From our Valley Road store",
+    desc: "From our store in Bradford",
   },
 ];
 
