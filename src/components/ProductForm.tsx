@@ -305,17 +305,18 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           {p.sizes.map((s, i) => (
             <div key={i} className="grid grid-cols-[1fr_1fr_1fr_auto_auto] gap-2 items-end">
               <Input
-                label="Width (m)"
-                type="number"
-                value={String(s.widthM)}
-                onChange={(v) => updateSize(i, { widthM: Number(v) || 0 })}
-              />
-              <Input
                 label="Length (m)"
                 type="number"
                 value={String(s.lengthM)}
                 onChange={(v) => updateSize(i, { lengthM: Number(v) || 0 })}
               />
+              <Input
+                label="Width (m)"
+                type="number"
+                value={String(s.widthM)}
+                onChange={(v) => updateSize(i, { widthM: Number(v) || 0 })}
+              />
+
               <Input
                 label={manualPrices.has(i) ? "Price (£) · manual" : "Price (£) · auto"}
                 type="number"
