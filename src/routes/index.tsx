@@ -80,7 +80,9 @@ function HomePage() {
       if (state.width && !p.widthsM.includes(Number(state.width))) return false;
       if (needL > 0 || needW > 0) {
         const fits = p.sizes.some(
-          (s) => Number(s.lengthM) >= needL && Number(s.widthM) >= needW,
+          (s) =>
+            (Number(s.lengthM) >= needL && Number(s.widthM) >= needW) ||
+            (Number(s.lengthM) >= needW && Number(s.widthM) >= needL),
         );
         if (!fits) return false;
       }
