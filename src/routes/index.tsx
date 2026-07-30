@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { productsQuery } from "@/lib/products";
-import { colourOptionsFrom, widthOptionsFrom, type Product } from "@/data/products";
+import { colourOptionsFrom, type Product } from "@/data/products";
 import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import { Filters, type FilterState } from "@/components/Filters";
 import { TrustBadges } from "@/components/TrustBadges";
