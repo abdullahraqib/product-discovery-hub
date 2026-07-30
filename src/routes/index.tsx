@@ -46,20 +46,14 @@ export const Route = createFileRoute("/")({
 function sortProducts(items: Product[], sort: FilterState["sort"]): Product[] {
   const arr = [...items];
   switch (sort) {
-    case "popularity":
-      return arr.sort((a, b) => b.popularity - a.popularity);
+    case "name":
+      return arr.sort((a, b) => a.name.localeCompare(b.name));
     case "newest":
       return arr.sort((a, b) => +new Date(b.dateAdded) - +new Date(a.dateAdded));
     case "price-asc":
       return arr.sort((a, b) => a.fromPrice - b.fromPrice);
     case "price-desc":
       return arr.sort((a, b) => b.fromPrice - a.fromPrice);
-    case "size":
-      return arr.sort(
-        (a, b) =>
-          Math.max(0, ...b.sizes.map((s) => s.widthM * s.lengthM)) -
-          Math.max(0, ...a.sizes.map((s) => s.widthM * s.lengthM)),
-      );
   }
 }
 
@@ -69,7 +63,7 @@ function HomePage() {
     search: "",
     colour: "",
     width: "",
-    sort: "popularity",
+    sort: "name",
   });
 
   const colourOptions = useMemo(() => colourOptionsFrom(products), [products]);

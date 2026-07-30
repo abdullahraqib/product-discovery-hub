@@ -137,11 +137,6 @@ function ProductPage() {
           <h1 className="text-2xl md:text-3xl font-black mt-1">{p.name}</h1>
 
           <div className="flex items-center gap-3 mt-3">
-            <span
-              className="h-7 w-7 rounded-full border border-border"
-              style={{ background: p.colourHex }}
-              aria-hidden
-            />
             <span className="text-sm font-bold">{p.colour}</span>
           </div>
 

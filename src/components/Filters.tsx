@@ -1,7 +1,7 @@
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { useState } from "react";
 
-export type SortKey = "popularity" | "newest" | "price-asc" | "price-desc" | "size";
+export type SortKey = "name" | "newest" | "price-asc" | "price-desc";
 
 export type FilterState = {
   search: string;
@@ -11,11 +11,10 @@ export type FilterState = {
 };
 
 const SORT_LABELS: Record<SortKey, string> = {
-  popularity: "Most popular",
-  newest: "Newest in",
+  name: "Name: A–Z",
+  newest: "Recently added",
   "price-asc": "Price: low to high",
   "price-desc": "Price: high to low",
-  size: "Size (largest)",
 };
 
 export function Filters({
@@ -32,7 +31,7 @@ export function Filters({
   const [open, setOpen] = useState(false);
 
   const activeCount =
-    (state.colour ? 1 : 0) + (state.width ? 1 : 0) + (state.sort !== "popularity" ? 1 : 0);
+    (state.colour ? 1 : 0) + (state.width ? 1 : 0) + (state.sort !== "name" ? 1 : 0);
 
   const Controls = (
     <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
@@ -150,7 +149,7 @@ export function Filters({
               <button
                 type="button"
                 onClick={() =>
-                  onChange({ search: state.search, colour: "", width: "", sort: "popularity" })
+                  onChange({ search: state.search, colour: "", width: "", sort: "name" })
                 }
                 className="flex-1 h-11 rounded-md border-2 border-border text-sm font-black uppercase tracking-wider"
               >
