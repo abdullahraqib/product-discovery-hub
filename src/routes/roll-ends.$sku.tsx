@@ -109,7 +109,7 @@ function ProductPage() {
     <article className="container-page py-6 md:py-8">
       <Breadcrumbs items={[{ label: "Roll Ends", to: "/" }, { label: p.name }]} />
 
-      <div className="mt-6 grid gap-8 lg:grid-cols-2">
+      <div className="mt-6 grid gap-5 md:gap-8 lg:grid-cols-2">
         <div>
           <MediaGallery media={p.images} alt={p.name} alts={p.imageAlts} />
         </div>
