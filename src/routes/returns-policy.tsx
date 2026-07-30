@@ -34,16 +34,17 @@ function ReturnsPage() {
 
         <Section title="Reserving a roll end">
           <p>
-            We'll hold any roll end for <strong>up to 48 hours</strong> after you call.
-            We'll let you know if anyone else has expressed interest so you can decide quickly.
+            A roll end is only reserved <strong>once it has been paid for</strong>. We can take
+            payment over the phone or in store — until then, pieces stay available to everyone on a
+            first-come, first-served basis.
           </p>
         </Section>
 
         <Section title="Payment & collection">
           <p>
-            Roll ends are paid for in store or over the phone. Once paid, we'll wrap the roll for
-            click &amp; collect from our Valley Road shop or arrange local delivery on a date that
-            works for you.
+            Roll ends are paid for in store or over the phone. Once paid, we'll wrap the roll and
+            hold it for collection from our Valley Road shop. We don't offer delivery, and we don't
+            provide a fitting service — you're welcome to arrange your own fitter.
           </p>
         </Section>
 
