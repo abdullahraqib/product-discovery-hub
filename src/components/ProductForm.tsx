@@ -62,7 +62,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
     const next = [...p.sizes];
     next[i] = { ...next[i], ...patch };
     if (patch.widthM !== undefined || patch.lengthM !== undefined) {
-      next[i].label = `${next[i].widthM}m × ${next[i].lengthM}m`;
+      next[i].label = `${next[i].lengthM}m × ${next[i].widthM}m`;
       if (!manualPrices.has(i)) {
         next[i].price = calcPrice(next[i].widthM, next[i].lengthM, p.pricePerSqm);
       }
@@ -299,23 +299,24 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
 
       <Section title="Available sizes & pricing">
         <p className="text-xs font-bold text-mid">
-          Prices are calculated from width × length × price per m². Edit any price to override it.
+          Sizes are shown as length × width. Prices are calculated from length × width × price per m². Edit any price to override it.
         </p>
         <div className="space-y-3">
           {p.sizes.map((s, i) => (
             <div key={i} className="grid grid-cols-[1fr_1fr_1fr_auto_auto] gap-2 items-end">
-              <Input
-                label="Width (m)"
-                type="number"
-                value={String(s.widthM)}
-                onChange={(v) => updateSize(i, { widthM: Number(v) || 0 })}
-              />
               <Input
                 label="Length (m)"
                 type="number"
                 value={String(s.lengthM)}
                 onChange={(v) => updateSize(i, { lengthM: Number(v) || 0 })}
               />
+              <Input
+                label="Width (m)"
+                type="number"
+                value={String(s.widthM)}
+                onChange={(v) => updateSize(i, { widthM: Number(v) || 0 })}
+              />
+
               <Input
                 label={manualPrices.has(i) ? "Price (£) · manual" : "Price (£) · auto"}
                 type="number"

@@ -101,6 +101,8 @@ function ProductPage() {
   const selected = selectedIdx >= 0 ? p.sizes[selectedIdx] : null;
   const sizeRef = (s: { widthM: number; lengthM: number }) =>
     `${p.sku}${Number(s.widthM)}${Number(s.lengthM)}`;
+  const sizeLabel = (s: { widthM: number; lengthM: number }) =>
+    `${Number(s.lengthM)}m × ${Number(s.widthM)}m`;
 
 
   return (
@@ -154,15 +156,16 @@ function ProductPage() {
                 <option value="">— Select a size —</option>
                 {p.sizes.map((s, i) => (
                   <option key={s.label + i} value={String(i)}>
-                    {s.label} — £{s.price}
+                    {sizeLabel(s)} — £{s.price}
                   </option>
+
                 ))}
               </select>
 
               {selected && (
                 <div className="mt-3 flex items-center justify-between border-l-4 border-brand bg-secondary px-4 py-3 rounded-r-md">
                   <span className="text-sm font-bold text-mid">
-                    {selected.label}
+                    {sizeLabel(selected)}
                     <span className="block text-xs font-black uppercase tracking-wider text-brand mt-0.5">
                       Reference number: {sizeRef(selected)}
                     </span>
