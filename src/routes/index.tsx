@@ -142,10 +142,10 @@ function HomePage() {
 
         {/* From £ price tag */}
         {minPrice != null && (
-          <div className="absolute bottom-5 right-4 md:right-10 flex flex-col items-center z-10">
-            <div className="w-20 h-20 md:w-24 md:h-24 bg-pop rounded-full flex flex-col items-center justify-center border-4 border-charcoal -rotate-12 shadow-xl">
+          <div className="absolute bottom-5 right-4 md:right-10 hidden md:flex flex-col items-center z-10">
+            <div className="w-24 h-24 bg-pop rounded-full flex flex-col items-center justify-center border-4 border-charcoal -rotate-12 shadow-xl">
               <span className="text-pop-foreground font-black text-[10px] uppercase leading-none">From</span>
-              <span className="text-pop-foreground font-impact text-2xl md:text-3xl leading-none">£{minPrice}</span>
+              <span className="text-pop-foreground font-impact text-3xl leading-none">£{minPrice}</span>
             </div>
           </div>
         )}
