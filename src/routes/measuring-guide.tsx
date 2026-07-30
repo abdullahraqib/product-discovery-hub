@@ -34,8 +34,20 @@ const STEPS = [
     body: "Draw a quick top-down sketch and label every wall with its measurement. Mark doorways, fireplaces and radiators so you can plan around them.",
   },
   {
-    title: "4. Stairs and landings",
-    body: "For stairs, count the steps and measure one tread + riser, then multiply. Add 40cm extra to allow for pattern alignment and bullnose wrap.",
+    title: "4. Count your stairs",
+    body: "Count the total number of steps, including any winders.",
+  },
+  {
+    title: "5. Measure the stair width",
+    body: "Measure the width of one stair from side to side.",
+  },
+  {
+    title: "6. Measure one step",
+    body: "Measure from the back of the tread (where your foot goes) down the front of the riser (the vertical part) to the bottom, then multiply by your step count from step 4.",
+  },
+  {
+    title: "7. Measure the landing",
+    body: "Measure the length and width of the landing, adding extra for doorways and thresholds as in step 2.",
   },
 ];
 
