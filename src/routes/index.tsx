@@ -112,7 +112,7 @@ function HomePage() {
         </div>
 
         <div className="relative container-page py-8 md:py-14 text-center flex flex-col items-center">
-          <h1 className="font-impact uppercase italic leading-[0.9] text-[2.8rem] sm:text-6xl md:text-8xl lg:text-9xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
+          <h1 className="font-impact uppercase italic leading-[0.9] text-[2.1rem] sm:text-5xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
             Yorkshire's No1
             <br />
             <span className="text-pop">carpet outlet</span>
