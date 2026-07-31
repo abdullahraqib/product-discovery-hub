@@ -1,4 +1,4 @@
-import { ShieldCheck, Award, Truck, Ruler } from "lucide-react";
+import { ShieldCheck, Award, Truck } from "lucide-react";
 
 const ITEMS = [
   {
@@ -12,11 +12,6 @@ const ITEMS = [
     desc: "Yorkshire-born, independently run",
   },
   {
-    icon: Ruler,
-    title: "4m & 5m Widths",
-    desc: "All popular roll widths in stock",
-  },
-  {
     icon: Truck,
     title: "Click & Collect",
     desc: "From our Forster Square store",
@@ -27,7 +22,7 @@ export function TrustBadges() {
   return (
     <section className="container-page my-6 md:my-10" aria-label="Why choose us">
       {/* Mobile: compact 2x2 icon grid */}
-      <div className="grid grid-cols-2 gap-2 md:hidden">
+      <div className="grid grid-cols-3 gap-2 md:hidden">
         {ITEMS.map(({ icon: Icon, title }) => (
           <div
             key={title}
@@ -42,7 +37,7 @@ export function TrustBadges() {
       </div>
 
       {/* Desktop: full cards */}
-      <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {ITEMS.map(({ icon: Icon, title, desc }) => (
           <div key={title} className="card-surface p-5 flex items-start gap-3">
             <div className="h-10 w-10 rounded-md bg-brand/10 text-brand grid place-items-center shrink-0">
