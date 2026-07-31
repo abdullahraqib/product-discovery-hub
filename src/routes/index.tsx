@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { productsQuery } from "@/lib/products";
@@ -123,7 +123,7 @@ function HomePage() {
           </p>
 
           <div className="mt-8 z-10 w-full max-w-4xl">
-            <div className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7">
+            <Link to="/how-to-buy" className="block bg-bolt border-[3px] md:border-4 border-charcoal shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7 transition-transform hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(0,0,0,0.55)] focus:outline-none focus-visible:ring-4 focus-visible:ring-pop">
               <h2 className="font-impact uppercase italic text-bolt-foreground text-2xl md:text-4xl mb-4 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
                 How to <span className="text-pop">order</span>
               </h2>
@@ -148,7 +148,7 @@ function HomePage() {
                   </p>
                 </li>
               </ol>
-            </div>
+            </Link>
           </div>
 
           <a href="#listing-heading" className="btn-pop mt-8 text-xl md:text-2xl">
