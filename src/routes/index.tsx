@@ -124,7 +124,7 @@ function HomePage() {
             <span className="bg-pop text-pop-foreground px-2">CARPET ROLL ENDS</span>&nbsp;
           </p>
 
-          <div className="mt-5 md:mt-6 z-10 w-full max-w-4xl">
+          <div className="mt-5 md:mt-6 z-10 w-full">
             <PromoBanner />
           </div>
 
