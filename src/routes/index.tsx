@@ -161,8 +161,8 @@ function HomePage() {
 
       <section className="container-page" aria-labelledby="listing-heading">
         <div className="flex items-baseline justify-between flex-wrap gap-2 mb-4">
-          <h2 id="listing-heading" className="text-xl md:text-2xl font-black">
-            Current Roll Ends
+          <h2 id="listing-heading" className="text-xl md:text-2xl font-black whitespace-pre-line">
+            {"\n\n"}Current Roll Ends
           </h2>
           <span className="text-sm text-mid font-bold">
             {isLoading ? "Loading…" : `${filtered.length} available`}
