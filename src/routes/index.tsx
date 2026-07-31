@@ -59,6 +59,7 @@ function sortProducts(items: Product[], sort: FilterState["sort"]): Product[] {
 
 function HomePage() {
   const { data: products = [], isLoading } = useQuery(productsQuery());
+  const navigate = useNavigate();
   const [state, setState] = useState<FilterState>({
     search: "",
     colour: "",
