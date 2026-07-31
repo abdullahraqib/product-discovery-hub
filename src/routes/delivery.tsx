@@ -11,7 +11,7 @@ export const Route = createFileRoute("/delivery")({
       {
         name: "description",
         content:
-          "Collection from our Bradford store or delivery arranged over the phone. Roll ends must be paid for to reserve — call Rollendshop to arrange.",
+          "Collection from our Bradford store or delivery arranged over the phone. Roll ends must be paid for to reserve — call RollEndShop to arrange.",
       },
       { property: "og:title", content: `Delivery & Collection — ${SITE.shortName}` },
       { property: "og:description", content: "Collection from Bradford or delivery arranged by phone." },

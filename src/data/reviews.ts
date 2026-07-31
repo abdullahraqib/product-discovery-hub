@@ -10,7 +10,7 @@ export const REVIEWS: Review[] = [
     name: "Sarah H.",
     rating: 5,
     source: "Google",
-    text: "Rollendshop had a vast range to choose from and Shahid and the team provided an excellent service throughout.",
+    text: "RollEndShop had a vast range to choose from and Shahid and the team provided an excellent service throughout.",
   },
   {
     name: "James W.",

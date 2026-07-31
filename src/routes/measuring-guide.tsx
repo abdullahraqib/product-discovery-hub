@@ -10,7 +10,7 @@ export const Route = createFileRoute("/measuring-guide")({
       {
         name: "description",
         content:
-          "Free measuring guide from Rollendshop. Learn how to measure your room — including doorways, bays and stairs — for a perfect carpet fit.",
+          "Free measuring guide from RollEndShop. Learn how to measure your room — including doorways, bays and stairs — for a perfect carpet fit.",
       },
       { property: "og:title", content: `Carpet Measuring Guide — ${SITE.shortName}` },
       { property: "og:url", content: "/measuring-guide" },
