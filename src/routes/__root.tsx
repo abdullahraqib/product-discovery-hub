@@ -145,6 +145,8 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen flex flex-col pb-14 md:pb-0">
+        <PromoBanner />
+        <PromoBannerStatic />
         <SiteHeader />
         <main className="flex-1">
           <Outlet />
