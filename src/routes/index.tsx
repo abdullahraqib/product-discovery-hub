@@ -12,6 +12,7 @@ import { OpeningHours } from "@/components/OpeningHours";
 import { LocationMap } from "@/components/LocationMap";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { EnquireButtons } from "@/components/EnquireButtons";
+import { PromoBanner } from "@/components/PromoBanner";
 import { SITE } from "@/lib/site";
 import { FAQS } from "@/data/faqs";
 
@@ -122,6 +123,10 @@ function HomePage() {
             MASSIVE SAVINGS ON{" "}
             <span className="bg-pop text-pop-foreground px-2">CARPET ROLL ENDS</span>&nbsp;
           </p>
+
+          <div className="mt-5 md:mt-6 z-10 w-full max-w-4xl">
+            <PromoBanner />
+          </div>
 
           <div className="mt-7 md:mt-8 z-10 w-full max-w-4xl">
             <div
