@@ -123,36 +123,32 @@ function HomePage() {
           </p>
 
           <div className="mt-8 z-10 w-full max-w-4xl">
-            <h2 className="font-impact uppercase text-center text-pop text-xl md:text-2xl mb-4 tracking-wide">
-              How to order
-            </h2>
-            <ol className="grid gap-3 md:grid-cols-3 text-left">
-              <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)]">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-impact text-3xl leading-none">1.</span>
-                  <span className="font-black uppercase text-sm md:text-base leading-tight">Choose your roll end</span>
-                </div>
-                <p className="text-xs md:text-sm font-bold leading-snug">Browse our stock and pick the carpet that suits your room.</p>
-              </li>
-              <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)]">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-impact text-3xl leading-none">2.</span>
-                  <span className="font-black uppercase text-sm md:text-base leading-tight">Note the reference number</span>
-                </div>
-                <p className="text-xs md:text-sm font-bold leading-snug">Each roll has a unique reference — note it down for when you call.</p>
-              </li>
-              <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)]">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-impact text-3xl leading-none">3.</span>
-                  <span className="font-black uppercase text-sm md:text-base leading-tight">Call us to arrange pickup</span>
-                </div>
-                <p className="text-xs md:text-sm font-bold leading-snug">
-                  Call{" "}
-                  <a href="tel:01274057433" className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
-                  to reserve and arrange pickup.
-                </p>
-              </li>
-            </ol>
+            <div className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7">
+              <h2 className="font-impact uppercase italic text-bolt-foreground text-2xl md:text-4xl mb-4 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
+                How to <span className="text-pop">order</span>
+              </h2>
+              <ol className="grid gap-3 md:grid-cols-3 text-left">
+                <li className="bg-white text-charcoal p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
+                  <span className="absolute -top-4 -left-3 bg-pop text-pop-foreground font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">1</span>
+                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Choose your roll end</div>
+                  <p className="text-xs md:text-sm font-bold leading-snug text-mid">Browse our stock and pick the carpet that suits your room.</p>
+                </li>
+                <li className="bg-white text-charcoal p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
+                  <span className="absolute -top-4 -left-3 bg-pop text-pop-foreground font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">2</span>
+                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Note the reference number</div>
+                  <p className="text-xs md:text-sm font-bold leading-snug text-mid">Each roll has a unique reference — note it down for when you call.</p>
+                </li>
+                <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
+                  <span className="absolute -top-4 -left-3 bg-white text-charcoal font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">3</span>
+                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Call us to arrange pickup</div>
+                  <p className="text-xs md:text-sm font-bold leading-snug">
+                    Call{" "}
+                    <a href="tel:01274057433" className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
+                    to reserve and arrange pickup.
+                  </p>
+                </li>
+              </ol>
+            </div>
           </div>
 
           <a href="#listing-heading" className="btn-pop mt-8 text-xl md:text-2xl">
