@@ -198,7 +198,7 @@
 .promo-marquee {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 26s linear infinite;
+  animation: marquee-scroll 18s linear infinite;
 }
 .promo-marquee:hover {
   animation-play-state: paused;
