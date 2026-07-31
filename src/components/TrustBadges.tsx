@@ -17,7 +17,7 @@ export function TrustBadges() {
   return (
     <section className="container-page my-6 md:my-10" aria-label="Why choose us">
       {/* Mobile: compact 2x2 icon grid */}
-      <div className="grid grid-cols-3 gap-2 md:hidden">
+      <div className="grid grid-cols-2 gap-2 md:hidden">
         {ITEMS.map(({ icon: Icon, title }) => (
           <div
             key={title}
