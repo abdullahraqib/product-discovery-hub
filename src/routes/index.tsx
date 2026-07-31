@@ -124,7 +124,13 @@ function HomePage() {
           </p>
 
           <div className="mt-7 md:mt-8 z-10 w-full max-w-4xl">
-            <div className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,0.55)] md:shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7">
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate({ to: "/how-to-buy" })}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate({ to: "/how-to-buy" }); } }}
+              className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,0.55)] md:shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7 cursor-pointer transition-transform hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-pop"
+            >
               <h2 className="font-impact uppercase italic text-bolt-foreground text-2xl md:text-4xl mb-5 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
                 How to <span className="text-pop">order</span>
               </h2>
@@ -144,17 +150,11 @@ function HomePage() {
                   <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">CALL US TO BUY</div>
                   <p className="text-xs md:text-sm font-bold leading-snug">
                     Call{" "}
-                    <a href="tel:01274057433" className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
+                    <a href="tel:01274057433" onClick={(e) => e.stopPropagation()} className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
                     to confirm availability and arrange pickup or delivery.
                   </p>
                 </li>
               </ol>
-              <Link
-                to="/how-to-buy"
-                className="mt-5 inline-flex w-full md:w-auto items-center justify-center min-h-12 px-5 bg-white text-charcoal font-black uppercase text-sm border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] focus:outline-none focus-visible:ring-4 focus-visible:ring-pop"
-              >
-                Full how to buy guide
-              </Link>
             </div>
           </div>
 
