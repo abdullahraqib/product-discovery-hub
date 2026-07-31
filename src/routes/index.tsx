@@ -119,7 +119,7 @@ function HomePage() {
             <span className="text-pop">carpet outlet</span>
           </h1>
 
-          <p className="mt-4 md:mt-5 max-w-2xl text-signal font-black text-base sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance">
+          <p className="mt-4 md:mt-5 max-w-2xl text-white font-black text-base sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
             End of line and carpet roll end specialists
           </p>
 
