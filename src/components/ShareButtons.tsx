@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Facebook, Link2, Check } from "lucide-react";
+import { Facebook, Link2, Check, MessageCircle } from "lucide-react";
 
 export function ShareButtons({ url, title }: { url: string; title: string }) {
   const [copied, setCopied] = useState(false);
@@ -27,6 +27,15 @@ export function ShareButtons({ url, title }: { url: string; title: string }) {
         aria-label="Share on Facebook"
       >
         <Facebook size={16} /> Facebook
+      </a>
+      <a
+        href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${title} ${fullUrl}`)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="h-9 px-3 inline-flex items-center gap-2 text-sm font-bold rounded-md border-2 border-border hover:border-brand hover:text-brand transition-colors"
+        aria-label="Share on WhatsApp"
+      >
+        <MessageCircle size={16} /> WhatsApp
       </a>
       <a
         href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(fullUrl)}`}
