@@ -1,4 +1,4 @@
-import { ShieldCheck, Award, Truck, Ruler } from "lucide-react";
+import { ShieldCheck, Award, Truck } from "lucide-react";
 
 const ITEMS = [
   {
