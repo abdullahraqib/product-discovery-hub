@@ -3,7 +3,6 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
-  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -14,7 +13,6 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyMobileBar } from "@/components/StickyMobileBar";
-import { PromoBanner, PromoBannerStatic } from "@/components/PromoBanner";
 import { SITE } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -142,14 +140,10 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const onListing = pathname.startsWith("/roll-ends/");
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen flex flex-col pb-14 md:pb-0">
-        {!onListing && <PromoBanner />}
-        <PromoBannerStatic />
         <SiteHeader />
         <main className="flex-1">
           <Outlet />

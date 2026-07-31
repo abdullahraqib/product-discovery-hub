@@ -2,9 +2,9 @@ import { Phone } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 const MESSAGES = [
-  "CALL NOW AND RESERVE",
-  "STOCK ALWAYS CHANGING - CALL TO SECURE",
-  "HUGE SALE ACTIVE",
+  "CALL TO RESERVE TODAY",
+  "STOCK MOVES FAST — CALL TO SECURE",
+  "HUGE SALE ON NOW",
 ];
 
 function MarqueeStrip() {
@@ -39,8 +39,8 @@ export function PromoBannerStatic() {
   // Accessible fallback / screen-reader text
   return (
     <span className="sr-only">
-      <Phone size={0} className="hidden" /> Call {SITE.phone} now to reserve — stock always changing,
-      call to secure, huge sale active.
+      <Phone size={0} className="hidden" /> Call {SITE.phone} to reserve today — stock moves fast,
+      call to secure, huge sale on now.
     </span>
   );
 }
