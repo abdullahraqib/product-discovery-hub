@@ -149,22 +149,15 @@ function ProductPage() {
               <div className="text-xs font-black uppercase tracking-wider text-mid mb-2">
                 Choose a size
               </div>
-              <select
+              <SizeDropdown
                 value={sizeChoice}
-                onChange={(e) => setSizeChoice(e.target.value)}
-                className="w-full px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
-              >
-                <option value="">— Select a size —</option>
-                {p.sizes.map((s, i) => (
-                  <option
-                    key={s.label + i}
-                    value={String(i)}
-                    style={{ color: "#dc2626" }}
-                  >
-                    {sizeLabel(s)} — £{s.price}  ({sizeRef(s)})
-                  </option>
-                ))}
-              </select>
+                onChange={setSizeChoice}
+                options={p.sizes.map((s) => ({
+                  label: sizeLabel(s),
+                  price: s.price,
+                  ref: sizeRef(s),
+                }))}
+              />
 
               {selected && (
                 <div className="mt-3 flex items-center justify-between border-l-4 border-brand bg-secondary px-4 py-3 rounded-r-md">
