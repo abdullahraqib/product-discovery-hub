@@ -15,6 +15,7 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as HowToBuyRouteImport } from './routes/how-to-buy'
 import { Route as DeliveryRouteImport } from './routes/delivery'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CarpetRemnantsRouteImport } from './routes/carpet-remnants'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -58,6 +59,11 @@ const DeliveryRoute = DeliveryRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarpetRemnantsRoute = CarpetRemnantsRouteImport.update({
+  id: '/carpet-remnants',
+  path: '/carpet-remnants',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -136,6 +142,7 @@ const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/carpet-remnants': typeof CarpetRemnantsRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/how-to-buy': typeof HowToBuyRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/carpet-remnants': typeof CarpetRemnantsRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/how-to-buy': typeof HowToBuyRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/carpet-remnants': typeof CarpetRemnantsRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
   '/how-to-buy': typeof HowToBuyRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/carpet-remnants'
     | '/contact'
     | '/delivery'
     | '/how-to-buy'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/carpet-remnants'
     | '/contact'
     | '/delivery'
     | '/how-to-buy'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/carpet-remnants'
     | '/contact'
     | '/delivery'
     | '/how-to-buy'
@@ -267,6 +279,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  CarpetRemnantsRoute: typeof CarpetRemnantsRoute
   ContactRoute: typeof ContactRoute
   DeliveryRoute: typeof DeliveryRoute
   HowToBuyRoute: typeof HowToBuyRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carpet-remnants': {
+      id: '/carpet-remnants'
+      path: '/carpet-remnants'
+      fullPath: '/carpet-remnants'
+      preLoaderRoute: typeof CarpetRemnantsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -457,6 +477,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  CarpetRemnantsRoute: CarpetRemnantsRoute,
   ContactRoute: ContactRoute,
   DeliveryRoute: DeliveryRoute,
   HowToBuyRoute: HowToBuyRoute,
