@@ -1,6 +1,6 @@
 export const SITE = {
-  name: "SR Carpets & Floors",
-  shortName: "SR Carpets",
+  name: "Rollendshop",
+  shortName: "Rollendshop",
   tagline: "Bradford's Best Roll Ends",
   description:
     "Quality carpet roll ends and off-cuts in Bradford. 4m & 5m widths, all styles, unbeatable prices. A family business with half a century of carpet experience.",
@@ -32,7 +32,7 @@ export const SITE = {
   mapsEmbed:
     "https://www.google.com/maps?q=60+Valley+Road,+Bradford,+BD1+4AA&output=embed",
   mapsLink:
-    "https://www.google.com/maps/search/?api=1&query=SR+Carpets+%26+Floors+60+Valley+Road+Bradford+BD1+4AA",
+    "https://www.google.com/maps/search/?api=1&query=Rollendshop+60+Valley+Road+Bradford+BD1+4AA",
 };
 
 export function emailEnquiryLink(productName?: string, sku?: string) {
@@ -40,7 +40,7 @@ export function emailEnquiryLink(productName?: string, sku?: string) {
     ? `Enquiry: ${productName}${sku ? ` (${sku})` : ""}`
     : "Roll End Enquiry";
   const body = productName
-    ? `Hi SR Carpets,\n\nI'd like to enquire about: ${productName}${sku ? ` (Ref: ${sku})` : ""}.\n\nPlease could you confirm availability and let me know the next steps.\n\nThanks,\n`
-    : `Hi SR Carpets,\n\nI'd like to enquire about a roll end.\n\nThanks,\n`;
+    ? `Hi Rollendshop,\n\nI'd like to enquire about: ${productName}${sku ? ` (Ref: ${sku})` : ""}.\n\nPlease could you confirm availability and let me know the next steps.\n\nThanks,\n`
+    : `Hi Rollendshop,\n\nI'd like to enquire about a roll end.\n\nThanks,\n`;
   return `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }

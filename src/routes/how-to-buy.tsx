@@ -11,7 +11,7 @@ export const Route = createFileRoute("/how-to-buy")({
       {
         name: "description",
         content:
-          "Three simple steps to buy a carpet roll end from SR Carpets & Floors: choose your roll end, note the reference number, then call to reserve and collect.",
+          "Three simple steps to buy a carpet roll end from Rollendshop: choose your roll end, note the reference number, then call to reserve and collect.",
       },
       { property: "og:title", content: `How to Buy — ${SITE.shortName}` },
       { property: "og:description", content: "Three simple steps to grab a bargain carpet roll end." },
