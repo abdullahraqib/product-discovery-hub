@@ -11,10 +11,10 @@ const projectRef = import.meta.env.VITE_SUPABASE_PROJECT_ID ?? "project-ref-unse
 
 export default defineMcp({
   name: "rollendshop-mcp",
-  title: "Rollendshop",
+  title: "RollEndShop",
   version: "0.1.0",
   instructions:
-    "Tools for the Rollendshop roll-ends catalogue. Read tools return active product data; write tools (create/update/delete) are restricted to admin users by database policies.",
+    "Tools for the RollEndShop roll-ends catalogue. Read tools return active product data; write tools (create/update/delete) are restricted to admin users by database policies.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated",
