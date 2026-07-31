@@ -120,7 +120,7 @@ function HomePage() {
           </h1>
 
           <p className="mt-4 md:mt-5 max-w-2xl text-white font-black text-base sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance">
-            End of line and carpet roll end specialists
+            End of line carpets and roll end specialists
           </p>
 
           <div className="mt-5 md:mt-6 z-10 w-screen">
