@@ -14,7 +14,7 @@ function TikTokIcon({ size = 18 }: { size?: number }) {
 export function SiteFooter() {
   return (
     <footer className="bg-charcoal text-neutral-300 border-t-4 border-brand mt-16">
-      <div className="container-page py-10 md:py-12 grid gap-8 md:gap-10 md:grid-cols-4">
+      <div className="container-page py-10 md:py-12 grid gap-8 md:gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         <div>
           <div className="mb-3">
             <span className="inline-block bg-white rounded-md px-3 py-2">
