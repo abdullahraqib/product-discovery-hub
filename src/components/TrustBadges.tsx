@@ -12,11 +12,6 @@ const ITEMS = [
     desc: "Yorkshire-born, independently run",
   },
   {
-    icon: Ruler,
-    title: "4m & 5m Widths",
-    desc: "All popular roll widths in stock",
-  },
-  {
     icon: Truck,
     title: "Click & Collect",
     desc: "From our Forster Square store",
