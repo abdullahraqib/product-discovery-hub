@@ -110,24 +110,24 @@ function HomePage() {
           <span className="font-impact text-[20rem] text-white opacity-10 leading-none">SALE</span>
         </div>
 
-        <div className="relative container-page py-10 md:py-14 text-center flex flex-col items-center">
-          <h1 className="font-impact uppercase italic leading-[0.9] text-4xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
+        <div className="relative container-page py-8 md:py-14 text-center flex flex-col items-center">
+          <h1 className="font-impact uppercase italic leading-[0.9] text-[2.1rem] sm:text-5xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
             Yorkshire's No1
             <br />
             <span className="text-pop">carpet outlet</span>
           </h1>
 
-          <p className="mt-5 max-w-2xl text-white font-black text-lg md:text-2xl uppercase tracking-tight z-10">
+          <p className="mt-4 md:mt-5 max-w-2xl text-white font-black text-base sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance">
             MASSIVE SAVINGS ON{" "}
             <span className="bg-pop text-pop-foreground px-2">CARPET ROLL ENDS</span>&nbsp;
           </p>
 
-          <div className="mt-8 z-10 w-full max-w-4xl">
-            <Link to="/how-to-buy" className="block bg-bolt border-[3px] md:border-4 border-charcoal shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7 transition-transform hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(0,0,0,0.55)] focus:outline-none focus-visible:ring-4 focus-visible:ring-pop">
-              <h2 className="font-impact uppercase italic text-bolt-foreground text-2xl md:text-4xl mb-4 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
+          <div className="mt-7 md:mt-8 z-10 w-full max-w-4xl">
+            <div className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,0.55)] md:shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7">
+              <h2 className="font-impact uppercase italic text-bolt-foreground text-2xl md:text-4xl mb-5 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
                 How to <span className="text-pop">order</span>
               </h2>
-              <ol className="grid gap-3 md:grid-cols-3 text-left">
+              <ol className="grid gap-4 md:gap-3 md:grid-cols-3 text-left">
                 <li className="bg-white text-charcoal p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
                   <span className="absolute -top-4 -left-3 bg-pop text-pop-foreground font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">1</span>
                   <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Choose your roll end</div>
@@ -148,13 +148,20 @@ function HomePage() {
                   </p>
                 </li>
               </ol>
-            </Link>
+              <Link
+                to="/how-to-buy"
+                className="mt-5 inline-flex w-full md:w-auto items-center justify-center min-h-12 px-5 bg-white text-charcoal font-black uppercase text-sm border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] focus:outline-none focus-visible:ring-4 focus-visible:ring-pop"
+              >
+                Full how to buy guide
+              </Link>
+            </div>
           </div>
 
-          <a href="#listing-heading" className="btn-pop mt-8 text-xl md:text-2xl">
+          <a href="#listing-heading" className="btn-pop mt-7 md:mt-8 w-full sm:w-auto text-center text-lg md:text-2xl">
             Shop the deals
           </a>
         </div>
+
       </section>
 
       
