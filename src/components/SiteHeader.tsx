@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { track } from "@/lib/analytics";
+import logoAsset from "@/assets/rollendshop-logo.png.asset.json";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -19,20 +20,12 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b-[3px] border-brand shadow-sm">
       <div className="container-page flex items-center justify-between gap-4 h-[72px]">
-        <Link to="/" className="flex items-center gap-3 shrink-0" aria-label={`${SITE.name} home`}>
+        <Link to="/" className="flex items-center shrink-0 min-w-0" aria-label={`${SITE.name} home`}>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdm_w79XcWl9VNwkxr1nuuxff4B7Y4HG2zZdbZXr-F91kFdNVCQ1i9mPAZ&s=10"
+            src={logoAsset.url}
             alt={`${SITE.name} logo`}
-            className="h-12 w-auto block"
+            className="h-7 sm:h-9 w-auto block max-w-[200px] sm:max-w-none object-contain"
           />
-          <div className="leading-tight hidden sm:block">
-            <strong className="block text-charcoal text-[15px] font-black tracking-wide">
-              {SITE.name}
-            </strong>
-            <span className="text-[10px] uppercase tracking-[0.15em] text-mid font-bold">
-              Bradford • Roll Ends
-            </span>
-          </div>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
