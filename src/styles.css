@@ -190,6 +190,23 @@
   border-radius: 4px;
 }
 
+/* Moving promo marquee banner */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.promo-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 26s linear infinite;
+}
+.promo-marquee:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-marquee { animation: none; }
+}
+
 /* Print styles for measuring guide */
 @media print {
   .no-print { display: none !important; }
