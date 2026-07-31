@@ -164,8 +164,8 @@ function HomePage() {
           <h2 id="listing-heading" className="text-xl md:text-2xl font-black whitespace-pre-line">
             {"\n\n"}Current Roll Ends
           </h2>
-          <span className="text-sm text-mid font-bold">
-            {isLoading ? "Loading…" : `${filtered.length} available`}
+          <span className="text-sm text-mid font-bold whitespace-pre-line text-right">
+            {"\n"}{isLoading ? "Loading…" : `${filtered.length} available`}
           </span>
         </div>
 
