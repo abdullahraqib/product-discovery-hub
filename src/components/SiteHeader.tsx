@@ -10,7 +10,7 @@ export function SiteHeader() {
   const isHome = pathname === "/";
 
   const nav = [
-    { to: "/how-to-buy", label: "How to Buy" },
+    { to: "/how-to-buy", label: "How to Order" },
     { to: "/delivery", label: "Delivery" },
     { to: "/measuring-guide", label: "Measuring Guide" },
     { to: "/contact", label: "Contact" },
