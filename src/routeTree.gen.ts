@@ -13,11 +13,16 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as MeasuringGuideRouteImport } from './routes/measuring-guide'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as HowToBuyRouteImport } from './routes/how-to-buy'
+import { Route as EndOfLineCarpetsRouteImport } from './routes/end-of-line-carpets'
 import { Route as DeliveryRouteImport } from './routes/delivery'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CheapCarpetsRouteImport } from './routes/cheap-carpets'
+import { Route as CarpetRemnantsRouteImport } from './routes/carpet-remnants'
+import { Route as CarpetOffcutsRouteImport } from './routes/carpet-offcuts'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RollEndsIndexRouteImport } from './routes/roll-ends.index'
 import { Route as RollEndsSkuRouteImport } from './routes/roll-ends.$sku'
 import { Route as CarpetsCategoryRouteImport } from './routes/carpets.$category'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -49,6 +54,11 @@ const HowToBuyRoute = HowToBuyRouteImport.update({
   path: '/how-to-buy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EndOfLineCarpetsRoute = EndOfLineCarpetsRouteImport.update({
+  id: '/end-of-line-carpets',
+  path: '/end-of-line-carpets',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DeliveryRoute = DeliveryRouteImport.update({
   id: '/delivery',
   path: '/delivery',
@@ -57,6 +67,21 @@ const DeliveryRoute = DeliveryRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheapCarpetsRoute = CheapCarpetsRouteImport.update({
+  id: '/cheap-carpets',
+  path: '/cheap-carpets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarpetRemnantsRoute = CarpetRemnantsRouteImport.update({
+  id: '/carpet-remnants',
+  path: '/carpet-remnants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarpetOffcutsRoute = CarpetOffcutsRouteImport.update({
+  id: '/carpet-offcuts',
+  path: '/carpet-offcuts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -71,6 +96,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RollEndsIndexRoute = RollEndsIndexRouteImport.update({
+  id: '/roll-ends/',
+  path: '/roll-ends/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RollEndsSkuRoute = RollEndsSkuRouteImport.update({
@@ -130,8 +160,12 @@ const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/carpet-offcuts': typeof CarpetOffcutsRoute
+  '/carpet-remnants': typeof CarpetRemnantsRoute
+  '/cheap-carpets': typeof CheapCarpetsRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
+  '/end-of-line-carpets': typeof EndOfLineCarpetsRoute
   '/how-to-buy': typeof HowToBuyRoute
   '/mcp': typeof McpRoute
   '/measuring-guide': typeof MeasuringGuideRoute
@@ -141,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/carpets/$category': typeof CarpetsCategoryRoute
   '/roll-ends/$sku': typeof RollEndsSkuRoute
+  '/roll-ends/': typeof RollEndsIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -150,8 +185,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/carpet-offcuts': typeof CarpetOffcutsRoute
+  '/carpet-remnants': typeof CarpetRemnantsRoute
+  '/cheap-carpets': typeof CheapCarpetsRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
+  '/end-of-line-carpets': typeof EndOfLineCarpetsRoute
   '/how-to-buy': typeof HowToBuyRoute
   '/mcp': typeof McpRoute
   '/measuring-guide': typeof MeasuringGuideRoute
@@ -160,6 +199,7 @@ export interface FileRoutesByTo {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/carpets/$category': typeof CarpetsCategoryRoute
   '/roll-ends/$sku': typeof RollEndsSkuRoute
+  '/roll-ends': typeof RollEndsIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -171,8 +211,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/carpet-offcuts': typeof CarpetOffcutsRoute
+  '/carpet-remnants': typeof CarpetRemnantsRoute
+  '/cheap-carpets': typeof CheapCarpetsRoute
   '/contact': typeof ContactRoute
   '/delivery': typeof DeliveryRoute
+  '/end-of-line-carpets': typeof EndOfLineCarpetsRoute
   '/how-to-buy': typeof HowToBuyRoute
   '/mcp': typeof McpRoute
   '/measuring-guide': typeof MeasuringGuideRoute
@@ -182,6 +226,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/carpets/$category': typeof CarpetsCategoryRoute
   '/roll-ends/$sku': typeof RollEndsSkuRoute
+  '/roll-ends/': typeof RollEndsIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -193,8 +238,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/carpet-offcuts'
+    | '/carpet-remnants'
+    | '/cheap-carpets'
     | '/contact'
     | '/delivery'
+    | '/end-of-line-carpets'
     | '/how-to-buy'
     | '/mcp'
     | '/measuring-guide'
@@ -204,6 +253,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/carpets/$category'
     | '/roll-ends/$sku'
+    | '/roll-ends/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/$id'
@@ -213,8 +263,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/carpet-offcuts'
+    | '/carpet-remnants'
+    | '/cheap-carpets'
     | '/contact'
     | '/delivery'
+    | '/end-of-line-carpets'
     | '/how-to-buy'
     | '/mcp'
     | '/measuring-guide'
@@ -223,6 +277,7 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/carpets/$category'
     | '/roll-ends/$sku'
+    | '/roll-ends'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/$id'
@@ -233,8 +288,12 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/carpet-offcuts'
+    | '/carpet-remnants'
+    | '/cheap-carpets'
     | '/contact'
     | '/delivery'
+    | '/end-of-line-carpets'
     | '/how-to-buy'
     | '/mcp'
     | '/measuring-guide'
@@ -244,6 +303,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/carpets/$category'
     | '/roll-ends/$sku'
+    | '/roll-ends/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/_authenticated/admin/$id'
@@ -255,8 +315,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  CarpetOffcutsRoute: typeof CarpetOffcutsRoute
+  CarpetRemnantsRoute: typeof CarpetRemnantsRoute
+  CheapCarpetsRoute: typeof CheapCarpetsRoute
   ContactRoute: typeof ContactRoute
   DeliveryRoute: typeof DeliveryRoute
+  EndOfLineCarpetsRoute: typeof EndOfLineCarpetsRoute
   HowToBuyRoute: typeof HowToBuyRoute
   McpRoute: typeof McpRoute
   MeasuringGuideRoute: typeof MeasuringGuideRoute
@@ -265,6 +329,7 @@ export interface RootRouteChildren {
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   CarpetsCategoryRoute: typeof CarpetsCategoryRoute
   RollEndsSkuRoute: typeof RollEndsSkuRoute
+  RollEndsIndexRoute: typeof RollEndsIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -299,6 +364,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HowToBuyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/end-of-line-carpets': {
+      id: '/end-of-line-carpets'
+      path: '/end-of-line-carpets'
+      fullPath: '/end-of-line-carpets'
+      preLoaderRoute: typeof EndOfLineCarpetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/delivery': {
       id: '/delivery'
       path: '/delivery'
@@ -311,6 +383,27 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cheap-carpets': {
+      id: '/cheap-carpets'
+      path: '/cheap-carpets'
+      fullPath: '/cheap-carpets'
+      preLoaderRoute: typeof CheapCarpetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carpet-remnants': {
+      id: '/carpet-remnants'
+      path: '/carpet-remnants'
+      fullPath: '/carpet-remnants'
+      preLoaderRoute: typeof CarpetRemnantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carpet-offcuts': {
+      id: '/carpet-offcuts'
+      path: '/carpet-offcuts'
+      fullPath: '/carpet-offcuts'
+      preLoaderRoute: typeof CarpetOffcutsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -332,6 +425,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roll-ends/': {
+      id: '/roll-ends/'
+      path: '/roll-ends'
+      fullPath: '/roll-ends/'
+      preLoaderRoute: typeof RollEndsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roll-ends/$sku': {
@@ -437,8 +537,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  CarpetOffcutsRoute: CarpetOffcutsRoute,
+  CarpetRemnantsRoute: CarpetRemnantsRoute,
+  CheapCarpetsRoute: CheapCarpetsRoute,
   ContactRoute: ContactRoute,
   DeliveryRoute: DeliveryRoute,
+  EndOfLineCarpetsRoute: EndOfLineCarpetsRoute,
   HowToBuyRoute: HowToBuyRoute,
   McpRoute: McpRoute,
   MeasuringGuideRoute: MeasuringGuideRoute,
@@ -448,6 +552,7 @@ const rootRouteChildren: RootRouteChildren = {
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   CarpetsCategoryRoute: CarpetsCategoryRoute,
   RollEndsSkuRoute: RollEndsSkuRoute,
+  RollEndsIndexRoute: RollEndsIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }

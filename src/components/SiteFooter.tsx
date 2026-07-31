@@ -14,7 +14,7 @@ function TikTokIcon({ size = 18 }: { size?: number }) {
 export function SiteFooter() {
   return (
     <footer className="bg-charcoal text-neutral-300 border-t-4 border-brand mt-16">
-      <div className="container-page py-10 md:py-12 grid gap-8 md:gap-10 md:grid-cols-4">
+      <div className="container-page py-10 md:py-12 grid gap-8 md:gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         <div>
           <div className="mb-3">
             <span className="inline-block bg-white rounded-md px-3 py-2">
@@ -119,6 +119,37 @@ export function SiteFooter() {
             <li>
               <Link to="/contact" className="hover:text-white">
                 Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-white font-black mb-3 text-sm uppercase tracking-wider">Shop</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/roll-ends" className="hover:text-white">
+                Carpet Roll Ends
+              </Link>
+            </li>
+            <li>
+              <Link to="/carpet-remnants" className="hover:text-white">
+                Carpet Remnants
+              </Link>
+            </li>
+            <li>
+              <Link to="/carpet-offcuts" className="hover:text-white">
+                Carpet Offcuts
+              </Link>
+            </li>
+            <li>
+              <Link to="/cheap-carpets" className="hover:text-white">
+                Cheap Carpets
+              </Link>
+            </li>
+            <li>
+              <Link to="/end-of-line-carpets" className="hover:text-white">
+                End of Line Carpets
               </Link>
             </li>
           </ul>
