@@ -39,7 +39,7 @@ export function SizeDropdown({ options, value, onChange, placeholder = "— Sele
           {selected ? (
             <>
               {selected.label} — £{selected.price}{" "}
-              <span className="text-[#dc2626]">({selected.ref})</span>
+              <span className="text-[#dc2626]">Reference number: ({selected.ref})</span>
             </>
           ) : (
             placeholder
