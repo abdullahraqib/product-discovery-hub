@@ -13,6 +13,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyMobileBar } from "@/components/StickyMobileBar";
+import { PromoBanner, PromoBannerStatic } from "@/components/PromoBanner";
 import { SITE } from "@/lib/site";
 
 function NotFoundComponent() {
