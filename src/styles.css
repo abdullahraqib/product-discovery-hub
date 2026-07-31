@@ -39,6 +39,8 @@
   --color-bolt: var(--bolt);
   --color-bolt-dark: var(--bolt-dark);
   --color-bolt-foreground: var(--bolt-foreground);
+  --color-signal: var(--signal);
+  --color-signal-foreground: var(--signal-foreground);
 
   --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-display: "Lato", system-ui, sans-serif;
