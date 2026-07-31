@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
+import logoAsset from "@/assets/rollendshop-logo.png.asset.json";
 
 function TikTokIcon({ size = 18 }: { size?: number }) {
   return (
@@ -15,13 +16,12 @@ export function SiteFooter() {
     <footer className="bg-charcoal text-neutral-300 border-t-4 border-brand mt-16">
       <div className="container-page py-10 md:py-12 grid gap-8 md:gap-10 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-3 mb-3">
+          <div className="mb-3">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdm_w79XcWl9VNwkxr1nuuxff4B7Y4HG2zZdbZXr-F91kFdNVCQ1i9mPAZ&s=10"
+              src={logoAsset.url}
               alt={`${SITE.name} logo`}
-              className="h-10 w-auto block bg-white/5 rounded p-1"
+              className="h-8 w-auto block"
             />
-            <span className="text-white font-black">{SITE.name}</span>
           </div>
           <p className="text-sm text-neutral-400 leading-relaxed">
             Family-run carpet specialists with over half a century of experience. Quality roll ends
