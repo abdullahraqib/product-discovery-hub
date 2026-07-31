@@ -140,7 +140,7 @@ function HomePage() {
                 </li>
                 <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
                   <span className="absolute -top-4 -left-3 bg-white text-charcoal font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">3</span>
-                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Call us to arrange pickup</div>
+                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">CALL US TO BUY</div>
                   <p className="text-xs md:text-sm font-bold leading-snug">
                     Call{" "}
                     <a href="tel:01274057433" className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
