@@ -144,7 +144,7 @@ function HomePage() {
                   <p className="text-xs md:text-sm font-bold leading-snug">
                     Call{" "}
                     <a href="tel:01274057433" className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
-                    to reserve and arrange pickup.
+                    to confirm availability and arrange pickup or delivery.
                   </p>
                 </li>
               </ol>
