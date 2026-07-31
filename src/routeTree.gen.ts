@@ -18,6 +18,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RollEndsIndexRouteImport } from './routes/roll-ends.index'
 import { Route as RollEndsSkuRouteImport } from './routes/roll-ends.$sku'
 import { Route as CarpetsCategoryRouteImport } from './routes/carpets.$category'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -71,6 +72,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RollEndsIndexRoute = RollEndsIndexRouteImport.update({
+  id: '/roll-ends/',
+  path: '/roll-ends/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RollEndsSkuRoute = RollEndsSkuRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/carpets/$category': typeof CarpetsCategoryRoute
   '/roll-ends/$sku': typeof RollEndsSkuRoute
+  '/roll-ends/': typeof RollEndsIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/carpets/$category': typeof CarpetsCategoryRoute
   '/roll-ends/$sku': typeof RollEndsSkuRoute
+  '/roll-ends': typeof RollEndsIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/carpets/$category': typeof CarpetsCategoryRoute
   '/roll-ends/$sku': typeof RollEndsSkuRoute
+  '/roll-ends/': typeof RollEndsIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -204,6 +213,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/carpets/$category'
     | '/roll-ends/$sku'
+    | '/roll-ends/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/$id'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/carpets/$category'
     | '/roll-ends/$sku'
+    | '/roll-ends'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/$id'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/carpets/$category'
     | '/roll-ends/$sku'
+    | '/roll-ends/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/_authenticated/admin/$id'
@@ -265,6 +277,7 @@ export interface RootRouteChildren {
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   CarpetsCategoryRoute: typeof CarpetsCategoryRoute
   RollEndsSkuRoute: typeof RollEndsSkuRoute
+  RollEndsIndexRoute: typeof RollEndsIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -332,6 +345,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roll-ends/': {
+      id: '/roll-ends/'
+      path: '/roll-ends'
+      fullPath: '/roll-ends/'
+      preLoaderRoute: typeof RollEndsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roll-ends/$sku': {
@@ -448,6 +468,7 @@ const rootRouteChildren: RootRouteChildren = {
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   CarpetsCategoryRoute: CarpetsCategoryRoute,
   RollEndsSkuRoute: RollEndsSkuRoute,
+  RollEndsIndexRoute: RollEndsIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
