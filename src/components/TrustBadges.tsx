@@ -1,11 +1,6 @@
-import { ShieldCheck, Award, Truck } from "lucide-react";
+import { ShieldCheck, Truck } from "lucide-react";
 
 const ITEMS = [
-  {
-    icon: Award,
-    title: "50 Years Experience",
-    desc: "Half a century of carpet expertise",
-  },
   {
     icon: ShieldCheck,
     title: "Family Business",
