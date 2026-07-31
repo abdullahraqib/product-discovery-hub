@@ -37,7 +37,7 @@ export function TrustBadges() {
       </div>
 
       {/* Desktop: full cards */}
-      <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {ITEMS.map(({ icon: Icon, title, desc }) => (
           <div key={title} className="card-surface p-5 flex items-start gap-3">
             <div className="h-10 w-10 rounded-md bg-brand/10 text-brand grid place-items-center shrink-0">
