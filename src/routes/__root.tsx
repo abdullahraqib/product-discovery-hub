@@ -3,6 +3,7 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -141,11 +142,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const onListing = pathname.startsWith("/roll-ends/");
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen flex flex-col pb-14 md:pb-0">
-        <PromoBanner />
+        {!onListing && <PromoBanner />}
         <PromoBannerStatic />
         <SiteHeader />
         <main className="flex-1">
