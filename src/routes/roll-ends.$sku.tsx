@@ -8,6 +8,7 @@ import { MediaGallery } from "@/components/MediaGallery";
 import { ShareButtons } from "@/components/ShareButtons";
 import { EnquireButtons } from "@/components/EnquireButtons";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
+import { SizeDropdown } from "@/components/SizeDropdown";
 import { addRecentlyViewed } from "@/lib/recently-viewed";
 import { track } from "@/lib/analytics";
 import { SITE } from "@/lib/site";
