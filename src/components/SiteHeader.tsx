@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { track } from "@/lib/analytics";
-import logoAsset from "@/assets/rollendshop-logo.png.asset.json";
+import logoAsset from "@/assets/rollendshop-logo-v2.png.asset.json";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -24,7 +24,7 @@ export function SiteHeader() {
           <img
             src={logoAsset.url}
             alt={`${SITE.name} logo`}
-            className="h-7 sm:h-9 w-auto block max-w-[200px] sm:max-w-none object-contain"
+            className="h-5 sm:h-6 md:h-7 w-auto block max-w-[210px] sm:max-w-[280px] object-contain"
           />
         </Link>
 

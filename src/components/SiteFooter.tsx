@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
-import logoAsset from "@/assets/rollendshop-logo.png.asset.json";
+import logoAsset from "@/assets/rollendshop-logo-v2.png.asset.json";
 
 function TikTokIcon({ size = 18 }: { size?: number }) {
   return (
@@ -17,11 +17,13 @@ export function SiteFooter() {
       <div className="container-page py-10 md:py-12 grid gap-8 md:gap-10 md:grid-cols-4">
         <div>
           <div className="mb-3">
-            <img
-              src={logoAsset.url}
-              alt={`${SITE.name} logo`}
-              className="h-8 w-auto block"
-            />
+            <span className="inline-block bg-white rounded-md px-3 py-2">
+              <img
+                src={logoAsset.url}
+                alt={`${SITE.name} logo`}
+                className="h-5 w-auto block max-w-[220px] object-contain"
+              />
+            </span>
           </div>
           <p className="text-sm text-neutral-400 leading-relaxed">
             Family-run carpet specialists with over half a century of experience. Quality roll ends
