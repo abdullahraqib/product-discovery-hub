@@ -120,8 +120,8 @@ function HomePage() {
           </h1>
 
           <p className="mt-4 md:mt-5 max-w-2xl text-white font-black text-base sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance">
-            MASSIVE SAVINGS ON{" "}
-            <span className="bg-pop text-pop-foreground px-2">CARPET ROLL ENDS</span>&nbsp;
+            End of line and{" "}
+            <span className="bg-signal text-signal-foreground px-2">carpet roll end specialists</span>&nbsp;
           </p>
 
           <div className="mt-5 md:mt-6 z-10 w-screen">
