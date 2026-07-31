@@ -122,32 +122,37 @@ function HomePage() {
             <span className="bg-pop text-pop-foreground px-2">CARPET ROLL ENDS</span>&nbsp;
           </p>
 
-          <div className="mt-8 z-10 w-full max-w-3xl grid gap-4 md:grid-cols-3 text-left">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-pop text-pop-foreground font-black text-sm">1</span>
-                <span className="font-black uppercase text-sm tracking-wide">Choose your roll end</span>
-              </div>
-              <p className="text-sm text-white/80">Browse our current stock and pick the carpet that suits your room.</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-pop text-pop-foreground font-black text-sm">2</span>
-                <span className="font-black uppercase text-sm tracking-wide">Note the reference number</span>
-              </div>
-              <p className="text-sm text-white/80">Each roll has a unique reference — copy it down for when you call.</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-pop text-pop-foreground font-black text-sm">3</span>
-                <span className="font-black uppercase text-sm tracking-wide">Call us to arrange pickup</span>
-              </div>
-              <p className="text-sm text-white/80">
-                Call us on{" "}
-                <a href="tel:01274057433" className="underline decoration-pop font-bold text-white">01274 057433</a>{" "}
-                to reserve and arrange pickup.
-              </p>
-            </div>
+          <div className="mt-8 z-10 w-full max-w-4xl">
+            <h2 className="font-impact uppercase text-center text-pop text-xl md:text-2xl mb-4 tracking-wide">
+              How to order
+            </h2>
+            <ol className="grid gap-3 md:grid-cols-3 text-left">
+              <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)]">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-impact text-3xl leading-none">1.</span>
+                  <span className="font-black uppercase text-sm md:text-base leading-tight">Choose your roll end</span>
+                </div>
+                <p className="text-xs md:text-sm font-bold leading-snug">Browse our stock and pick the carpet that suits your room.</p>
+              </li>
+              <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)]">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-impact text-3xl leading-none">2.</span>
+                  <span className="font-black uppercase text-sm md:text-base leading-tight">Note the reference number</span>
+                </div>
+                <p className="text-xs md:text-sm font-bold leading-snug">Each roll has a unique reference — note it down for when you call.</p>
+              </li>
+              <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)]">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-impact text-3xl leading-none">3.</span>
+                  <span className="font-black uppercase text-sm md:text-base leading-tight">Call us to arrange pickup</span>
+                </div>
+                <p className="text-xs md:text-sm font-bold leading-snug">
+                  Call{" "}
+                  <a href="tel:01274057433" className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
+                  to reserve and arrange pickup.
+                </p>
+              </li>
+            </ol>
           </div>
 
           <a href="#listing-heading" className="btn-pop mt-8 text-xl md:text-2xl">
