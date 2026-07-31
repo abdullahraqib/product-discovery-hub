@@ -148,7 +148,7 @@ function HomePage() {
                   </p>
                 </li>
               </ol>
-            </div>
+            </Link>
           </div>
 
           <a href="#listing-heading" className="btn-pop mt-8 text-xl md:text-2xl">
