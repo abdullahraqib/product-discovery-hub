@@ -35,11 +35,11 @@ export function SizeDropdown({ options, value, onChange, placeholder = "— Sele
         onClick={() => setOpen((o) => !o)}
         className="w-full px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white text-left flex items-center justify-between"
       >
-        <span className={selected ? "" : "text-mid"}>
+        <span className={selected ? "flex items-center gap-2" : "text-mid"}>
           {selected ? (
             <>
-              {selected.label} — £{selected.price}{" "}
-              <span className="text-[#dc2626]">Reference number: ({selected.ref})</span>
+              <span>{selected.label} — £{selected.price}</span>
+              <span className="text-[#dc2626] ml-auto">Reference number: ({selected.ref})</span>
             </>
           ) : (
             placeholder
@@ -79,10 +79,8 @@ export function SizeDropdown({ options, value, onChange, placeholder = "— Sele
                   selectedIdx === i ? "bg-secondary" : ""
                 }`}
               >
-                <span>
-                  {opt.label} — £{opt.price}{" "}
-                  <span className="text-[#dc2626]">Reference number: ({opt.ref})</span>
-                </span>
+                <span>{opt.label} — £{opt.price}</span>
+                <span className="text-[#dc2626] ml-auto">Reference number: ({opt.ref})</span>
               </button>
             </li>
           ))}
