@@ -79,10 +79,8 @@ export function SizeDropdown({ options, value, onChange, placeholder = "— Sele
                   selectedIdx === i ? "bg-secondary" : ""
                 }`}
               >
-                <span>
-                  {opt.label} — £{opt.price}{" "}
-                  <span className="text-[#dc2626]">Reference number: ({opt.ref})</span>
-                </span>
+                <span>{opt.label} — £{opt.price}</span>
+                <span className="text-[#dc2626] ml-auto">Reference number: ({opt.ref})</span>
               </button>
             </li>
           ))}
