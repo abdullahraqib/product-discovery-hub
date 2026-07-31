@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 const MESSAGES = [
   "CALL NOW AND RESERVE",
   "STOCK ALWAYS CHANGING - CALL TO SECURE",
-  "HUGE DISCOUNTS ACTIVE",
+  "HUGE SALE ACTIVE",
   "FIRST COME, FIRST SERVED",
 ];
 
@@ -41,7 +41,7 @@ export function PromoBannerStatic() {
   return (
     <span className="sr-only">
       <Phone size={0} className="hidden" /> Call {SITE.phone} now to reserve — stock always changing,
-      call to secure, huge discounts active, first come first served.
+      call to secure, huge sale active, first come first served.
     </span>
   );
 }
