@@ -123,6 +123,37 @@ export function SiteFooter() {
             </li>
           </ul>
         </div>
+
+        <div>
+          <h3 className="text-white font-black mb-3 text-sm uppercase tracking-wider">Shop</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/roll-ends" className="hover:text-white">
+                Carpet Roll Ends
+              </Link>
+            </li>
+            <li>
+              <Link to="/carpet-remnants" className="hover:text-white">
+                Carpet Remnants
+              </Link>
+            </li>
+            <li>
+              <Link to="/carpet-offcuts" className="hover:text-white">
+                Carpet Offcuts
+              </Link>
+            </li>
+            <li>
+              <Link to="/cheap-carpets" className="hover:text-white">
+                Cheap Carpets
+              </Link>
+            </li>
+            <li>
+              <Link to="/end-of-line-carpets" className="hover:text-white">
+                End of Line Carpets
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className="border-t border-white/10">
