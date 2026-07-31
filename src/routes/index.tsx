@@ -5,7 +5,7 @@ import { productsQuery } from "@/lib/products";
 import { colourOptionsFrom, type Product } from "@/data/products";
 import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import { Filters, type FilterState } from "@/components/Filters";
-import { TrustBadges } from "@/components/TrustBadges";
+
 import { ReviewCarousel } from "@/components/ReviewCarousel";
 import { FAQ } from "@/components/FAQ";
 import { OpeningHours } from "@/components/OpeningHours";
@@ -157,7 +157,7 @@ function HomePage() {
         </div>
       </section>
 
-      <TrustBadges />
+      
 
       <section className="container-page" aria-labelledby="listing-heading">
         <div className="flex items-baseline justify-between flex-wrap gap-2 mb-4">

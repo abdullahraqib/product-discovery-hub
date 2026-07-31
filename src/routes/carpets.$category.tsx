@@ -4,7 +4,7 @@ import { CATEGORIES, categoryToFilter } from "@/data/products";
 import { productsQuery } from "@/lib/products";
 import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { TrustBadges } from "@/components/TrustBadges";
+
 import { EnquireButtons } from "@/components/EnquireButtons";
 import { SITE } from "@/lib/site";
 
@@ -72,7 +72,7 @@ function CategoryPage() {
         </div>
       )}
 
-      <TrustBadges />
+      
     </div>
   );
 }
