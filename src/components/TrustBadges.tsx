@@ -1,11 +1,6 @@
-import { ShieldCheck, Truck } from "lucide-react";
+import { Truck } from "lucide-react";
 
 const ITEMS = [
-  {
-    icon: ShieldCheck,
-    title: "Family Business",
-    desc: "Yorkshire-born, independently run",
-  },
   {
     icon: Truck,
     title: "Click & Collect",
