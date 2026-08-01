@@ -51,9 +51,9 @@ export function ProductCard({ product }: { product: Product }) {
           {product.widthsM.join("m & ")}m widths • {product.material}
         </p>
         <div className="flex items-center justify-between gap-2 mt-auto pt-2.5 sm:pt-3 border-t border-border">
-          <div className="text-base sm:text-xl font-black text-brand leading-tight">
+          <div className="text-[15px] sm:text-xl font-black text-brand leading-tight whitespace-nowrap">
             from £{product.fromPrice}
-            <span className="block sm:inline text-[10px] sm:text-xs font-normal text-mid"> /roll end</span>
+            <span className="text-[10px] sm:text-xs font-normal text-mid"> /roll end</span>
           </div>
           <span className="enquire-btn text-[10px] sm:text-xs font-black uppercase tracking-wider bg-brand text-white px-2.5 sm:px-3 py-1.5 rounded shrink-0">
             View
