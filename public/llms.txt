@@ -1,0 +1,18 @@
+# RollEndShop
+
+> Yorkshire's No1 carpet outlet — end of line carpets and roll ends at clearance prices, sold from our Bradford store on Valley Road.
+
+Every roll end is a one-off piece with a fixed size and a red reference number. Browse online, note the reference, then call 01274 057433 to reserve and pay. Collection from the shop or local delivery.
+
+## Pages
+
+- [Home](/): Current carpet roll ends in stock with prices, sizes and colours.
+- [All roll ends](/roll-ends): Full searchable listing of available roll ends.
+- [Cheap carpets](/cheap-carpets): Budget carpet roll ends at clearance prices.
+- [Carpet remnants](/carpet-remnants): Remnant pieces ideal for small rooms and landings.
+- [Carpet offcuts](/carpet-offcuts): Offcuts for stairs, halls and box rooms.
+- [End of line carpets](/end-of-line-carpets): Discontinued and end of line carpet ranges.
+- [How to buy](/how-to-buy): The three-step process for reserving a roll end.
+- [Delivery](/delivery): Collection and local delivery options.
+- [Measuring guide](/measuring-guide): How to measure rooms, doorways, bays and stairs.
+- [Contact](/contact): Address, opening hours, phone and map.
