@@ -45,17 +45,17 @@ export function ProductCard({ product }: { product: Product }) {
           {product.sku}
         </span>
       </div>
-      <div className="p-4 flex-1 flex flex-col gap-2">
-        <h3 className="font-black text-[15px] leading-tight">{product.name}</h3>
-        <p className="text-sm text-mid">
+      <div className="p-3 sm:p-4 flex-1 flex flex-col gap-1.5 sm:gap-2">
+        <h3 className="font-black text-sm sm:text-[15px] leading-tight">{product.name}</h3>
+        <p className="text-xs sm:text-sm text-mid leading-snug">
           {product.widthsM.join("m & ")}m widths • {product.material}
         </p>
-        <div className="flex items-center justify-between mt-auto pt-3 border-t border-border">
-          <div className="text-xl font-black text-brand">
+        <div className="flex items-center justify-between gap-2 mt-auto pt-2.5 sm:pt-3 border-t border-border">
+          <div className="text-base sm:text-xl font-black text-brand leading-tight">
             from £{product.fromPrice}
-            <span className="text-xs font-normal text-mid"> /roll end</span>
+            <span className="block sm:inline text-[10px] sm:text-xs font-normal text-mid"> /roll end</span>
           </div>
-          <span className="enquire-btn text-xs font-black uppercase tracking-wider bg-brand text-white px-3 py-1.5 rounded">
+          <span className="enquire-btn text-[10px] sm:text-xs font-black uppercase tracking-wider bg-brand text-white px-2.5 sm:px-3 py-1.5 rounded shrink-0">
             View
           </span>
         </div>
