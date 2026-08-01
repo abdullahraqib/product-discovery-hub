@@ -28,8 +28,11 @@ export const Route = createFileRoute("/roll-ends/$sku")({
     const url = `/roll-ends/${p.sku}`;
     return {
       meta: [
-        { title: `${p.name} — Roll End (${p.sku}) — ${SITE.shortName}` },
-        { name: "description", content: `${p.description} From £${p.fromPrice}.` },
+        { title: `${p.name} Roll End ${p.sku} — ${SITE.shortName}`.slice(0, 60) },
+        {
+          name: "description",
+          content: `${p.description} From £${p.fromPrice}.`.slice(0, 157).trim(),
+        },
         { property: "og:title", content: `${p.name} — ${SITE.shortName}` },
         { property: "og:description", content: p.description },
         { property: "og:url", content: url },
