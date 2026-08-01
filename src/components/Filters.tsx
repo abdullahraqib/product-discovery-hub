@@ -40,7 +40,7 @@ export function Filters({
   const numCls = inputCls + " md:w-24";
 
   const Controls = (
-    <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
+    <div className="grid gap-3 md:grid-cols-[auto_auto_auto_auto] md:items-end">
       <label className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour</span>
         <select
@@ -90,6 +90,15 @@ export function Filters({
         </div>
       </div>
 
+      <div className="block">
+        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1 opacity-0 select-none">Search</span>
+        <button
+          type="submit"
+          className="h-11 w-full px-5 rounded-md border-2 border-charcoal bg-pop text-pop-foreground text-sm font-black uppercase tracking-wider shadow-[3px_3px_0_0_rgba(0,0,0,0.55)] active:translate-y-0.5 active:shadow-none transition-transform"
+        >
+          Search
+        </button>
+      </div>
 
       <label className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Sort by</span>
