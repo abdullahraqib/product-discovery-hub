@@ -102,7 +102,7 @@ function HomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden text-white border-y-8 md:border-y-[10px] border-pop">
+      <section className="relative overflow-hidden text-white border-y-4 md:border-y-[10px] border-pop">
         <div className="absolute inset-0 bg-gradient-to-br from-brand to-brand-dark" aria-hidden />
         {/* Clearance SALE watermark */}
         <div
@@ -112,47 +112,47 @@ function HomePage() {
           <span className="font-impact text-[20rem] text-white opacity-10 leading-none">SALE</span>
         </div>
 
-        <div className="relative container-page py-6 md:py-14 text-center flex flex-col items-center">
-          <h1 className="font-impact uppercase italic leading-[0.9] text-[2.1rem] sm:text-5xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
+        <div className="relative container-page py-3 md:py-14 text-center flex flex-col items-center">
+          <h1 className="font-impact uppercase italic leading-[0.9] text-2xl sm:text-5xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
             Yorkshire's No1
             <br />
             <span className="text-pop">carpet outlet</span>
           </h1>
 
-          <p className="mt-4 md:mt-5 max-w-2xl text-white font-black text-base sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance">
+          <p className="mt-2 md:mt-5 max-w-2xl text-white font-black text-sm sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance">
             END OF LINE CARPET AND ROLL END SPECIALISTS
           </p>
 
-          <div className="mt-5 md:mt-6 z-10 w-screen">
+          <div className="mt-3 md:mt-6 z-10 w-screen">
             <PromoBanner />
           </div>
 
-          <div className="mt-7 md:mt-8 z-10 w-full max-w-4xl">
+          <div className="mt-4 md:mt-8 z-10 w-full max-w-4xl">
             <div
               role="button"
               tabIndex={0}
               onClick={() => navigate({ to: "/how-to-buy" })}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate({ to: "/how-to-buy" }); } }}
-              className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,0.55)] md:shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-4 md:p-7 cursor-pointer transition-transform hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-pop"
+              className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,0.55)] md:shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-3 md:p-7 cursor-pointer transition-transform hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-pop"
             >
-              <h2 className="font-impact uppercase italic text-bolt-foreground text-2xl md:text-4xl mb-5 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
+              <h2 className="font-impact uppercase italic text-bolt-foreground text-xl md:text-4xl mb-3 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
                 How to <span className="text-pop">order</span>
               </h2>
-              <ol className="grid gap-4 md:gap-3 md:grid-cols-3 text-left">
-                <li className="bg-white text-charcoal p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
-                  <span className="absolute -top-4 -left-3 bg-pop text-pop-foreground font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">1</span>
-                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Choose your roll end</div>
-                  <p className="text-xs md:text-sm font-bold leading-snug text-mid">Browse our stock and pick the carpet that suits your room.</p>
+              <ol className="grid gap-2.5 md:gap-3 md:grid-cols-3 text-left">
+                <li className="bg-white text-charcoal p-3 md:p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
+                  <span className="absolute -top-3.5 -left-2.5 bg-pop text-pop-foreground font-impact text-lg md:text-2xl leading-none px-2 py-0.5 md:px-2.5 md:py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">1</span>
+                  <div className="font-black uppercase text-xs md:text-base leading-tight mt-2 mb-1 md:mt-3 md:mb-1.5">Choose your roll end</div>
+                  <p className="text-[0.7rem] md:text-sm font-bold leading-snug text-mid">Browse our stock and pick the carpet that suits your room.</p>
                 </li>
-                <li className="bg-white text-charcoal p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
-                  <span className="absolute -top-4 -left-3 bg-pop text-pop-foreground font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">2</span>
-                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Note the reference number</div>
-                  <p className="text-xs md:text-sm font-bold leading-snug text-mid">Each roll has a <span className="text-[#dc2626] font-black">red reference number</span> located next to the price — note it down for when you call.</p>
+                <li className="bg-white text-charcoal p-3 md:p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
+                  <span className="absolute -top-3.5 -left-2.5 bg-pop text-pop-foreground font-impact text-lg md:text-2xl leading-none px-2 py-0.5 md:px-2.5 md:py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">2</span>
+                  <div className="font-black uppercase text-xs md:text-base leading-tight mt-2 mb-1 md:mt-3 md:mb-1.5">Note the reference number</div>
+                  <p className="text-[0.7rem] md:text-sm font-bold leading-snug text-mid">Each roll has a <span className="text-[#dc2626] font-black">red reference number</span> located next to the price — note it down for when you call.</p>
                 </li>
-                <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
-                  <span className="absolute -top-4 -left-3 bg-white text-charcoal font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">3</span>
-                  <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">CALL US TO BUY</div>
-                  <p className="text-xs md:text-sm font-bold leading-snug">
+                <li className="bg-pop text-pop-foreground p-3 md:p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
+                  <span className="absolute -top-3.5 -left-2.5 bg-white text-charcoal font-impact text-lg md:text-2xl leading-none px-2 py-0.5 md:px-2.5 md:py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">3</span>
+                  <div className="font-black uppercase text-xs md:text-base leading-tight mt-2 mb-1 md:mt-3 md:mb-1.5">CALL US TO BUY</div>
+                  <p className="text-[0.7rem] md:text-sm font-bold leading-snug">
                     Call{" "}
                     <a href="tel:01274057433" onClick={(e) => e.stopPropagation()} className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
                     to speak to a <strong className="font-black">real human being</strong> who can confirm availability and arrange pickup or delivery.
@@ -162,7 +162,7 @@ function HomePage() {
             </div>
           </div>
 
-          <a href="#listing-heading" className="btn-pop mt-6 md:mt-8 w-full sm:w-auto text-center text-lg md:text-2xl">
+          <a href="#listing-heading" className="btn-pop mt-3 md:mt-8 w-full sm:w-auto text-center text-base md:text-2xl">
             Shop the deals
           </a>
         </div>
