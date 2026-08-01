@@ -40,7 +40,7 @@ export function Filters({
   const numCls = inputCls + " md:w-24";
 
   const Controls = (
-    <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
+    <div className="grid gap-3 md:grid-cols-[auto_auto_auto_auto] md:items-end">
       <label className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour</span>
         <select
@@ -90,6 +90,15 @@ export function Filters({
         </div>
       </div>
 
+      <div className="block">
+        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1 opacity-0 select-none">Search</span>
+        <button
+          type="submit"
+          className="h-11 w-full px-5 rounded-md border-2 border-charcoal bg-pop text-pop-foreground text-sm font-black uppercase tracking-wider shadow-[3px_3px_0_0_rgba(0,0,0,0.55)] active:translate-y-0.5 active:shadow-none transition-transform"
+        >
+          Search
+        </button>
+      </div>
 
       <label className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Sort by</span>
@@ -113,25 +122,17 @@ export function Filters({
       <div className="flex flex-col gap-3 md:flex-row md:items-end">
         <label className="block flex-1">
           <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Search</span>
-          <div className="flex gap-2">
-            <div className="relative flex-1">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-mid" aria-hidden />
-              <input
-                type="search"
-                value={state.search}
-                onChange={(e) => onChange({ ...state, search: e.target.value })}
-                onKeyDown={(e) => { if (e.key === "Enter") e.preventDefault(); }}
-                placeholder="Search roll ends…"
-                aria-label="Search roll ends"
-                className="w-full pl-9 pr-3 py-2.5 text-base md:text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
-              />
-            </div>
-            <button
-              type="button"
-              className="h-11 px-4 rounded-md border-2 border-charcoal bg-pop text-pop-foreground text-sm font-black uppercase tracking-wider shadow-[3px_3px_0_0_rgba(0,0,0,0.55)] active:translate-y-0.5 active:shadow-none transition-transform"
-            >
-              Search
-            </button>
+          <div className="relative flex-1">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-mid" aria-hidden />
+            <input
+              type="search"
+              value={state.search}
+              onChange={(e) => onChange({ ...state, search: e.target.value })}
+              onKeyDown={(e) => { if (e.key === "Enter") e.preventDefault(); }}
+              placeholder="Search roll ends…"
+              aria-label="Search roll ends"
+              className="w-full pl-9 pr-3 py-2.5 text-base md:text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+            />
           </div>
         </label>
 
