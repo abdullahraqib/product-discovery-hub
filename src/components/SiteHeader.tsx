@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { track } from "@/lib/analytics";
-import logoAsset from "@/assets/rollendshop-logo-v2.png.asset.json";
+import logoAsset from "@/assets/rollendshop-logo-v2.png";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ export function SiteHeader() {
       <div className="container-page flex items-center justify-between gap-4 h-[72px]">
         <Link to="/" className="flex items-center shrink-0 min-w-0" aria-label={`${SITE.name} home`}>
           <img
-            src={logoAsset.url}
+            src={logo}
             alt={`${SITE.name} logo`}
             className="h-5 sm:h-6 md:h-7 w-auto block max-w-[210px] sm:max-w-[280px] object-contain"
           />
