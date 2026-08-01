@@ -13,6 +13,7 @@ import { addRecentlyViewed } from "@/lib/recently-viewed";
 import { track } from "@/lib/analytics";
 import { SITE } from "@/lib/site";
 import { isVideo, firstImage } from "@/lib/media";
+import { Phone } from "lucide-react";
 
 
 export const Route = createFileRoute("/roll-ends/$sku")({
