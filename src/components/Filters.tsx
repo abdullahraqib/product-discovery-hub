@@ -40,7 +40,7 @@ export function Filters({
   const numCls = inputCls + " md:w-24";
 
   const Controls = (
-    <div className="grid gap-3 md:grid-cols-[auto_auto_auto_auto] md:items-end">
+    <div className="grid gap-3 md:grid-cols-[auto_auto_auto] md:items-end">
       <label className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour</span>
         <select
@@ -99,21 +99,6 @@ export function Filters({
           <Search size={16} /> Search
         </button>
       </div>
-
-      <label className="block">
-        <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Sort by</span>
-        <select
-          value={state.sort}
-          onChange={(e) => onChange({ ...state, sort: e.target.value as SortKey })}
-          className={selectCls}
-        >
-          {Object.entries(SORT_LABELS).map(([k, v]) => (
-            <option key={k} value={k}>
-              {v}
-            </option>
-          ))}
-        </select>
-      </label>
     </div>
   );
 

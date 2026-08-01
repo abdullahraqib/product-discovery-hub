@@ -176,9 +176,25 @@ function HomePage() {
           <h2 id="listing-heading" className="text-xl md:text-2xl font-black whitespace-pre-line">
             {"\n\n"}Current Roll Ends
           </h2>
-          <span className="text-sm text-mid font-bold whitespace-pre-line text-right">
-            {"\n"}{isLoading ? "Loading…" : `${filtered.length} available`}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-mid font-bold whitespace-pre-line text-right">
+              {"\n"}{isLoading ? "Loading…" : `${filtered.length} available`}
+            </span>
+            <label className="flex items-center gap-1.5">
+              <span className="text-xs font-black uppercase tracking-wider text-mid hidden sm:inline">Sort by</span>
+              <select
+                value={state.sort}
+                onChange={(e) => setState({ ...state, sort: e.target.value as FilterState["sort"] })}
+                className="px-2.5 py-1.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+                aria-label="Sort by"
+              >
+                <option value="name">Name: A–Z</option>
+                <option value="newest">Recently added</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+              </select>
+            </label>
+          </div>
         </div>
 
         <Filters
