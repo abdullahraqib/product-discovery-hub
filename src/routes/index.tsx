@@ -119,8 +119,8 @@ function HomePage() {
             <span className="text-pop">carpet outlet</span>
           </h1>
 
-          <p className="mt-2 md:mt-3 z-10 text-white font-black text-xs sm:text-base md:text-lg uppercase tracking-tight text-balance">
-            We deliver across: Manchester{" "}<span className="text-pop">•</span>{" "}Liverpool{" "}<span className="text-pop">•</span>{" "}Bradford{" "}<span className="text-pop">•</span>{" "}Leeds{" "}<span className="text-pop">•</span>{" "}Sheffield{" "}<span className="text-pop">•</span>{" "}York{" "}<span className="text-pop">•</span>{" "}Hull and more.
+          <p className="mt-2 z-10 text-white/90 font-black text-[0.65rem] sm:text-sm md:text-base uppercase tracking-tight text-balance">
+            Delivery across Manchester{" "}<span className="text-pop">•</span>{" "}Liverpool{" "}<span className="text-pop">•</span>{" "}Bradford{" "}<span className="text-pop">•</span>{" "}Leeds{" "}<span className="text-pop">•</span>{" "}Sheffield{" "}<span className="text-pop">•</span>{" "}York{" "}<span className="text-pop">•</span>{" "}Hull & more
           </p>
 
           <div className="mt-3 md:mt-6 z-10 w-screen">
@@ -138,8 +138,8 @@ function HomePage() {
               <h2 className="font-impact uppercase italic text-bolt-foreground text-xl md:text-4xl mb-1 md:mb-2 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
                 Important: how to order from us
               </h2>
-              <div className="flex justify-center mb-2 md:mb-4 text-bolt-foreground" aria-hidden>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className="md:w-9 md:h-9 animate-bounce">
+              <div className="flex justify-center mb-1 md:mb-3 text-bolt-foreground" aria-hidden>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className="md:w-8 md:h-8">
                   <path d="M12 5v14" />
                   <path d="m19 12-7 7-7-7" />
                 </svg>
