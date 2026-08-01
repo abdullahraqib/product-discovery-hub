@@ -32,6 +32,9 @@ export function SizeDropdown({ options, value, onChange, placeholder = "— Sele
     <div ref={ref} className="relative">
       <button
         type="button"
+        aria-label="Choose a size"
+        aria-haspopup="listbox"
+        aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
         className="w-full px-3 py-2.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white text-left flex items-center justify-between"
       >

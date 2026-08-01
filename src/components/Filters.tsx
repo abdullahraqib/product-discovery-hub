@@ -44,6 +44,7 @@ export function Filters({
       <label className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Colour</span>
         <select
+          aria-label="Filter by colour"
           value={state.colour}
           onChange={(e) => onChange({ ...state, colour: e.target.value })}
           className={selectCls}

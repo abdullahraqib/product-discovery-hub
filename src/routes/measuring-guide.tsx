@@ -13,6 +13,11 @@ export const Route = createFileRoute("/measuring-guide")({
           "Free measuring guide from RollEndShop. Learn how to measure your room — including doorways, bays and stairs — for a perfect carpet fit.",
       },
       { property: "og:title", content: `Carpet Measuring Guide — ${SITE.shortName}` },
+      {
+        property: "og:description",
+        content:
+          "Step-by-step guide to measuring rooms, doorways, bays and stairs for carpet — with the extra allowances you need for a perfect fit.",
+      },
       { property: "og:url", content: "/measuring-guide" },
     ],
     links: [{ rel: "canonical", href: "/measuring-guide" }],
