@@ -147,7 +147,7 @@ function HomePage() {
                 <li className="bg-white text-charcoal p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
                   <span className="absolute -top-4 -left-3 bg-pop text-pop-foreground font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">2</span>
                   <div className="font-black uppercase text-sm md:text-base leading-tight mt-3 mb-1.5">Note the reference number</div>
-                  <p className="text-xs md:text-sm font-bold leading-snug text-mid">Each roll has a red reference number located next to the price — note it down for when you call.</p>
+                  <p className="text-xs md:text-sm font-bold leading-snug text-mid">Each roll has a <span className="text-pop font-black">red reference number</span> located next to the price — note it down for when you call.</p>
                 </li>
                 <li className="bg-pop text-pop-foreground p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
                   <span className="absolute -top-4 -left-3 bg-white text-charcoal font-impact text-2xl leading-none px-2.5 py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">3</span>
@@ -155,7 +155,7 @@ function HomePage() {
                   <p className="text-xs md:text-sm font-bold leading-snug">
                     Call{" "}
                     <a href="tel:01274057433" onClick={(e) => e.stopPropagation()} className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
-                    to speak to a real human being who can confirm availability and arrange pickup or delivery.
+                    to speak to a <strong className="font-black">real human being</strong> who can confirm availability and arrange pickup or delivery.
                   </p>
                 </li>
               </ol>
