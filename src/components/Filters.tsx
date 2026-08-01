@@ -104,8 +104,8 @@ export function Filters({
 
   return (
     <div className="card-surface p-3 md:p-4">
-      <div className="flex flex-col gap-3 md:flex-row md:items-end">
-        <label className="block flex-1">
+      <div className="flex flex-row items-end gap-2 md:gap-3">
+        <label className="block flex-1 min-w-0">
           <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Search</span>
           <div className="relative flex-1">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-mid" aria-hidden />
