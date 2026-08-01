@@ -94,9 +94,9 @@ export function Filters({
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1 opacity-0 select-none">Search</span>
         <button
           type="submit"
-          className="h-11 w-full px-5 rounded-md border-2 border-charcoal bg-pop text-pop-foreground text-sm font-black uppercase tracking-wider shadow-[3px_3px_0_0_rgba(0,0,0,0.55)] active:translate-y-0.5 active:shadow-none transition-transform"
+          className="btn-brand h-11 px-5 text-sm uppercase tracking-wider w-full md:w-auto"
         >
-          Search
+          <Search size={16} /> Search
         </button>
       </div>
 
