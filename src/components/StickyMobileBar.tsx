@@ -12,7 +12,7 @@ export function StickyMobileBar() {
       <a
         href={SITE.phoneTel}
         onClick={() => track("call_click", { location: "sticky_mobile" })}
-        className="flex items-center justify-center gap-2 py-3 font-black text-white bg-brand"
+        className="flex items-center justify-center gap-2 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] font-black text-white bg-brand"
       >
         <Phone size={18} /> Call {SITE.phone}
       </a>
