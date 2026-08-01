@@ -203,7 +203,7 @@ function HomePage() {
           colourOptions={colourOptions}
         />
 
-        <div className="mt-6 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-5 grid gap-3 grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {isLoading
             ? Array.from({ length: 6 }).map((_, i) => <ProductCardSkeleton key={i} />)
             : filtered.length === 0
