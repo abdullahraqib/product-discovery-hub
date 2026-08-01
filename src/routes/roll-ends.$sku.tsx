@@ -178,7 +178,7 @@ function ProductPage() {
           <div className="mt-4 flex items-center gap-2 text-sm font-bold text-mid bg-secondary rounded-md px-4 py-3 border-l-4 border-[#dc2626]">
             <Phone size={18} className="shrink-0 text-[#dc2626]" aria-hidden />
             <span>
-              Got your <span className="text-[#dc2626] font-black">red reference number</span>? Call us to reserve it.
+              Note down your <span className="text-[#dc2626] font-black">reference number</span> and call us using the number below to buy.
             </span>
           </div>
 
