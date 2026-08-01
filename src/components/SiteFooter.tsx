@@ -19,7 +19,7 @@ export function SiteFooter() {
           <div className="mb-3">
             <span className="inline-block bg-white rounded-md px-3 py-2">
               <img
-                src={logo}
+                src={logoAsset}
                 alt={`${SITE.name} logo`}
                 className="h-5 w-auto block max-w-[220px] object-contain"
               />
