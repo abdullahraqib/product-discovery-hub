@@ -108,7 +108,7 @@ export function SiteFooter() {
             </li>
             <li>
               <Link to="/delivery" className="hover:text-white">
-                Delivery
+                Delivery/Collection
               </Link>
             </li>
             <li>

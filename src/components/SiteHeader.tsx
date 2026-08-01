@@ -12,7 +12,7 @@ export function SiteHeader() {
 
   const nav = [
     { to: "/how-to-buy", label: "How to Buy\n" },
-    { to: "/delivery", label: "Delivery" },
+    { to: "/delivery", label: "Delivery/Collection" },
     { to: "/measuring-guide", label: "Measuring Guide" },
     { to: "/contact", label: "Contact" },
   ];
