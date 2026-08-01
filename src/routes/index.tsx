@@ -172,13 +172,13 @@ function HomePage() {
       
 
       <section className="container-page" aria-labelledby="listing-heading">
-        <div className="flex items-baseline justify-between flex-wrap gap-2 mb-4">
+        <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
           <h2 id="listing-heading" className="text-xl md:text-2xl font-black whitespace-pre-line">
             {"\n\n"}Current Roll Ends
           </h2>
           <div className="flex items-center gap-3">
-            <span className="text-sm text-mid font-bold whitespace-pre-line text-right">
-              {"\n"}{isLoading ? "Loading…" : `${filtered.length} available`}
+            <span className="text-sm text-mid font-bold">
+              {isLoading ? "Loading…" : `${filtered.length} available`}
             </span>
             <label className="flex items-center gap-1.5">
               <span className="text-xs font-black uppercase tracking-wider text-mid hidden sm:inline">Sort by</span>
