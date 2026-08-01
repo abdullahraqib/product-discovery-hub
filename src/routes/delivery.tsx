@@ -75,8 +75,7 @@ function DeliveryPage() {
           <Phone size={20} className="text-brand" /> Need help arranging delivery?
         </h2>
         <p className="text-charcoal leading-relaxed mb-4">
-          Call us with your reference number and we'll talk you through the options. We don't offer a
-          fitting service — you're welcome to arrange your own fitter.
+          Call us with your reference number and we'll talk you through the options.
         </p>
         <EnquireButtons />
       </div>
