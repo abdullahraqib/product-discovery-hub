@@ -235,7 +235,7 @@ function HomePage() {
         <div className="card-surface p-8 md:p-12 text-center bg-charcoal text-white border-y-8 border-pop">
           <h2 className="text-2xl md:text-3xl font-black">See something you like?</h2>
           <p className="text-neutral-300 mt-2 mb-6">
-            Roll ends sell fast. Give us a call and we'll hold it for you.
+            Roll ends sell fast. Give us a call and we'll hold it for you after payment.
           </p>
           <div className="flex justify-center">
             <EnquireButtons />
