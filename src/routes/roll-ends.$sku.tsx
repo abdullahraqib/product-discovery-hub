@@ -108,10 +108,10 @@ function ProductPage() {
 
 
   return (
-    <article className="container-page py-6 md:py-8">
+    <article className="container-page py-4 md:py-8">
       <Breadcrumbs items={[{ label: "Roll Ends", to: "/" }, { label: p.name }]} />
 
-      <div className="mt-6 grid gap-5 md:gap-8 lg:grid-cols-2">
+      <div className="mt-4 md:mt-6 grid gap-5 md:gap-8 lg:grid-cols-2">
         <div>
           <MediaGallery media={p.images} alt={p.name} alts={p.imageAlts} />
         </div>
@@ -120,7 +120,7 @@ function ProductPage() {
 
         <div>
           <div className="text-xs font-black uppercase tracking-[0.2em] text-brand">Ref {p.sku}</div>
-          <h1 className="text-2xl md:text-3xl font-black mt-1">{p.name}</h1>
+          <h1 className="text-[1.6rem] leading-tight md:text-3xl font-black mt-1">{p.name}</h1>
 
           <div className="flex items-center gap-3 mt-3">
             <span className="text-sm font-bold">{p.colour}</span>
@@ -146,7 +146,7 @@ function ProductPage() {
           )}
 
           {p.sizes.length > 0 && (
-            <div className="mt-6 card-surface p-5">
+            <div className="mt-5 card-surface p-4 md:p-5">
               <div className="text-xs font-black uppercase tracking-wider text-mid mb-2">
                 Choose a size
               </div>
@@ -198,6 +198,7 @@ function ProductPage() {
 }
 
 function Detail({ label, value }: { label: string; value: string }) {
+  if (!value || !value.trim() || value === "—") return null;
   return (
     <div>
       <dt className="text-[10px] uppercase tracking-wider text-mid font-black">{label}</dt>

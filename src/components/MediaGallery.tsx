@@ -34,13 +34,13 @@ export function MediaGallery({
             playsInline
             preload="metadata"
             aria-label={altFor(safeIndex)}
-            className="w-full aspect-video rounded-lg bg-black object-contain"
+            className="w-full aspect-[4/3] sm:aspect-video rounded-lg bg-black object-contain"
           />
         ) : (
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="relative block w-full aspect-video rounded-lg overflow-hidden bg-neutral-100 group"
+            className="relative block w-full aspect-[4/3] sm:aspect-video rounded-lg overflow-hidden bg-neutral-100 group"
             aria-label="Open full-size image"
           >
             <img
@@ -68,7 +68,7 @@ export function MediaGallery({
       </div>
 
       {media.length > 1 && (
-        <div className="flex gap-2 mt-3 flex-wrap">
+        <div className="flex gap-2 mt-3 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
           {media.map((src, i) => (
             <button
               key={src + i}
@@ -76,7 +76,7 @@ export function MediaGallery({
               onClick={() => setIndex(i)}
               aria-label={alts[i]?.trim() || `Show ${isVideo(src) ? "video" : "image"} ${i + 1}`}
               aria-current={i === index}
-              className={`relative w-20 h-16 rounded-md overflow-hidden border-2 transition-colors ${
+              className={`relative shrink-0 w-16 h-14 sm:w-20 sm:h-16 rounded-md overflow-hidden border-2 transition-colors ${
                 i === index ? "border-brand" : "border-transparent"
               }`}
             >
