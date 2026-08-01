@@ -104,8 +104,8 @@ export function Filters({
 
   return (
     <div className="card-surface p-3 md:p-4">
-      <div className="flex flex-col gap-3 md:flex-row md:items-end">
-        <label className="block flex-1">
+      <div className="flex flex-row items-end gap-2 md:gap-3">
+        <label className="block flex-1 min-w-0">
           <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">Search</span>
           <div className="relative flex-1">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-mid" aria-hidden />
@@ -124,12 +124,13 @@ export function Filters({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="md:hidden inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md border-2 border-charcoal text-charcoal text-sm font-black uppercase tracking-wider"
+          className="md:hidden shrink-0 inline-flex items-center justify-center gap-2 h-11 px-3 rounded-md border-2 border-charcoal text-charcoal text-xs font-black uppercase tracking-wider"
           aria-haspopup="dialog"
           aria-expanded={open}
         >
           <SlidersHorizontal size={16} aria-hidden />
-          Filter &amp; sort
+          <span className="sr-only sm:not-sr-only">Filter &amp; sort</span>
+          <span aria-hidden className="sm:hidden">Filter</span>
           {activeCount > 0 && (
             <span className="ml-1 inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-brand text-white text-[10px] font-black">
               {activeCount}

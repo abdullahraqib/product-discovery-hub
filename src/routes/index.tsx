@@ -112,7 +112,7 @@ function HomePage() {
           <span className="font-impact text-[20rem] text-white opacity-10 leading-none">SALE</span>
         </div>
 
-        <div className="relative container-page py-8 md:py-14 text-center flex flex-col items-center">
+        <div className="relative container-page py-6 md:py-14 text-center flex flex-col items-center">
           <h1 className="font-impact uppercase italic leading-[0.9] text-[2.1rem] sm:text-5xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
             Yorkshire's No1
             <br />
@@ -162,7 +162,7 @@ function HomePage() {
             </div>
           </div>
 
-          <a href="#listing-heading" className="btn-pop mt-7 md:mt-8 w-full sm:w-auto text-center text-lg md:text-2xl">
+          <a href="#listing-heading" className="btn-pop mt-6 md:mt-8 w-full sm:w-auto text-center text-lg md:text-2xl">
             Shop the deals
           </a>
         </div>
@@ -203,7 +203,7 @@ function HomePage() {
           colourOptions={colourOptions}
         />
 
-        <div className="mt-6 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-5 grid gap-3 grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {isLoading
             ? Array.from({ length: 6 }).map((_, i) => <ProductCardSkeleton key={i} />)
             : filtered.length === 0
