@@ -155,7 +155,7 @@ function HomePage() {
                   <p className="text-xs md:text-sm font-bold leading-snug">
                     Call{" "}
                     <a href="tel:01274057433" onClick={(e) => e.stopPropagation()} className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
-                    to confirm availability and arrange pickup or delivery.
+                    to speak to a real human being who can confirm availability and arrange pickup or delivery.
                   </p>
                 </li>
               </ol>
