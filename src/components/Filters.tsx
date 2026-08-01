@@ -124,12 +124,13 @@ export function Filters({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="md:hidden inline-flex items-center justify-center gap-2 h-11 px-4 rounded-md border-2 border-charcoal text-charcoal text-sm font-black uppercase tracking-wider"
+          className="md:hidden shrink-0 inline-flex items-center justify-center gap-2 h-11 px-3 rounded-md border-2 border-charcoal text-charcoal text-xs font-black uppercase tracking-wider"
           aria-haspopup="dialog"
           aria-expanded={open}
         >
           <SlidersHorizontal size={16} aria-hidden />
-          Filter &amp; sort
+          <span className="sr-only sm:not-sr-only">Filter &amp; sort</span>
+          <span aria-hidden className="sm:hidden">Filter</span>
           {activeCount > 0 && (
             <span className="ml-1 inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-brand text-white text-[10px] font-black">
               {activeCount}
