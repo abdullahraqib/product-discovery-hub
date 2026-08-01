@@ -119,8 +119,8 @@ function HomePage() {
             <span className="text-pop">carpet outlet</span>
           </h1>
 
-          <p className="mt-2 md:mt-5 max-w-2xl text-white font-black text-sm sm:text-lg md:text-2xl uppercase tracking-tight z-10 text-balance">
-            END OF LINE CARPET AND ROLL END SPECIALISTS
+          <p className="mt-2 md:mt-3 z-10 text-white font-black text-xs sm:text-base md:text-lg uppercase tracking-tight text-balance">
+            We deliver across: Manchester{" "}<span className="text-pop">•</span>{" "}Liverpool{" "}<span className="text-pop">•</span>{" "}Bradford{" "}<span className="text-pop">•</span>{" "}Leeds{" "}<span className="text-pop">•</span>{" "}Sheffield{" "}<span className="text-pop">•</span>{" "}York{" "}<span className="text-pop">•</span>{" "}Hull and more.
           </p>
 
           <div className="mt-3 md:mt-6 z-10 w-screen">
@@ -135,9 +135,15 @@ function HomePage() {
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate({ to: "/how-to-buy" }); } }}
               className="bg-bolt border-[3px] md:border-4 border-charcoal shadow-[5px_5px_0_0_rgba(0,0,0,0.55)] md:shadow-[6px_6px_0_0_rgba(0,0,0,0.55)] p-3 md:p-7 cursor-pointer transition-transform hover:-translate-y-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-pop"
             >
-              <h2 className="font-impact uppercase italic text-bolt-foreground text-xl md:text-4xl mb-3 md:mb-6 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
-                How to <span className="text-pop">order</span>
+              <h2 className="font-impact uppercase italic text-bolt-foreground text-xl md:text-4xl mb-1 md:mb-2 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
+                Important: how to order from us
               </h2>
+              <div className="flex justify-center mb-2 md:mb-4 text-bolt-foreground" aria-hidden>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className="md:w-9 md:h-9 animate-bounce">
+                  <path d="M12 5v14" />
+                  <path d="m19 12-7 7-7-7" />
+                </svg>
+              </div>
               <ol className="grid gap-2.5 md:gap-3 md:grid-cols-3 text-left">
                 <li className="bg-white text-charcoal p-3 md:p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
                   <span className="absolute -top-3.5 -left-2.5 bg-pop text-pop-foreground font-impact text-lg md:text-2xl leading-none px-2 py-0.5 md:px-2.5 md:py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">1</span>
@@ -156,6 +162,9 @@ function HomePage() {
                     Call{" "}
                     <a href="tel:01274057433" onClick={(e) => e.stopPropagation()} className="underline decoration-2 underline-offset-2 decoration-charcoal">01274 057433</a>{" "}
                     to speak to a <strong className="font-black">real human being</strong> who can confirm availability and arrange pickup or delivery.
+                  </p>
+                  <p className="mt-2 md:mt-3 text-[0.6rem] md:text-[0.7rem] font-bold leading-snug opacity-80">
+                    *Please note your delivery address MUST match the address on your card.
                   </p>
                 </li>
               </ol>
