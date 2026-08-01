@@ -24,9 +24,31 @@ export function MediaGallery({
   const current = media[safeIndex];
   const altFor = (i: number) => alts[i]?.trim() || alt;
 
+  const go = useCallback(
+    (delta: number) => {
+      setIndex((i) => (i + delta + media.length) % media.length);
+    },
+    [media.length],
+  );
+
+  const touchStart = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStart.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchStart.current = null;
+  };
+
   return (
     <div>
-      <div className="relative">
+      <div
+        className="relative"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {isVideo(current) ? (
           <video
             src={current}
@@ -64,6 +86,27 @@ export function MediaGallery({
           >
             <Maximize2 size={16} />
           </button>
+        )}
+
+        {media.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              className="hidden sm:grid absolute left-2 top-1/2 -translate-y-1/2 place-items-center w-9 h-9 rounded-full bg-charcoal/70 text-white hover:bg-brand transition-colors z-10"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              className="hidden sm:grid absolute right-2 top-1/2 -translate-y-1/2 place-items-center w-9 h-9 rounded-full bg-charcoal/70 text-white hover:bg-brand transition-colors z-10"
+              aria-label="Next"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </>
         )}
       </div>
 
