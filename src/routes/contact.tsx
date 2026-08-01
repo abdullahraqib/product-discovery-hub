@@ -15,6 +15,10 @@ export const Route = createFileRoute("/contact")({
         content: `Visit ${SITE.name} at ${SITE.address.full}. Call ${SITE.phone} or email ${SITE.email}.`,
       },
       { property: "og:title", content: `Contact ${SITE.shortName}` },
+      {
+        property: "og:description",
+        content: `Find us at ${SITE.address.full}. Call ${SITE.phone} for carpet roll ends, opening hours and directions to our Bradford store.`,
+      },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
