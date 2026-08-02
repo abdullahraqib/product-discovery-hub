@@ -107,18 +107,18 @@ export default function ImageCropper({ file, url, onCropped, onCancel }: Props) 
 
   function applyZoom(next: number, anchor?: { x: number; y: number }) {
     const z = clamp(next, MIN_ZOOM, MAX_ZOOM);
-    setZoom((prev) => {
-      const k = z / prev;
-      const px = anchor?.x ?? box.w / 2;
-      const py = anchor?.y ?? box.h / 2;
-      setOffset((o) => clampOffset({ x: px - (px - o.x) * k, y: py - (py - o.y) * k }, baseScale * z));
-      return z;
-    });
+    const k = z / zoom;
+    const px = anchor?.x ?? box.w / 2;
+    const py = anchor?.y ?? box.h / 2;
+    setZoom(z);
+    setOffset((o) => clampOffset({ x: px - (px - o.x) * k, y: py - (py - o.y) * k }, baseScale * z));
   }
 
   // Non-passive wheel zoom
   const zoomRef = useRef(applyZoom);
   zoomRef.current = applyZoom;
+  const currentZoomRef = useRef(zoom);
+  currentZoomRef.current = zoom;
   useEffect(() => {
     const el = boxRef.current;
     if (!el) return;
@@ -126,11 +126,8 @@ export default function ImageCropper({ file, url, onCropped, onCancel }: Props) 
       e.preventDefault();
       const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 100 : 1);
       const rect = el.getBoundingClientRect();
-      setZoom((z) => {
-        const next = clamp(z * Math.exp(-dy * 0.0015), MIN_ZOOM, MAX_ZOOM);
-        zoomRef.current(next, { x: e.clientX - rect.left, y: e.clientY - rect.top });
-        return z;
-      });
+      const next = clamp(currentZoomRef.current * Math.exp(-dy * 0.0015), MIN_ZOOM, MAX_ZOOM);
+      zoomRef.current(next, { x: e.clientX - rect.left, y: e.clientY - rect.top });
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
