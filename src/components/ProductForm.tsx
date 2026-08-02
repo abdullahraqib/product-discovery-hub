@@ -50,6 +50,9 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   const qc = useQueryClient();
   const [p, setP] = useState<Product>(product ?? blank);
   const [imageUrl, setImageUrl] = useState("");
+  const [cropSource, setCropSource] = useState<
+    { file?: File; url?: string; replaceIndex?: number } | null
+  >(null);
   const [featuresText, setFeaturesText] = useState((product ?? blank).features.join(", "));
   const [widthsText, setWidthsText] = useState((product ?? blank).widthsM.join(", "));
   const [manualPrices, setManualPrices] = useState<Set<number>>(new Set());
