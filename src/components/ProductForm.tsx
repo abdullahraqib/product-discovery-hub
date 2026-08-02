@@ -3,8 +3,9 @@ import { useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { type Product, type Size } from "@/data/products";
-import { Trash2, Plus, Upload } from "lucide-react";
+import { Trash2, Plus, Upload, Crop } from "lucide-react";
 import { isVideo } from "@/lib/media";
+import ImageCropper from "@/components/ImageCropper";
 
 type Mode = "create" | "edit";
 
@@ -49,6 +50,9 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   const qc = useQueryClient();
   const [p, setP] = useState<Product>(product ?? blank);
   const [imageUrl, setImageUrl] = useState("");
+  const [cropSource, setCropSource] = useState<
+    { file?: File; url?: string; replaceIndex?: number } | null
+  >(null);
   const [featuresText, setFeaturesText] = useState((product ?? blank).features.join(", "));
   const [widthsText, setWidthsText] = useState((product ?? blank).widthsM.join(", "));
   const [manualPrices, setManualPrices] = useState<Set<number>>(new Set());
@@ -111,11 +115,11 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
     setManualPrices(new Set());
   }
 
-  async function uploadFile(file: File) {
+  async function uploadFile(file: Blob, name: string, replaceIndex?: number) {
     setBusy(true);
     setError(null);
     try {
-      const path = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+      const path = `${Date.now()}-${name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
       const { error: upErr } = await supabase.storage.from("product-images").upload(path, file);
       if (upErr) throw upErr;
       const { data, error: signErr } = await supabase.storage
@@ -123,17 +127,31 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         .createSignedUrl(path, TEN_YEARS);
       if (signErr) throw signErr;
       if (data?.signedUrl) {
-        setP((prev) => ({
-          ...prev,
-          images: [...prev.images, data.signedUrl],
-          imageAlts: [...prev.imageAlts, ""],
-        }));
+        const signedUrl = data.signedUrl;
+        setP((prev) => {
+          if (replaceIndex !== undefined && replaceIndex < prev.images.length) {
+            const images = [...prev.images];
+            images[replaceIndex] = signedUrl;
+            return { ...prev, images };
+          }
+          return {
+            ...prev,
+            images: [...prev.images, signedUrl],
+            imageAlts: [...prev.imageAlts, ""],
+          };
+        });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setBusy(false);
     }
+  }
+
+  function handleCropped(blob: Blob) {
+    const replaceIndex = cropSource?.replaceIndex;
+    setCropSource(null);
+    uploadFile(blob, "cropped.jpg", replaceIndex);
   }
 
   function addImageUrl() {
@@ -282,14 +300,27 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                   aria-label={`Alt text for ${isVideo(src) ? "video" : "image"} ${i + 1}`}
                 />
               </div>
-              <button
-                type="button"
-                onClick={() => removeImage(i)}
-                className="text-brand mt-1"
-                aria-label="Remove media"
-              >
-                <Trash2 size={16} />
-              </button>
+              <div className="flex flex-col items-center gap-2 mt-1">
+                {!isVideo(src) && (
+                  <button
+                    type="button"
+                    onClick={() => setCropSource({ url: src, replaceIndex: i })}
+                    className="text-mid"
+                    aria-label="Crop and zoom image"
+                    title="Crop & zoom"
+                  >
+                    <Crop size={16} />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => removeImage(i)}
+                  className="text-brand"
+                  aria-label="Remove media"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -304,7 +335,10 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
               className="hidden"
               onChange={(e) => {
                 const file = e.target.files?.[0];
-                if (file) uploadFile(file);
+                if (file) {
+                  if (file.type.startsWith("image/")) setCropSource({ file });
+                  else uploadFile(file, file.name);
+                }
                 e.target.value = "";
               }}
             />
@@ -396,6 +430,15 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           Cancel
         </button>
       </div>
+
+      {cropSource && (
+        <ImageCropper
+          file={cropSource.file}
+          url={cropSource.url}
+          onCropped={handleCropped}
+          onCancel={() => setCropSource(null)}
+        />
+      )}
     </form>
   );
 }
