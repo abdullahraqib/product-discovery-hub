@@ -430,6 +430,15 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           Cancel
         </button>
       </div>
+
+      {cropSource && (
+        <ImageCropper
+          file={cropSource.file}
+          url={cropSource.url}
+          onCropped={handleCropped}
+          onCancel={() => setCropSource(null)}
+        />
+      )}
     </form>
   );
 }
