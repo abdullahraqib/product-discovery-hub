@@ -300,14 +300,27 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                   aria-label={`Alt text for ${isVideo(src) ? "video" : "image"} ${i + 1}`}
                 />
               </div>
-              <button
-                type="button"
-                onClick={() => removeImage(i)}
-                className="text-brand mt-1"
-                aria-label="Remove media"
-              >
-                <Trash2 size={16} />
-              </button>
+              <div className="flex flex-col items-center gap-2 mt-1">
+                {!isVideo(src) && (
+                  <button
+                    type="button"
+                    onClick={() => setCropSource({ url: src, replaceIndex: i })}
+                    className="text-mid"
+                    aria-label="Crop and zoom image"
+                    title="Crop & zoom"
+                  >
+                    <Crop size={16} />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => removeImage(i)}
+                  className="text-brand"
+                  aria-label="Remove media"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -322,7 +335,10 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
               className="hidden"
               onChange={(e) => {
                 const file = e.target.files?.[0];
-                if (file) uploadFile(file);
+                if (file) {
+                  if (file.type.startsWith("image/")) setCropSource({ file });
+                  else uploadFile(file, file.name);
+                }
                 e.target.value = "";
               }}
             />
