@@ -27,7 +27,7 @@ export const Route = createFileRoute("/measuring-guide")({
 
 const STEPS = [
   {
-    title: "1. Measure the widest point",
+    title: "1. Measure the widest points of your room",
     body: "Use a tape measure and record the widest distance in each direction — including bay windows, alcoves and doorways. Carpet is sold from the widest measurement, never the average.",
   },
   {
@@ -52,7 +52,7 @@ const STEPS = [
   },
   {
     title: "7. Measure the landing",
-    body: "Measure the length and width of the landing, adding extra for doorways and thresholds as in step 2.",
+    body: "Measure the length and width of the landing, adding on the height of the top step (the landing carpet wraps over the top step) and adding extra for doorways and thresholds as in step 2.",
   },
 ];
 
