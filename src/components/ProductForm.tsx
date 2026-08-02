@@ -3,8 +3,9 @@ import { useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { type Product, type Size } from "@/data/products";
-import { Trash2, Plus, Upload } from "lucide-react";
+import { Trash2, Plus, Upload, Crop } from "lucide-react";
 import { isVideo } from "@/lib/media";
+import ImageCropper from "@/components/ImageCropper";
 
 type Mode = "create" | "edit";
 
