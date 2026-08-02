@@ -14,6 +14,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyMobileBar } from "@/components/StickyMobileBar";
 import { SITE } from "@/lib/site";
+import { resetSessionOnPageLoad } from "@/lib/session-reset";
 
 function NotFoundComponent() {
   return (
