@@ -120,7 +120,7 @@ function HomePage() {
           </h1>
 
           <p className="mt-2 z-10 text-white/90 font-black text-[0.65rem] sm:text-sm md:text-base uppercase tracking-tight text-balance">
-            Delivery across:      Manchester{" "}<span className="text-pop">•</span>{" "}Liverpool{" "}<span className="text-pop">•</span>{" "}Bradford{" "}<span className="text-pop">•</span>{" "}Leeds{" "}<span className="text-pop">•</span>{" "}Sheffield{" "}<span className="text-pop">•</span>{" "}York{" "}<span className="text-pop">•</span>{" "}Hull
+            DELIVERY ACROSS:&nbsp; &nbsp; &nbsp; &nbsp;MANCHESTER{" "}<span className="text-pop">•</span>{" "}LIVERPOOL{" "}<span className="text-pop">•</span>{" "}BRADFORD{" "}<span className="text-pop">•</span>{" "}LEEDS{" "}<span className="text-pop">•</span>{" "}SHEFFIELD{" "}<span className="text-pop">•</span>{" "}YORK{" "}<span className="text-pop">•</span>{" "}HULL
           </p>
 
           <div className="mt-3 md:mt-6 z-10 w-screen">
