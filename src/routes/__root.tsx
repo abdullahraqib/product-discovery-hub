@@ -141,6 +141,13 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  // Any stored admin session is cleared on every fresh page load.
+  useEffect(() => {
+    void resetSessionOnPageLoad();
+  }, []);
+
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen flex flex-col pb-14 md:pb-0">
