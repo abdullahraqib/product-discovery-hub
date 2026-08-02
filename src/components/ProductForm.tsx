@@ -115,11 +115,11 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
     setManualPrices(new Set());
   }
 
-  async function uploadFile(file: File) {
+  async function uploadFile(file: Blob, name: string, replaceIndex?: number) {
     setBusy(true);
     setError(null);
     try {
-      const path = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+      const path = `${Date.now()}-${name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
       const { error: upErr } = await supabase.storage.from("product-images").upload(path, file);
       if (upErr) throw upErr;
       const { data, error: signErr } = await supabase.storage
@@ -127,17 +127,31 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         .createSignedUrl(path, TEN_YEARS);
       if (signErr) throw signErr;
       if (data?.signedUrl) {
-        setP((prev) => ({
-          ...prev,
-          images: [...prev.images, data.signedUrl],
-          imageAlts: [...prev.imageAlts, ""],
-        }));
+        const signedUrl = data.signedUrl;
+        setP((prev) => {
+          if (replaceIndex !== undefined && replaceIndex < prev.images.length) {
+            const images = [...prev.images];
+            images[replaceIndex] = signedUrl;
+            return { ...prev, images };
+          }
+          return {
+            ...prev,
+            images: [...prev.images, signedUrl],
+            imageAlts: [...prev.imageAlts, ""],
+          };
+        });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setBusy(false);
     }
+  }
+
+  function handleCropped(blob: Blob) {
+    const replaceIndex = cropSource?.replaceIndex;
+    setCropSource(null);
+    uploadFile(blob, "cropped.jpg", replaceIndex);
   }
 
   function addImageUrl() {
