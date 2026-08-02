@@ -14,7 +14,6 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyMobileBar } from "@/components/StickyMobileBar";
 import { SITE } from "@/lib/site";
-import { resetSessionOnPageLoad } from "@/lib/session-reset";
 
 function NotFoundComponent() {
   return (
@@ -141,13 +140,6 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
-  // Any stored admin session is cleared on every fresh page load.
-  useEffect(() => {
-    void resetSessionOnPageLoad();
-  }, []);
-
-
 
   return (
     <QueryClientProvider client={queryClient}>
