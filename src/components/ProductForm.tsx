@@ -486,6 +486,26 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                   Auto
                 </button>
               )}
+              <div className="flex gap-1">
+                <button
+                  type="button"
+                  onClick={() => moveSize(i, -1)}
+                  disabled={i === 0}
+                  className="h-10 px-2 rounded-md border-2 border-border text-mid disabled:opacity-30"
+                  aria-label="Move size up"
+                >
+                  <ArrowUp size={14} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveSize(i, 1)}
+                  disabled={i === p.sizes.length - 1}
+                  className="h-10 px-2 rounded-md border-2 border-border text-mid disabled:opacity-30"
+                  aria-label="Move size down"
+                >
+                  <ArrowDown size={14} />
+                </button>
+              </div>
               <button
                 type="button"
                 onClick={() => removeSize(i)}
