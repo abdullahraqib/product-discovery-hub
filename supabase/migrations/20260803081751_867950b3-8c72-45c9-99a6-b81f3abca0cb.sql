@@ -1,0 +1,1 @@
+ALTER TABLE public.products ADD COLUMN IF NOT EXISTS was_price_per_sqm numeric NOT NULL DEFAULT 0;

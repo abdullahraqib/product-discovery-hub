@@ -37,6 +37,7 @@ export type Database = {
           sku: string
           slug: string
           updated_at: string
+          was_price_per_sqm: number
           widths_m: number[]
         }
         Insert: {
@@ -61,6 +62,7 @@ export type Database = {
           sku: string
           slug: string
           updated_at?: string
+          was_price_per_sqm?: number
           widths_m?: number[]
         }
         Update: {
@@ -85,6 +87,7 @@ export type Database = {
           sku?: string
           slug?: string
           updated_at?: string
+          was_price_per_sqm?: number
           widths_m?: number[]
         }
         Relationships: []
