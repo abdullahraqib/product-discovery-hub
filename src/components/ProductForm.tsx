@@ -451,7 +451,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         </p>
         <div className="space-y-3">
           {p.sizes.map((s, i) => (
-            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_1fr_auto_auto] gap-2 items-end">
+            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_1fr_auto_auto_auto] gap-2 items-end">
               <Input
                 label="Length (m)"
                 type="number"
