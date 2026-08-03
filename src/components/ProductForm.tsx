@@ -23,6 +23,7 @@ const blank: Product = {
   dateAdded: new Date().toISOString(),
   fromPrice: 0,
   pricePerSqm: 0,
+  wasPricePerSqm: 0,
   images: [],
   imageAlts: [],
   description: "",
@@ -71,6 +72,9 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
       if (!manualPrices.has(i)) {
         next[i].price = calcPrice(next[i].widthM, next[i].lengthM, p.pricePerSqm);
       }
+      next[i].wasPrice = p.wasPricePerSqm
+        ? calcPrice(next[i].widthM, next[i].lengthM, p.wasPricePerSqm)
+        : next[i].wasPrice;
     }
     set("sizes", next);
   }
@@ -83,6 +87,23 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         manualPrices.has(i) ? s : { ...s, price: calcPrice(s.widthM, s.lengthM, v) },
       ),
     }));
+  }
+
+  function setWasPricePerSqm(v: number) {
+    setP((prev) => ({
+      ...prev,
+      wasPricePerSqm: v,
+      sizes: prev.sizes.map((s) => ({
+        ...s,
+        wasPrice: v ? calcPrice(s.widthM, s.lengthM, v) : 0,
+      })),
+    }));
+  }
+
+  function setSizeWasPrice(i: number, wasPrice: number) {
+    const next = [...p.sizes];
+    next[i] = { ...next[i], wasPrice };
+    set("sizes", next);
   }
 
   function setSizePrice(i: number, price: number) {
@@ -106,7 +127,13 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   function addSize() {
     set("sizes", [
       ...p.sizes,
-      { label: "4m × 4m", widthM: 4, lengthM: 4, price: calcPrice(4, 4, p.pricePerSqm) },
+      {
+        label: "4m × 4m",
+        widthM: 4,
+        lengthM: 4,
+        price: calcPrice(4, 4, p.pricePerSqm),
+        wasPrice: p.wasPricePerSqm ? calcPrice(4, 4, p.wasPricePerSqm) : 0,
+      },
     ]);
   }
 
@@ -192,6 +219,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         widths_m: p.widthsM,
         material: p.material,
         price_per_sqm: Number(p.pricePerSqm) || 0,
+        was_price_per_sqm: Number(p.wasPricePerSqm) || 0,
         from_price: p.sizes.length
           ? Math.min(...p.sizes.map((s) => Number(s.price) || 0))
           : Number(p.pricePerSqm) || 0,
@@ -262,6 +290,12 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
             type="number"
             value={String(p.pricePerSqm)}
             onChange={(v) => setPricePerSqm(Number(v) || 0)}
+          />
+          <Input
+            label={'"Was" price per m² (£) — optional'}
+            type="number"
+            value={String(p.wasPricePerSqm)}
+            onChange={(v) => setWasPricePerSqm(Number(v) || 0)}
           />
           <Input
             label="Features (comma-separated)"
@@ -369,7 +403,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         </p>
         <div className="space-y-3">
           {p.sizes.map((s, i) => (
-            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_auto_auto] gap-2 items-end">
+            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_1fr_auto_auto] gap-2 items-end">
               <Input
                 label="Length (m)"
                 type="number"
@@ -388,6 +422,12 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                 type="number"
                 value={String(s.price)}
                 onChange={(v) => setSizePrice(i, Number(v) || 0)}
+              />
+              <Input
+                label={'"Was" price (£)'}
+                type="number"
+                value={String(s.wasPrice ?? 0)}
+                onChange={(v) => setSizeWasPrice(i, Number(v) || 0)}
               />
               {manualPrices.has(i) && (
                 <button

@@ -1,4 +1,10 @@
-export type Size = { label: string; widthM: number; lengthM: number; price: number };
+export type Size = {
+  label: string;
+  widthM: number;
+  lengthM: number;
+  price: number;
+  wasPrice?: number;
+};
 
 export type Product = {
   id?: string;
@@ -15,6 +21,7 @@ export type Product = {
   dateAdded: string;
   fromPrice: number;
   pricePerSqm: number;
+  wasPricePerSqm: number;
   images: string[];
   imageAlts: string[];
   description: string;
@@ -38,6 +45,7 @@ export type ProductRow = {
   date_added: string;
   from_price: number;
   price_per_sqm: number;
+  was_price_per_sqm?: number | null;
   images: string[] | null;
   image_alts: string[] | null;
   description: string;
@@ -62,6 +70,7 @@ export function rowToProduct(r: ProductRow): Product {
     dateAdded: r.date_added,
     fromPrice: Number(r.from_price),
     pricePerSqm: Number(r.price_per_sqm ?? 0),
+    wasPricePerSqm: Number(r.was_price_per_sqm ?? 0),
     images: r.images ?? [],
     imageAlts: r.image_alts ?? [],
     description: r.description,
@@ -131,3 +140,11 @@ export const CATEGORY_VALUES = [
   "velvet",
   "flatweave",
 ] as const;
+
+/** The "was" price matching the cheapest roll end, if set. */
+export function fromWasPrice(p: Product): number | null {
+  if (!p.sizes.length) return null;
+  const cheapest = p.sizes.reduce((a, b) => (Number(b.price) < Number(a.price) ? b : a));
+  const was = Number(cheapest.wasPrice) || 0;
+  return was > Number(cheapest.price) ? was : null;
+}
