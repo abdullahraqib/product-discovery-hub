@@ -171,7 +171,16 @@ function ProductPage() {
                       Reference number: {sizeRef(selected)}
                     </span>
                   </span>
-                  <span className="text-xl font-black text-brand">£{selected.price}</span>
+                  <span className="flex flex-col items-end leading-none">
+                    {Number(selected.wasPrice) > Number(selected.price) && (
+                      <span className="text-sm font-bold text-charcoal line-through">
+                        Was £{selected.wasPrice}
+                      </span>
+                    )}
+                    <span className="text-2xl md:text-3xl font-black text-brand mt-0.5">
+                      £{selected.price}
+                    </span>
+                  </span>
                 </div>
               )}
 
