@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { type Product, type Size } from "@/data/products";
-import { Trash2, Plus, Upload, Crop } from "lucide-react";
+import { Trash2, Plus, Upload, Crop, ArrowUp, ArrowDown } from "lucide-react";
 import { isVideo } from "@/lib/media";
 import ImageCropper from "@/components/ImageCropper";
 
@@ -140,6 +140,32 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   function removeSize(i: number) {
     set("sizes", p.sizes.filter((_, idx) => idx !== i));
     setManualPrices(new Set());
+  }
+
+  function moveSize(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    if (j < 0 || j >= p.sizes.length) return;
+    const next = [...p.sizes];
+    [next[i], next[j]] = [next[j], next[i]];
+    set("sizes", next);
+    setManualPrices((prev) => {
+      const n = new Set<number>();
+      prev.forEach((idx) => n.add(idx === i ? j : idx === j ? i : idx));
+      return n;
+    });
+  }
+
+  function moveImage(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    setP((prev) => {
+      if (j < 0 || j >= prev.images.length) return prev;
+      const images = [...prev.images];
+      const alts = [...prev.imageAlts];
+      while (alts.length < images.length) alts.push("");
+      [images[i], images[j]] = [images[j], images[i]];
+      [alts[i], alts[j]] = [alts[j], alts[i]];
+      return { ...prev, images, imageAlts: alts };
+    });
   }
 
   async function uploadFile(file: Blob, name: string, replaceIndex?: number) {
@@ -335,6 +361,28 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                 />
               </div>
               <div className="flex flex-col items-center gap-2 mt-1">
+                <div className="flex gap-1">
+                  <button
+                    type="button"
+                    onClick={() => moveImage(i, -1)}
+                    disabled={i === 0}
+                    className="text-mid disabled:opacity-30"
+                    aria-label="Move media up"
+                    title="Move up"
+                  >
+                    <ArrowUp size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => moveImage(i, 1)}
+                    disabled={i === p.images.length - 1}
+                    className="text-mid disabled:opacity-30"
+                    aria-label="Move media down"
+                    title="Move down"
+                  >
+                    <ArrowDown size={16} />
+                  </button>
+                </div>
                 {!isVideo(src) && (
                   <button
                     type="button"
@@ -403,7 +451,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         </p>
         <div className="space-y-3">
           {p.sizes.map((s, i) => (
-            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_1fr_auto_auto] gap-2 items-end">
+            <div key={i} className="grid grid-cols-[1fr_1fr_1fr_1fr_auto_auto_auto] gap-2 items-end">
               <Input
                 label="Length (m)"
                 type="number"
@@ -438,6 +486,26 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                   Auto
                 </button>
               )}
+              <div className="flex gap-1">
+                <button
+                  type="button"
+                  onClick={() => moveSize(i, -1)}
+                  disabled={i === 0}
+                  className="h-10 px-2 rounded-md border-2 border-border text-mid disabled:opacity-30"
+                  aria-label="Move size up"
+                >
+                  <ArrowUp size={14} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveSize(i, 1)}
+                  disabled={i === p.sizes.length - 1}
+                  className="h-10 px-2 rounded-md border-2 border-border text-mid disabled:opacity-30"
+                  aria-label="Move size down"
+                >
+                  <ArrowDown size={14} />
+                </button>
+              </div>
               <button
                 type="button"
                 onClick={() => removeSize(i)}
