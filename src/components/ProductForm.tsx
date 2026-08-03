@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { type Product, type Size } from "@/data/products";
-import { Trash2, Plus, Upload, Crop } from "lucide-react";
+import { Trash2, Plus, Upload, Crop, ArrowUp, ArrowDown } from "lucide-react";
 import { isVideo } from "@/lib/media";
 import ImageCropper from "@/components/ImageCropper";
 
@@ -140,6 +140,32 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   function removeSize(i: number) {
     set("sizes", p.sizes.filter((_, idx) => idx !== i));
     setManualPrices(new Set());
+  }
+
+  function moveSize(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    if (j < 0 || j >= p.sizes.length) return;
+    const next = [...p.sizes];
+    [next[i], next[j]] = [next[j], next[i]];
+    set("sizes", next);
+    setManualPrices((prev) => {
+      const n = new Set<number>();
+      prev.forEach((idx) => n.add(idx === i ? j : idx === j ? i : idx));
+      return n;
+    });
+  }
+
+  function moveImage(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    setP((prev) => {
+      if (j < 0 || j >= prev.images.length) return prev;
+      const images = [...prev.images];
+      const alts = [...prev.imageAlts];
+      while (alts.length < images.length) alts.push("");
+      [images[i], images[j]] = [images[j], images[i]];
+      [alts[i], alts[j]] = [alts[j], alts[i]];
+      return { ...prev, images, imageAlts: alts };
+    });
   }
 
   async function uploadFile(file: Blob, name: string, replaceIndex?: number) {
