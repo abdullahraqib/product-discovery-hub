@@ -26,8 +26,7 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="text-sm text-neutral-400 leading-relaxed">
-            Family-run carpet specialists with over half a century of experience. Quality roll ends
-            at unbeatable prices.
+            Family-run carpet specialists with half a century of experience.
           </p>
           <div className="flex gap-3 mt-4">
             <a
