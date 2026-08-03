@@ -361,6 +361,28 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                 />
               </div>
               <div className="flex flex-col items-center gap-2 mt-1">
+                <div className="flex gap-1">
+                  <button
+                    type="button"
+                    onClick={() => moveImage(i, -1)}
+                    disabled={i === 0}
+                    className="text-mid disabled:opacity-30"
+                    aria-label="Move media up"
+                    title="Move up"
+                  >
+                    <ArrowUp size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => moveImage(i, 1)}
+                    disabled={i === p.images.length - 1}
+                    className="text-mid disabled:opacity-30"
+                    aria-label="Move media down"
+                    title="Move down"
+                  >
+                    <ArrowDown size={16} />
+                  </button>
+                </div>
                 {!isVideo(src) && (
                   <button
                     type="button"
