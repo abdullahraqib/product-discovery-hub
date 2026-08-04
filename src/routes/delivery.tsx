@@ -34,7 +34,8 @@ function DeliveryPage() {
     {
       icon: Truck,
       title: "Delivery",
-      body: "We can arrange delivery for your roll end across the north of England. Give us a call with your reference number and postcode, and we can confirm availability.\u00a0 Unlike other companies who include 3x the delivery fee in the price of the product, we aim to be completely transparent with our customers and charge a separate delivery fee. \u00a0\n*Delivery address must match address on the card used to pay",
+      body: "We can arrange delivery for your roll end across the north of England. Give us a call with your reference number and postcode, and we can confirm availability.\u00a0 Unlike other companies who include 3x the delivery fee in the price of the product, we aim to be completely transparent with our customers and charge a separate delivery fee.",
+      note: "*Delivery address must match address on the card used to pay",
     },
     {
       icon: CreditCard,
