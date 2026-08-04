@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { productsQuery } from "@/lib/products";
-import { colourOptionsFrom, type Product } from "@/data/products";
+import { colourOptionsFrom, productColours, type Product } from "@/data/products";
 import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import { Filters, type FilterState } from "@/components/Filters";
 
@@ -76,7 +76,7 @@ function HomePage() {
     const needL = Number(state.roomLength) || 0;
     const needW = Number(state.roomWidth) || 0;
     let items = products.filter((p) => {
-      if (state.colour && p.colour !== state.colour) return false;
+      if (state.colour && !productColours(p).includes(state.colour)) return false;
       if (needL > 0 || needW > 0) {
         const fits = p.sizes.some(
           (s) =>
@@ -86,7 +86,7 @@ function HomePage() {
         if (!fits) return false;
       }
       if (q) {
-        const blob = `${p.name} ${p.colour} ${p.material} ${p.pile} ${p.sku}`.toLowerCase();
+        const blob = `${p.name} ${productColours(p).join(" ")} ${p.material} ${p.pile} ${p.sku}`.toLowerCase();
         if (!blob.includes(q)) return false;
       }
       return true;

@@ -12,6 +12,7 @@ export type Product = {
   slug: string;
   name: string;
   colour: string;
+  colour2: string;
   colourHex: string;
   widthsM: number[];
   material: string;
@@ -36,6 +37,7 @@ export type ProductRow = {
   slug: string;
   name: string;
   colour: string;
+  colour2?: string | null;
   colour_hex: string;
   widths_m: number[] | null;
   material: string;
@@ -61,6 +63,7 @@ export function rowToProduct(r: ProductRow): Product {
     slug: r.slug,
     name: r.name,
     colour: r.colour,
+    colour2: r.colour2 ?? "",
     colourHex: r.colour_hex,
     widthsM: (r.widths_m ?? []).map(Number),
     material: r.material,
@@ -80,10 +83,14 @@ export function rowToProduct(r: ProductRow): Product {
   };
 }
 
+export function productColours(p: Product): string[] {
+  return [p.colour, p.colour2].map((c) => (c ?? "").trim()).filter(Boolean);
+}
+
 export function colourOptionsFrom(products: Product[]) {
-  return Array.from(new Map(products.map((p) => [p.colour, p.colourHex])).entries()).map(
-    ([colour, hex]) => ({ colour, hex }),
-  );
+  return Array.from(
+    new Map(products.flatMap((p) => productColours(p).map((c) => [c, p.colourHex] as const))).entries(),
+  ).map(([colour, hex]) => ({ colour, hex }));
 }
 
 export function widthOptionsFrom(products: Product[]) {

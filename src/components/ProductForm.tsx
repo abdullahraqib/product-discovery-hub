@@ -14,6 +14,7 @@ const blank: Product = {
   slug: "",
   name: "",
   colour: "",
+  colour2: "",
   colourHex: "#cccccc",
   widthsM: [4],
   material: "",
@@ -242,6 +243,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         slug,
         name: p.name.trim(),
         colour: p.colour.trim(),
+        colour2: (p.colour2 ?? "").trim(),
         widths_m: p.widthsM,
         material: p.material,
         price_per_sqm: Number(p.pricePerSqm) || 0,
@@ -296,6 +298,11 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
       <Section title="Colour & spec">
         <Grid>
           <Input label="Colour name" value={p.colour} onChange={(v) => set("colour", v)} />
+          <Input
+            label="Second colour (optional)"
+            value={p.colour2 ?? ""}
+            onChange={(v) => set("colour2", v)}
+          />
           <Input label="Material" value={p.material} onChange={(v) => set("material", v)} />
           <Input
             label="Widths (m, comma-separated)"
