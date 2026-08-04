@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { productQuery } from "@/lib/products";
-import type { Product } from "@/data/products";
+import { productColours, type Product } from "@/data/products";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { MediaGallery } from "@/components/MediaGallery";
 import { ShareButtons } from "@/components/ShareButtons";
