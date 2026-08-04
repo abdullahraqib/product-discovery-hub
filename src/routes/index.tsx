@@ -44,9 +44,37 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+// Round-robin products across colour groups so each row shows colour variety
+function interleaveByColour(items: Product[]): Product[] {
+  const groups = new Map<string, Product[]>();
+  for (const p of [...items].sort((a, b) => a.name.localeCompare(b.name))) {
+    const key = (productColours(p)[0] ?? "other").toLowerCase();
+    const list = groups.get(key);
+    if (list) list.push(p);
+    else groups.set(key, [p]);
+  }
+  const buckets = Array.from(groups.values()).sort((a, b) => b.length - a.length);
+  const out: Product[] = [];
+  let i = 0;
+  while (out.length < items.length) {
+    let placed = false;
+    for (const b of buckets) {
+      if (i < b.length) {
+        out.push(b[i]);
+        placed = true;
+      }
+    }
+    if (!placed) break;
+    i++;
+  }
+  return out;
+}
+
 function sortProducts(items: Product[], sort: FilterState["sort"]): Product[] {
   const arr = [...items];
   switch (sort) {
+    case "default":
+      return interleaveByColour(arr);
     case "name":
       return arr.sort((a, b) => a.name.localeCompare(b.name));
     case "newest":
@@ -66,7 +94,7 @@ function HomePage() {
     colour: "",
     roomLength: "",
     roomWidth: "",
-    sort: "name",
+    sort: "default",
   });
 
   const colourOptions = useMemo(() => colourOptionsFrom(products), [products]);

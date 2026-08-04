@@ -1,7 +1,7 @@
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { useState } from "react";
 
-export type SortKey = "name" | "newest" | "price-asc" | "price-desc";
+export type SortKey = "default" | "name" | "newest" | "price-asc" | "price-desc";
 
 export type FilterState = {
   search: string;
@@ -12,6 +12,7 @@ export type FilterState = {
 };
 
 const SORT_LABELS: Record<SortKey, string> = {
+  default: "Default",
   name: "Name: A–Z",
   newest: "Recently added",
   "price-asc": "Price: low to high",
@@ -32,7 +33,7 @@ export function Filters({
   const activeCount =
     (state.colour ? 1 : 0) +
     (state.roomLength || state.roomWidth ? 1 : 0) +
-    (state.sort !== "name" ? 1 : 0);
+    (state.sort !== "default" ? 1 : 0);
 
   const inputCls =
     "w-full px-3 py-2.5 text-base md:text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white";
@@ -175,7 +176,7 @@ export function Filters({
                     colour: "",
                     roomLength: "",
                     roomWidth: "",
-                    sort: "name",
+                    sort: "default",
                   })
                 }
                 className="flex-1 h-11 rounded-md border-2 border-border text-sm font-black uppercase tracking-wider"
