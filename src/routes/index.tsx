@@ -225,6 +225,7 @@ function HomePage() {
                 className="px-2.5 py-1.5 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
                 aria-label="Sort by"
               >
+                <option value="default">Default</option>
                 <option value="name">Name: A–Z</option>
                 <option value="newest">Recently added</option>
                 <option value="price-asc">Price: low to high</option>
