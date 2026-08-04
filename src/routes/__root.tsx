@@ -25,8 +25,12 @@ function NotFoundComponent() {
           That page doesn't exist. Try the roll ends list or get in touch.
         </p>
         <div className="mt-6 flex gap-2 justify-center">
-          <a href="/" className="btn-brand">Roll ends</a>
-          <a href="/contact" className="btn-outline-charcoal">Contact</a>
+          <a href="/" className="btn-brand">
+            Roll ends
+          </a>
+          <a href="/contact" className="btn-outline-charcoal">
+            Contact
+          </a>
         </div>
       </div>
     </div>
@@ -55,7 +59,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           >
             Try again
           </button>
-          <a href="/" className="btn-outline-charcoal">Go home</a>
+          <a href="/" className="btn-outline-charcoal">
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -124,6 +130,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Client-only Analytics component that injects Vercel Analytics
+function VercelAnalytics() {
+  useEffect(() => {
+    // Only run on client side
+    if (typeof window !== "undefined") {
+      import("@vercel/analytics").then(({ inject }) => {
+        inject();
+      });
+    }
+  }, []);
+
+  return null;
+}
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en-GB">
@@ -133,6 +153,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <VercelAnalytics />
       </body>
     </html>
   );
