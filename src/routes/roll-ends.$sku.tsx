@@ -126,7 +126,7 @@ function ProductPage() {
           <h1 className="text-[1.6rem] leading-tight md:text-3xl font-black mt-1">{p.name}</h1>
 
           <div className="flex items-center gap-3 mt-3">
-            <span className="text-sm font-bold">{p.colour}</span>
+            <span className="text-sm font-bold">{productColours(p).join(" / ")}</span>
           </div>
 
           <p className="text-mid mt-4 leading-relaxed">{p.description}</p>
