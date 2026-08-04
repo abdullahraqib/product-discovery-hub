@@ -12,6 +12,7 @@ export type Product = {
   slug: string;
   name: string;
   colour: string;
+  colour2: string;
   colourHex: string;
   widthsM: number[];
   material: string;
@@ -36,6 +37,7 @@ export type ProductRow = {
   slug: string;
   name: string;
   colour: string;
+  colour2?: string | null;
   colour_hex: string;
   widths_m: number[] | null;
   material: string;
