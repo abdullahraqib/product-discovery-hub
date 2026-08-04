@@ -51,8 +51,8 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-xs sm:text-sm text-mid leading-snug">
           {product.widthsM.join("m & ")}m widths • {product.material}
         </p>
-        <div className="flex items-center justify-between gap-2 mt-auto pt-2.5 sm:pt-3 border-t border-border">
-          <div className="text-[15px] sm:text-xl font-black text-brand leading-tight whitespace-nowrap">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-auto pt-2.5 sm:pt-3 border-t border-border">
+          <div className="min-w-0 text-[15px] sm:text-xl font-black text-brand leading-tight">
             from{" "}
             {wasPrice !== null && (
               <span className="text-[11px] sm:text-sm font-bold text-mid line-through mr-1">
@@ -62,10 +62,11 @@ export function ProductCard({ product }: { product: Product }) {
             £{product.fromPrice}
             <span className="text-[10px] sm:text-xs font-normal text-mid"> /roll end</span>
           </div>
-          <span className="enquire-btn text-[10px] sm:text-xs font-black uppercase tracking-wider bg-brand text-white px-2.5 sm:px-3 py-1.5 rounded shrink-0">
+          <span className="enquire-btn text-[10px] sm:text-xs font-black uppercase tracking-wider bg-brand text-white px-2.5 sm:px-3 py-1.5 rounded shrink-0 text-center">
             View
           </span>
         </div>
+
       </div>
     </Link>
   );
