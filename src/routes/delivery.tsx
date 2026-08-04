@@ -66,6 +66,9 @@ function DeliveryPage() {
               </div>
               <h2 className="text-lg md:text-xl font-black">{o.title}</h2>
               <p className="text-charcoal mt-2 leading-relaxed text-sm">{o.body}</p>
+              {o.note && (
+                <p className="mt-2 text-xs text-brand leading-snug">{o.note}</p>
+              )}
             </div>
           );
         })}
