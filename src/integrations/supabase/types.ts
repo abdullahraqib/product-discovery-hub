@@ -19,6 +19,7 @@ export type Database = {
           category: string
           colour: string
           colour_hex: string
+          colour2: string
           created_at: string
           date_added: string
           description: string
@@ -44,6 +45,7 @@ export type Database = {
           category?: string
           colour: string
           colour_hex?: string
+          colour2?: string
           created_at?: string
           date_added?: string
           description?: string
@@ -69,6 +71,7 @@ export type Database = {
           category?: string
           colour?: string
           colour_hex?: string
+          colour2?: string
           created_at?: string
           date_added?: string
           description?: string
