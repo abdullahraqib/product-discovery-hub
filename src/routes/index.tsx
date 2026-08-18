@@ -141,7 +141,7 @@ function HomePage() {
         </div>
 
         <div className="relative container-page py-3 md:py-14 text-center flex flex-col items-center">
-          <h1 className="font-impact uppercase italic leading-[0.9] text-[1.9rem] sm:text-5xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
+          <h1 className="font-impact uppercase italic leading-[0.9] text-[2.3rem] sm:text-5xl md:text-7xl z-10 drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">
             Yorkshire's No1
             <br />
             <span className="text-pop">carpet outlet</span>
@@ -166,7 +166,7 @@ function HomePage() {
               <h2 className="font-impact uppercase italic text-bolt-foreground text-xl md:text-4xl mb-1 md:mb-2 tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.6)]">
                 Important: how to order from us
               </h2>
-              <div className="flex justify-center mb-1 md:mb-3 text-bolt-foreground" aria-hidden>
+              <div className="hidden md:flex justify-center mb-1 md:mb-3 text-bolt-foreground" aria-hidden>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" className="md:w-8 md:h-8">
                   <path d="M12 5v14" />
                   <path d="m19 12-7 7-7-7" />
