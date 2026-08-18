@@ -23,7 +23,7 @@ function AdminLayout() {
     (async () => {
       const { data: userData } = await supabase.auth.getUser();
       if (!userData.user) {
-        navigate({ to: "/auth", search: {} });
+        navigate({ to: "/auth", search: { next: "" } });
         return;
       }
       const { data } = await supabase
@@ -43,7 +43,7 @@ function AdminLayout() {
 
   async function signOut() {
     await supabase.auth.signOut();
-    navigate({ to: "/auth", search: {} });
+    navigate({ to: "/auth", search: { next: "" } });
   }
 
   if (checking) {
