@@ -20,9 +20,9 @@ export const Route = createFileRoute("/carpets/$category")({
     const url = `/carpets/${cat.slug}`;
     return {
       meta: [
-        { title: `${cat.name} — ${SITE.shortName}` },
+        { title: `${cat.name} - ${SITE.shortName}` },
         { name: "description", content: cat.description },
-        { property: "og:title", content: `${cat.name} — ${SITE.shortName}` },
+        { property: "og:title", content: `${cat.name} - ${SITE.shortName}` },
         { property: "og:description", content: cat.description },
         { property: "og:url", content: url },
       ],
@@ -60,7 +60,7 @@ function CategoryPage() {
         <div className="card-surface p-10 text-center">
           <p className="font-black mb-2">No stock in this category right now</p>
           <p className="text-sm text-mid mb-4">
-            New roll ends come in weekly — call us and we'll let you know.
+            New roll ends come in weekly - call us and we'll let you know.
           </p>
           <EnquireButtons size="md" />
         </div>

@@ -28,12 +28,12 @@ export const Route = createFileRoute("/roll-ends/$sku")({
     const url = `/roll-ends/${p.sku}`;
     return {
       meta: [
-        { title: `${p.name} Roll End ${p.sku} — ${SITE.shortName}`.slice(0, 60) },
+        { title: `${p.name} Roll End ${p.sku} - ${SITE.shortName}`.slice(0, 60) },
         {
           name: "description",
           content: `${p.description} From £${p.fromPrice}.`.slice(0, 157).trim(),
         },
-        { property: "og:title", content: `${p.name} — ${SITE.shortName}` },
+        { property: "og:title", content: `${p.name} - ${SITE.shortName}` },
         { property: "og:description", content: p.description },
         { property: "og:url", content: url },
         { property: "og:type", content: "product" },
@@ -80,7 +80,7 @@ export const Route = createFileRoute("/roll-ends/$sku")({
   notFoundComponent: () => (
     <div className="container-page py-20 text-center">
       <h1 className="text-2xl font-black">Roll end not found</h1>
-      <p className="text-mid mt-2">It may have sold — call us for the latest stock.</p>
+      <p className="text-mid mt-2">It may have sold - call us for the latest stock.</p>
       <a href="/" className="btn-brand mt-6 inline-flex">Back to roll ends</a>
     </div>
   ),
@@ -134,7 +134,7 @@ function ProductPage() {
           <dl className="grid grid-cols-2 gap-3 mt-6 text-sm">
             <Detail label="Material" value={p.material} />
             <Detail label="Pile" value={p.pile} />
-            <Detail label="Widths" value={p.widthsM.length ? `${p.widthsM.join("m, ")}m` : "—"} />
+            <Detail label="Widths" value={p.widthsM.length ? `${p.widthsM.join("m, ")}m` : "-"} />
             <Detail label="From" value={`£${p.fromPrice}`} />
           </dl>
 
@@ -210,7 +210,7 @@ function ProductPage() {
 }
 
 function Detail({ label, value }: { label: string; value: string }) {
-  if (!value || !value.trim() || value === "—") return null;
+  if (!value || !value.trim() || value === "-") return null;
   return (
     <div>
       <dt className="text-[10px] uppercase tracking-wider text-mid font-black">{label}</dt>

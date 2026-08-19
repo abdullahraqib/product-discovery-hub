@@ -325,7 +325,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
             onChange={(v) => setPricePerSqm(Number(v) || 0)}
           />
           <Input
-            label={'"Was" price per m² (£) — optional'}
+            label={'"Was" price per m² (£) - optional'}
             type="number"
             value={String(p.wasPricePerSqm)}
             onChange={(v) => setWasPricePerSqm(Number(v) || 0)}
@@ -362,7 +362,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                   value={p.imageAlts[i] ?? ""}
                   onChange={(e) => setImageAlt(i, e.target.value)}
                   maxLength={200}
-                  placeholder={`Alt text (describe this ${isVideo(src) ? "video" : "image"}) — defaults to product name`}
+                  placeholder={`Alt text (describe this ${isVideo(src) ? "video" : "image"}) - defaults to product name`}
                   className="w-full px-3 py-2 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
                   aria-label={`Alt text for ${isVideo(src) ? "video" : "image"} ${i + 1}`}
                 />

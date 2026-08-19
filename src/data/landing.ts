@@ -20,24 +20,24 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/roll-ends",
     breadcrumb: "Carpet Roll Ends",
     h1: "Carpet Roll Ends",
-    title: `Carpet Roll Ends — Huge Clearance Stock | ${SITE.name}`,
+    title: `Carpet Roll Ends - Huge Clearance Stock | ${SITE.name}`,
     description:
       "Browse hundreds of carpet roll ends at clearance prices. 4m and 5m widths, wool, twist, saxony and berber. New roll ends in every week at our Bradford outlet.",
     intro:
-      "A roll end is the last piece left on a carpet roll — same carpet, same quality, a fraction of the price. Every roll end below is in stock right now, priced by the piece, and sold first come, first served.",
+      "A roll end is the last piece left on a carpet roll - same carpet, same quality, a fraction of the price. Every roll end below is in stock right now, priced by the piece, and sold first come, first served.",
     sections: [
       {
         h2: "What is a carpet roll end?",
         body: [
-          "When a full roll of carpet has been cut down for other customers, the piece left over is called a roll end (also known as a remnant or an offcut). It is identical to the carpet sold at full price on the roll — the only difference is that the length is fixed, so it has to go at a clearance price.",
-          "Because roll ends are one-offs, each piece is unique. Once it is gone, it is gone — which is why our stock changes every single week.",
+          "When a full roll of carpet has been cut down for other customers, the piece left over is called a roll end (also known as a remnant or an offcut). It is identical to the carpet sold at full price on the roll - the only difference is that the length is fixed, so it has to go at a clearance price.",
+          "Because roll ends are one-offs, each piece is unique. Once it is gone, it is gone - which is why our stock changes every single week.",
         ],
       },
       {
         h2: "What sizes do carpet roll ends come in?",
         body: [
           "Most of our roll ends are 4m or 5m wide, with lengths from around 2m up to 12m and beyond. Every listing shows the exact length x width of each piece and the price for that piece, so there is nothing to work out.",
-          "Not sure what you need? Use the room size filter on our stock list — enter your room length and width and we will only show roll ends big enough to fit, in either direction.",
+          "Not sure what you need? Use the room size filter on our stock list - enter your room length and width and we will only show roll ends big enough to fit, in either direction.",
         ],
       },
       {
@@ -51,7 +51,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     faqs: [
       {
         q: "Are carpet roll ends good quality?",
-        a: "Yes. Roll ends are cut from the same rolls as our full-price carpet — wool twists, saxonies, berber loops and more. They are discounted because of the fixed length, not because of any fault.",
+        a: "Yes. Roll ends are cut from the same rolls as our full-price carpet - wool twists, saxonies, berber loops and more. They are discounted because of the fixed length, not because of any fault.",
       },
       {
         q: "How often do you get new roll ends in?",
@@ -63,14 +63,14 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/carpet-remnants",
     breadcrumb: "Carpet Remnants",
     h1: "Carpet Remnants",
-    title: `Carpet Remnants — Cheap Remnant Carpet in Stock | ${SITE.name}`,
+    title: `Carpet Remnants - Cheap Remnant Carpet in Stock | ${SITE.name}`,
     description:
-      "Cheap carpet remnants in stock now — wool, twist, saxony and berber remnants in 4m and 5m widths at up to 70% off. Bradford carpet remnant specialists.",
+      "Cheap carpet remnants in stock now - wool, twist, saxony and berber remnants in 4m and 5m widths at up to 70% off. Bradford carpet remnant specialists.",
     intro:
       "Carpet remnants are the leftover pieces from full rolls, sold off at clearance prices. We hold one of the biggest remnant stocks in Yorkshire, with new pieces arriving weekly.",
     sections: [
       {
-        h2: "Remnants, roll ends and offcuts — what's the difference?",
+        h2: "Remnants, roll ends and offcuts - what's the difference?",
         body: [
           "They are all names for the same thing: a piece of carpet left over from a full roll. Some shops call them remnants, some call them roll ends, others say offcuts. Whatever the name, you are buying quality carpet at a fraction of the full-roll price.",
         ],
@@ -96,7 +96,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
       },
       {
         q: "Can I see a remnant before I buy?",
-        a: `Yes — come and see it at ${SITE.address.full}. Bear in mind remnants are one-offs, so call ahead on ${SITE.phone} to check it is still available.`,
+        a: `Yes - come and see it at ${SITE.address.full}. Bear in mind remnants are one-offs, so call ahead on ${SITE.phone} to check it is still available.`,
       },
     ],
   },
@@ -104,16 +104,16 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/cheap-carpets",
     breadcrumb: "Cheap Carpets",
     h1: "Cheap Carpets",
-    title: `Cheap Carpets in Bradford — Clearance Prices | ${SITE.name}`,
+    title: `Cheap Carpets in Bradford - Clearance Prices | ${SITE.name}`,
     description:
       "Cheap carpets in Bradford without cheap quality. Branded roll ends, remnants and end of line carpet at clearance prices, in 4m and 5m widths. In stock today.",
     intro:
-      "Cheap carpet does not have to mean poor carpet. Everything we sell is quality carpet from full rolls — priced low because it is a roll end, a remnant or an end of line range.",
+      "Cheap carpet does not have to mean poor carpet. Everything we sell is quality carpet from full rolls - priced low because it is a roll end, a remnant or an end of line range.",
     sections: [
       {
         h2: "How we keep carpet prices low",
         body: [
-          "We buy roll ends, remnants and discontinued end of line stock from mills and wholesalers, then clear them from one warehouse-style outlet. No showroom mark-up, no lengthy sales process — you see the piece, you see the price.",
+          "We buy roll ends, remnants and discontinued end of line stock from mills and wholesalers, then clear them from one warehouse-style outlet. No showroom mark-up, no lengthy sales process - you see the piece, you see the price.",
           "Because every piece is a one-off, we price by the piece using the price per square metre of that carpet. What you see on the listing is what you pay.",
         ],
       },
@@ -127,7 +127,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
         h2: "What you save",
         body: [
           "Savings against equivalent full-roll pricing typically run from 40% up to 70%. On a lounge-sized piece that is often hundreds of pounds.",
-          `Everything is first come, first served — ${CALL} to pay and hold a piece before someone else does.`,
+          `Everything is first come, first served - ${CALL} to pay and hold a piece before someone else does.`,
         ],
       },
     ],
@@ -146,22 +146,22 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/end-of-line-carpets",
     breadcrumb: "End of Line Carpets",
     h1: "End of Line Carpets",
-    title: `End of Line Carpets — Discontinued Ranges Cleared | ${SITE.name}`,
+    title: `End of Line Carpets - Discontinued Ranges Cleared | ${SITE.name}`,
     description:
       "End of line and discontinued carpet cleared at outlet prices. Quality wool, twist and saxony ranges in 4m and 5m widths, in stock at our Bradford outlet.",
     intro:
-      "End of line carpet is stock from ranges the mills have discontinued. Nothing wrong with it — it simply is not being made any more, so it has to clear.",
+      "End of line carpet is stock from ranges the mills have discontinued. Nothing wrong with it - it simply is not being made any more, so it has to clear.",
     sections: [
       {
         h2: "Why end of line carpet is such good value",
         body: [
-          "When a mill retires a colour or a range, the remaining stock has to move. We take it on and clear it at a fraction of its original retail price. You get current-quality carpet — often premium wool blends — for budget money.",
+          "When a mill retires a colour or a range, the remaining stock has to move. We take it on and clear it at a fraction of its original retail price. You get current-quality carpet - often premium wool blends - for budget money.",
         ],
       },
       {
         h2: "The catch (there's always one)",
         body: [
-          "Once an end of line piece sells, we cannot reorder it. If you need extra later for another room, it may not be available — so buy enough in one go, and add 10cm for trimming when you measure.",
+          "Once an end of line piece sells, we cannot reorder it. If you need extra later for another room, it may not be available - so buy enough in one go, and add 10cm for trimming when you measure.",
         ],
       },
       {
@@ -178,7 +178,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
       },
       {
         q: "Can you get more of the same end of line carpet?",
-        a: "Usually not — once discontinued stock is gone it cannot be reordered. Always buy enough for the whole job at once.",
+        a: "Usually not - once discontinued stock is gone it cannot be reordered. Always buy enough for the whole job at once.",
       },
     ],
   },
@@ -186,9 +186,9 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/carpet-offcuts",
     breadcrumb: "Carpet Offcuts",
     h1: "Carpet Offcuts",
-    title: `Carpet Offcuts For Sale — Cheap Offcut Carpet | ${SITE.name}`,
+    title: `Carpet Offcuts For Sale - Cheap Offcut Carpet | ${SITE.name}`,
     description:
-      "Carpet offcuts for sale from £ per piece. Small and large offcuts in 4m and 5m widths — ideal for bedrooms, stairs, vans, rugs and rentals. Bradford outlet.",
+      "Carpet offcuts for sale from £ per piece. Small and large offcuts in 4m and 5m widths - ideal for bedrooms, stairs, vans, rugs and rentals. Bradford outlet.",
     intro:
       "Carpet offcuts are the pieces trimmed from full rolls. We measure, price and list every one, so you can grab exactly the size you need for a fraction of the full price.",
     sections: [
@@ -201,7 +201,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
       {
         h2: "Finding an offcut that fits",
         body: [
-          "Measure the widest points of your room and add 10cm for trimming. Then use the room size filter on our stock list — it matches any offcut that is big enough, whichever way round it turns.",
+          "Measure the widest points of your room and add 10cm for trimming. Then use the room size filter on our stock list - it matches any offcut that is big enough, whichever way round it turns.",
           "Our free measuring guide walks you through rooms and stairs step by step.",
         ],
       },
@@ -215,7 +215,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     faqs: [
       {
         q: "Do you sell small carpet offcuts?",
-        a: "Yes — sizes range from small pieces suitable for rugs and box rooms right up to full lounge-sized pieces.",
+        a: "Yes - sizes range from small pieces suitable for rugs and box rooms right up to full lounge-sized pieces.",
       },
       {
         q: "Can I get a carpet offcut bound into a rug?",

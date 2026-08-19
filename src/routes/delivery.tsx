@@ -7,13 +7,13 @@ import { Store, Truck, CreditCard, Phone } from "lucide-react";
 export const Route = createFileRoute("/delivery")({
   head: () => ({
     meta: [
-      { title: `Delivery & Collection — ${SITE.shortName}` },
+      { title: `Delivery & Collection - ${SITE.shortName}` },
       {
         name: "description",
         content:
-          "Collection from our Bradford store or delivery arranged over the phone. Roll ends must be paid for to reserve — call RollEndShop to arrange.",
+          "Collection from our Bradford store or delivery arranged over the phone. Roll ends must be paid for to reserve - call RollEndShop to arrange.",
       },
-      { property: "og:title", content: `Delivery & Collection — ${SITE.shortName}` },
+      { property: "og:title", content: `Delivery & Collection - ${SITE.shortName}` },
       { property: "og:description", content: "Collection from Bradford or delivery arranged by phone." },
       { property: "og:url", content: "/delivery" },
     ],
@@ -29,7 +29,7 @@ function DeliveryPage() {
       title: "Collection from store",
       body: "Pick up your roll end from our shop at " +
         SITE.address.full +
-        ". We're open seven days a week — see our opening hours for details. Collection is free.",
+        ". We're open seven days a week - see our opening hours for details. Collection is free.",
     },
     {
       icon: Truck,
@@ -40,7 +40,7 @@ function DeliveryPage() {
     {
       icon: CreditCard,
       title: "Payment to reserve",
-      body: "A roll end is only reserved once it has been paid for. We can take payment over the phone or in store — until then, pieces stay available to everyone on a first-come, first-served basis.",
+      body: "A roll end is only reserved once it has been paid for. We can take payment over the phone or in store - until then, pieces stay available to everyone on a first-come, first-served basis.",
     },
   ];
 
@@ -51,7 +51,7 @@ function DeliveryPage() {
       <header className="mt-6 mb-8">
         <h1 className="text-3xl md:text-4xl font-black">Delivery & Collection</h1>
         <p className="text-mid mt-2 max-w-2xl leading-relaxed">
-          Every roll end is a one-off piece. Once you've paid, it's yours — collect it from our
+          Every roll end is a one-off piece. Once you've paid, it's yours - collect it from our
           Bradford shop or let us arrange delivery.
         </p>
       </header>

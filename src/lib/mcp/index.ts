@@ -6,7 +6,7 @@ import createProduct from "./tools/create-product";
 import updateProduct from "./tools/update-product";
 import deleteProduct from "./tools/delete-product";
 
-// Direct Supabase host — the .lovable.cloud proxy fails RFC 8414 issuer match.
+// Direct Supabase host - the .lovable.cloud proxy fails RFC 8414 issuer match.
 const projectRef = import.meta.env.VITE_SUPABASE_PROJECT_ID ?? "project-ref-unset";
 
 export default defineMcp({

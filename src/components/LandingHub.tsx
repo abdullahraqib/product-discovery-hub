@@ -42,7 +42,7 @@ export function LandingHub({ hub }: { hub: Hub }) {
           </div>
         ) : items.length === 0 ? (
           <div className="card-surface p-10 text-center text-mid">
-            Nothing listed online right now — call {SITE.phone} for today's stock.
+            Nothing listed online right now - call {SITE.phone} for today's stock.
           </div>
         ) : (
           <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

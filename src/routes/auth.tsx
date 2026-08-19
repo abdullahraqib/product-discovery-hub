@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: `Admin Sign In — ${SITE.shortName}` },
+      { title: `Admin Sign In - ${SITE.shortName}` },
       { name: "robots", content: "noindex,nofollow" },
     ],
   }),

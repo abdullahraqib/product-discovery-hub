@@ -13,7 +13,7 @@ type Props = {
   placeholder?: string;
 };
 
-export function SizeDropdown({ options, value, onChange, placeholder = "— Select a size —" }: Props) {
+export function SizeDropdown({ options, value, onChange, placeholder = "- Select a size -" }: Props) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -41,7 +41,7 @@ export function SizeDropdown({ options, value, onChange, placeholder = "— Sele
         <span className={selected ? "flex items-center gap-2" : "text-mid"}>
           {selected ? (
             <>
-              <span>{selected.label} — £{selected.price}</span>
+              <span>{selected.label} - £{selected.price}</span>
               <span className="text-[#dc2626] ml-auto">Reference number: ({selected.ref})</span>
             </>
           ) : (
@@ -82,7 +82,7 @@ export function SizeDropdown({ options, value, onChange, placeholder = "— Sele
                   selectedIdx === i ? "bg-secondary" : ""
                 }`}
               >
-                <span>{opt.label} — £{opt.price}</span>
+                <span>{opt.label} - £{opt.price}</span>
                 <span className="text-[#dc2626] ml-auto">Reference number: ({opt.ref})</span>
               </button>
             </li>
