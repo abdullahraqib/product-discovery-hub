@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Carpet Roll Ends & Remnants | Cheap Carpets Bradford" },
       { name: "description", content: "Carpet roll ends, remnants, offcuts and end of line carpets at clearance prices. 4m & 5m widths, up to 70% off, new stock weekly at our Bradford outlet." },
-      { property: "og:title", content: `Carpet Roll Ends, Remnants & Offcuts — ${SITE.name}` },
+      { property: "og:title", content: `Carpet Roll Ends, Remnants & Offcuts - ${SITE.name}` },
       { property: "og:description", content: "Cheap carpet roll ends, remnants and end of line carpets at clearance prices. First come, first served at our Bradford outlet." },
       { property: "og:url", content: "/" },
     ],
@@ -181,7 +181,7 @@ function HomePage() {
                 <li className="bg-white text-charcoal p-3 md:p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
                   <span className="absolute -top-3.5 -left-2.5 bg-pop text-pop-foreground font-impact text-lg md:text-2xl leading-none px-2 py-0.5 md:px-2.5 md:py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">2</span>
                   <div className="font-black uppercase text-xs md:text-base leading-tight mt-2 mb-1 md:mt-3 md:mb-1.5">Note the reference number</div>
-                  <p className="text-[0.7rem] md:text-sm font-bold leading-snug text-mid">Each roll has a <span className="text-[#dc2626] font-black">red reference number</span> located next to the price — note it down for when you call.</p>
+                  <p className="text-[0.7rem] md:text-sm font-bold leading-snug text-mid">Each roll has a <span className="text-[#dc2626] font-black">red reference number</span> located next to the price - note it down for when you call.</p>
                 </li>
                 <li className="bg-pop text-pop-foreground p-3 md:p-4 border-[3px] border-charcoal shadow-[4px_4px_0_0_rgba(0,0,0,0.55)] relative">
                   <span className="absolute -top-3.5 -left-2.5 bg-white text-charcoal font-impact text-lg md:text-2xl leading-none px-2 py-0.5 md:px-2.5 md:py-1 border-[3px] border-charcoal shadow-[3px_3px_0_0_rgba(0,0,0,0.55)]">3</span>
@@ -249,7 +249,7 @@ function HomePage() {
                 <div className="col-span-full card-surface p-10 text-center">
                   <p className="font-black mb-2">No roll ends match your filters</p>
                   <p className="text-sm text-mid mb-4">
-                    Try clearing search or filters — or call us, we may have new stock in.
+                    Try clearing search or filters - or call us, we may have new stock in.
                   </p>
                   <EnquireButtons size="md" />
                 </div>

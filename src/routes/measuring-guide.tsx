@@ -6,17 +6,17 @@ import { SITE } from "@/lib/site";
 export const Route = createFileRoute("/measuring-guide")({
   head: () => ({
     meta: [
-      { title: `How to Measure a Room for Carpet — ${SITE.shortName}` },
+      { title: `How to Measure a Room for Carpet - ${SITE.shortName}` },
       {
         name: "description",
         content:
-          "Free measuring guide from RollEndShop. Learn how to measure your room — including doorways, bays and stairs — for a perfect carpet fit.",
+          "Free measuring guide from RollEndShop. Learn how to measure your room - including doorways, bays and stairs - for a perfect carpet fit.",
       },
-      { property: "og:title", content: `Carpet Measuring Guide — ${SITE.shortName}` },
+      { property: "og:title", content: `Carpet Measuring Guide - ${SITE.shortName}` },
       {
         property: "og:description",
         content:
-          "Step-by-step guide to measuring rooms, doorways, bays and stairs for carpet — with the extra allowances you need for a perfect fit.",
+          "Step-by-step guide to measuring rooms, doorways, bays and stairs for carpet - with the extra allowances you need for a perfect fit.",
       },
       { property: "og:url", content: "/measuring-guide" },
     ],
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/measuring-guide")({
 const STEPS = [
   {
     title: "1. Measure the widest points of your room",
-    body: "Use a tape measure and record the widest distance in each direction — including bay windows, alcoves and doorways. Carpet is sold from the widest measurement, never the average.",
+    body: "Use a tape measure and record the widest distance in each direction - including bay windows, alcoves and doorways. Carpet is sold from the widest measurement, never the average.",
   },
   {
     title: "2. Add for doorways and thresholds",
@@ -115,14 +115,14 @@ function GuidePage() {
           <h3 className="font-black mb-2">Top tips</h3>
           <ul className="text-sm space-y-1 list-disc pl-5 text-charcoal">
             <li>Always round measurements up to the nearest 10cm.</li>
-            <li>Measure twice — it's the cheapest mistake to avoid.</li>
+            <li>Measure twice - it's the cheapest mistake to avoid.</li>
             
-            <li>Roll ends are fixed length — pick the one that beats your longest wall.</li>
+            <li>Roll ends are fixed length - pick the one that beats your longest wall.</li>
           </ul>
         </div>
 
         <p className="text-center text-xs text-mid mt-8">
-          © {new Date().getFullYear()} {SITE.name} — srcarpetsandfloors.co.uk
+          © {new Date().getFullYear()} {SITE.name} - srcarpetsandfloors.co.uk
         </p>
       </div>
     </div>

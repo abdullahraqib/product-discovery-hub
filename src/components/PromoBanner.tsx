@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site";
 
 const MESSAGES = [
   "CALL TO RESERVE TODAY",
-  "STOCK MOVES FAST — CALL TO SECURE",
+  "STOCK MOVES FAST - CALL TO SECURE",
   "HUGE SALE ON NOW",
 ];
 
@@ -39,7 +39,7 @@ export function PromoBannerStatic() {
   // Accessible fallback / screen-reader text
   return (
     <span className="sr-only">
-      <Phone size={0} className="hidden" /> Call {SITE.phone} to reserve today — stock moves fast,
+      <Phone size={0} className="hidden" /> Call {SITE.phone} to reserve today - stock moves fast,
       call to secure, huge sale on now.
     </span>
   );

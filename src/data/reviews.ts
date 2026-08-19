@@ -16,7 +16,7 @@ export const REVIEWS: Review[] = [
     name: "James W.",
     rating: 5,
     source: "Google",
-    text: "Friendly and professional staff, amazing carpets and an unbeatable price — couldn't have asked for more.",
+    text: "Friendly and professional staff, amazing carpets and an unbeatable price - couldn't have asked for more.",
   },
   {
     name: "Aisha K.",
@@ -40,12 +40,12 @@ export const REVIEWS: Review[] = [
     name: "Daniel T.",
     rating: 5,
     source: "Google",
-    text: "The service was impeccable right from my original contact with them through to the sales team — really knowledgeable and patient.",
+    text: "The service was impeccable right from my original contact with them through to the sales team - really knowledgeable and patient.",
   },
   {
     name: "Iqra M.",
     rating: 5,
     source: "Google",
-    text: "Iqra and the team were so helpful — we changed the date so many times and they were always professional and polite about it.",
+    text: "Iqra and the team were so helpful - we changed the date so many times and they were always professional and polite about it.",
   },
 ];

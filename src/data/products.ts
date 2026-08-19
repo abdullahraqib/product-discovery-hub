@@ -114,7 +114,7 @@ export const CATEGORIES: { slug: string; name: string; description: string }[] =
     slug: "twist-pile-carpets-bradford",
     name: "Twist Pile Carpets in Bradford",
     description:
-      "Classic twist pile carpet roll ends in Bradford — versatile, durable and competitively priced.",
+      "Classic twist pile carpet roll ends in Bradford - versatile, durable and competitively priced.",
   },
   {
     slug: "wool-carpet-remnants-bradford",

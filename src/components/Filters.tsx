@@ -61,7 +61,7 @@ export function Filters({
 
       <div className="block">
         <span className="text-xs font-black uppercase tracking-wider text-mid block mb-1">
-          Room size (m) — length × width
+          Room size (m) - length × width
         </span>
         <div className="flex items-center gap-2">
           <input

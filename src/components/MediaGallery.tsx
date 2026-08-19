@@ -183,7 +183,7 @@ function Lightbox({
     setOffset({ x: 0, y: 0 });
   }, []);
 
-  // Always open (and switch) at 100% — fully visible, never pre-zoomed.
+  // Always open (and switch) at 100% - fully visible, never pre-zoomed.
   useEffect(() => {
     setScale(1);
     setOffset({ x: 0, y: 0 });

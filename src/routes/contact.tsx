@@ -9,7 +9,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: `Contact — ${SITE.shortName}` },
+      { title: `Contact - ${SITE.shortName}` },
       {
         name: "description",
         content: `Visit ${SITE.name} at ${SITE.address.full}. Call ${SITE.phone} or email ${SITE.email}.`,
@@ -32,7 +32,7 @@ function ContactPage() {
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
       <h1 className="text-3xl md:text-4xl font-black mt-6">Get in touch</h1>
       <p className="text-mid mt-2 max-w-2xl">
-        Call or pop into the shop. We're happy to talk you through what's in stock — roll ends are
+        Call or pop into the shop. We're happy to talk you through what's in stock - roll ends are
         reserved once paid for and collected from our Valley Road store.
       </p>
 
@@ -65,7 +65,7 @@ function ContactPage() {
           <div className="card-surface p-6">
             <h2 className="font-black text-lg mb-2">Make an enquiry</h2>
             <p className="text-sm text-mid mb-4">
-              Choose what suits you — we usually respond the same day.
+              Choose what suits you - we usually respond the same day.
             </p>
             <EnquireButtons />
           </div>
