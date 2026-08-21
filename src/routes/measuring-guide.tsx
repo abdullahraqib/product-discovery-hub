@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Printer, Ruler } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/measuring-guide")({
   head: () => ({
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/measuring-guide")({
         content:
           "Step-by-step guide to measuring rooms, doorways, bays and stairs for carpet - with the extra allowances you need for a perfect fit.",
       },
-      { property: "og:url", content: "/measuring-guide" },
+      { property: "og:url", content: absUrl("/measuring-guide") },
     ],
-    links: [{ rel: "canonical", href: "/measuring-guide" }],
+    links: [{ rel: "canonical", href: absUrl("/measuring-guide") }],
   }),
   component: GuidePage,
 });

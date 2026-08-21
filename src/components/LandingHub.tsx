@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EnquireButtons } from "@/components/EnquireButtons";
 import type { LandingHub as Hub } from "@/data/landing";
 import { LANDING_HUBS } from "@/data/landing";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 
 export function LandingHub({ hub }: { hub: Hub }) {
   const { data: products = [], isLoading } = useQuery(productsQuery());
@@ -133,10 +133,10 @@ export function hubHead(hub: Hub) {
       { name: "description", content: hub.description },
       { property: "og:title", content: hub.title },
       { property: "og:description", content: hub.description },
-      { property: "og:url", content: hub.slug },
+      { property: "og:url", content: absUrl(hub.slug) },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: hub.slug }],
+    links: [{ rel: "canonical", href: absUrl(hub.slug) }],
     scripts: [
       {
         type: "application/ld+json",
@@ -145,8 +145,8 @@ export function hubHead(hub: Hub) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-              { "@type": "ListItem", position: 2, name: hub.breadcrumb, item: hub.slug },
+              { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
+              { "@type": "ListItem", position: 2, name: hub.breadcrumb, item: absUrl(hub.slug) },
             ],
           },
           {

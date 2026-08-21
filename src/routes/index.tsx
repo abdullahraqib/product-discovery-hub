@@ -13,7 +13,7 @@ import { LocationMap } from "@/components/LocationMap";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { EnquireButtons } from "@/components/EnquireButtons";
 import { PromoBanner } from "@/components/PromoBanner";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 import { FAQS } from "@/data/faqs";
 
 export const Route = createFileRoute("/")({
@@ -23,9 +23,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Carpet roll ends, remnants, offcuts and end of line carpets at clearance prices. 4m & 5m widths, up to 70% off, new stock weekly at our Bradford outlet." },
       { property: "og:title", content: `Carpet Roll Ends, Remnants & Offcuts - ${SITE.name}` },
       { property: "og:description", content: "Cheap carpet roll ends, remnants and end of line carpets at clearance prices. First come, first served at our Bradford outlet." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: absUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absUrl("/") }],
     scripts: [
       {
         type: "application/ld+json",

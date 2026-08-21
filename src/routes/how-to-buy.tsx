@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EnquireButtons } from "@/components/EnquireButtons";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 import { ShoppingBag, ClipboardList, Phone } from "lucide-react";
 
 export const Route = createFileRoute("/how-to-buy")({
@@ -15,9 +15,9 @@ export const Route = createFileRoute("/how-to-buy")({
       },
       { property: "og:title", content: `How to Buy - ${SITE.shortName}` },
       { property: "og:description", content: "Three simple steps to grab a bargain carpet roll end." },
-      { property: "og:url", content: "/how-to-buy" },
+      { property: "og:url", content: absUrl("/how-to-buy") },
     ],
-    links: [{ rel: "canonical", href: "/how-to-buy" }],
+    links: [{ rel: "canonical", href: absUrl("/how-to-buy") }],
   }),
   component: HowToBuyPage,
 });

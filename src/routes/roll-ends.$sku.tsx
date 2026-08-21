@@ -11,7 +11,7 @@ import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { SizeDropdown } from "@/components/SizeDropdown";
 import { addRecentlyViewed } from "@/lib/recently-viewed";
 import { track } from "@/lib/analytics";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 import { isVideo, firstImage } from "@/lib/media";
 import { Phone } from "lucide-react";
 
@@ -35,12 +35,12 @@ export const Route = createFileRoute("/roll-ends/$sku")({
         },
         { property: "og:title", content: `${p.name} - ${SITE.shortName}` },
         { property: "og:description", content: p.description },
-        { property: "og:url", content: url },
+        { property: "og:url", content: absUrl(url) },
         { property: "og:type", content: "product" },
         { property: "og:image", content: firstImage(p.images) ?? "" },
         { name: "twitter:image", content: firstImage(p.images) ?? "" },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: [{ rel: "canonical", href: absUrl(url) }],
       scripts: [
         {
           type: "application/ld+json",

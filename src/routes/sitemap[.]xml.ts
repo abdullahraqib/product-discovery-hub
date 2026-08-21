@@ -2,24 +2,42 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import { CATEGORIES } from "@/data/products";
 import { LANDING_HUBS } from "@/data/landing";
+import { SITE } from "@/lib/site";
+
+type Entry = { path: string; changefreq: string; priority: string };
+
+async function fetchSkus(): Promise<string[]> {
+  const url = process.env["SUPABASE_URL"] ?? process.env["VITE_SUPABASE_URL"];
+  const key =
+    process.env["SUPABASE_PUBLISHABLE_KEY"] ?? process.env["VITE_SUPABASE_PUBLISHABLE_KEY"];
+  if (!url || !key) return [];
+  try {
+    const supabase = createClient(url, key, {
+      auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+    });
+    const { data, error } = await supabase
+      .from("products")
+      .select("sku")
+      .eq("is_active", true)
+      .order("date_added", { ascending: false });
+    if (error) return [];
+    return (data ?? []).map((r: { sku: string }) => r.sku).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async ({ request }) => {
-        const origin = new URL(request.url).origin;
-        const supabase = createClient(
-          process.env.SUPABASE_URL!,
-          process.env.SUPABASE_PUBLISHABLE_KEY!,
-          { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } },
-        );
-        const { data } = await supabase.from("products").select("sku").eq("is_active", true);
-        const skus = (data ?? []).map((r) => r.sku);
+      GET: async () => {
+        const base = SITE.url.replace(/\/$/, "");
+        const skus = await fetchSkus();
 
-        const entries: { path: string; changefreq?: string; priority?: string }[] = [
+        const entries: Entry[] = [
           { path: "/", changefreq: "daily", priority: "1.0" },
           ...Object.values(LANDING_HUBS).map((h) => ({
-            path: h.slug,
+            path: h.slug.startsWith("/") ? h.slug : `/${h.slug}`,
             changefreq: "daily",
             priority: "0.9",
           })),
@@ -33,16 +51,18 @@ export const Route = createFileRoute("/sitemap.xml")({
             priority: "0.7",
           })),
           ...skus.map((sku) => ({
-            path: `/roll-ends/${sku}`,
+            path: `/roll-ends/${encodeURIComponent(sku)}`,
             changefreq: "weekly",
             priority: "0.8",
           })),
         ];
 
+        const seen = new Set<string>();
         const urls = entries
+          .filter((e) => (seen.has(e.path) ? false : (seen.add(e.path), true)))
           .map(
             (e) =>
-              `  <url>\n    <loc>${origin}${e.path}</loc>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
+              `  <url>\n    <loc>${base}${e.path}</loc>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
           )
           .join("\n");
 
@@ -50,7 +70,7 @@ export const Route = createFileRoute("/sitemap.xml")({
 
         return new Response(xml, {
           headers: {
-            "Content-Type": "application/xml",
+            "Content-Type": "application/xml; charset=utf-8",
             "Cache-Control": "public, max-age=3600",
           },
         });

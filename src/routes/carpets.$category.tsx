@@ -6,7 +6,7 @@ import { ProductCard, ProductCardSkeleton } from "@/components/ProductCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 import { EnquireButtons } from "@/components/EnquireButtons";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/carpets/$category")({
   loader: ({ params }) => {
@@ -24,9 +24,9 @@ export const Route = createFileRoute("/carpets/$category")({
         { name: "description", content: cat.description },
         { property: "og:title", content: `${cat.name} - ${SITE.shortName}` },
         { property: "og:description", content: cat.description },
-        { property: "og:url", content: url },
+        { property: "og:url", content: absUrl(url) },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: [{ rel: "canonical", href: absUrl(url) }],
     };
   },
   notFoundComponent: () => (
