@@ -1,4 +1,5 @@
 export const SITE = {
+  url: "https://www.rollendshop.co.uk",
   name: "RollEndShop",
   shortName: "RollEndShop",
   tagline: "Bradford's Best Roll Ends",
@@ -43,4 +44,10 @@ export function emailEnquiryLink(productName?: string, sku?: string) {
     ? `Hi RollEndShop,\n\nI'd like to enquire about: ${productName}${sku ? ` (Ref: ${sku})` : ""}.\n\nPlease could you confirm availability and let me know the next steps.\n\nThanks,\n`
     : `Hi RollEndShop,\n\nI'd like to enquire about a roll end.\n\nThanks,\n`;
   return `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+
+/** Absolute canonical URL for a site-relative path. */
+export function absUrl(path: string) {
+  return `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
 }

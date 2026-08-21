@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Printer, Ruler } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/measuring-guide")({
   head: () => ({
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/measuring-guide")({
       },
       { property: "og:url", content: "/measuring-guide" },
     ],
-    links: [{ rel: "canonical", href: "/measuring-guide" }],
+    links: [{ rel: "canonical", href: absUrl("/measuring-guide") }],
   }),
   component: GuidePage,
 });

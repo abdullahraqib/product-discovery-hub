@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { OpeningHours } from "@/components/OpeningHours";
 import { LocationMap } from "@/components/LocationMap";
 import { EnquireButtons } from "@/components/EnquireButtons";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:url", content: "/contact" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: absUrl("/contact") }],
   }),
   component: ContactPage,
 });

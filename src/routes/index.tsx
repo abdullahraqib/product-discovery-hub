@@ -13,7 +13,7 @@ import { LocationMap } from "@/components/LocationMap";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { EnquireButtons } from "@/components/EnquireButtons";
 import { PromoBanner } from "@/components/PromoBanner";
-import { SITE } from "@/lib/site";
+import { SITE, absUrl } from "@/lib/site";
 import { FAQS } from "@/data/faqs";
 
 export const Route = createFileRoute("/")({
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Cheap carpet roll ends, remnants and end of line carpets at clearance prices. First come, first served at our Bradford outlet." },
       { property: "og:url", content: "/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absUrl("/") }],
     scripts: [
       {
         type: "application/ld+json",
