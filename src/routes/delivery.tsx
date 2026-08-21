@@ -15,7 +15,7 @@ export const Route = createFileRoute("/delivery")({
       },
       { property: "og:title", content: `Delivery & Collection - ${SITE.shortName}` },
       { property: "og:description", content: "Collection from Bradford or delivery arranged by phone." },
-      { property: "og:url", content: "/delivery" },
+      { property: "og:url", content: absUrl("/delivery") },
     ],
     links: [{ rel: "canonical", href: absUrl("/delivery") }],
   }),

@@ -15,7 +15,7 @@ export const Route = createFileRoute("/how-to-buy")({
       },
       { property: "og:title", content: `How to Buy - ${SITE.shortName}` },
       { property: "og:description", content: "Three simple steps to grab a bargain carpet roll end." },
-      { property: "og:url", content: "/how-to-buy" },
+      { property: "og:url", content: absUrl("/how-to-buy") },
     ],
     links: [{ rel: "canonical", href: absUrl("/how-to-buy") }],
   }),

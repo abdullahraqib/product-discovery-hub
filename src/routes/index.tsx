@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Carpet roll ends, remnants, offcuts and end of line carpets at clearance prices. 4m & 5m widths, up to 70% off, new stock weekly at our Bradford outlet." },
       { property: "og:title", content: `Carpet Roll Ends, Remnants & Offcuts - ${SITE.name}` },
       { property: "og:description", content: "Cheap carpet roll ends, remnants and end of line carpets at clearance prices. First come, first served at our Bradford outlet." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: absUrl("/") },
     ],
     links: [{ rel: "canonical", href: absUrl("/") }],
     scripts: [

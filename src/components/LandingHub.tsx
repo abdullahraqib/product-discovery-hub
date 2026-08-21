@@ -145,8 +145,8 @@ export function hubHead(hub: Hub) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "/" },
-              { "@type": "ListItem", position: 2, name: hub.breadcrumb, item: hub.slug },
+              { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
+              { "@type": "ListItem", position: 2, name: hub.breadcrumb, item: absUrl(hub.slug) },
             ],
           },
           {

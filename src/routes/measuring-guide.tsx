@@ -18,7 +18,7 @@ export const Route = createFileRoute("/measuring-guide")({
         content:
           "Step-by-step guide to measuring rooms, doorways, bays and stairs for carpet - with the extra allowances you need for a perfect fit.",
       },
-      { property: "og:url", content: "/measuring-guide" },
+      { property: "og:url", content: absUrl("/measuring-guide") },
     ],
     links: [{ rel: "canonical", href: absUrl("/measuring-guide") }],
   }),
