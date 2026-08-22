@@ -5,7 +5,8 @@ import { productsQuery } from "@/lib/products";
 
 const hub = LANDING_HUBS["carpet-offcuts"]!;
 
-export const Route = createFileRoute("/carpet-offcuts")  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery()),
+export const Route = createFileRoute("/carpet-offcuts")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery()),
   head: () => hubHead(hub),
   component: () => <LandingHub hub={hub} />,
 });
