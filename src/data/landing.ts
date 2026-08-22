@@ -22,7 +22,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     h1: "Carpet Roll Ends",
     title: `Carpet Roll Ends - Huge Clearance Stock | ${SITE.name}`,
     description:
-      "Browse hundreds of carpet roll ends at clearance prices. 4m and 5m widths, wool, twist, saxony and berber. New roll ends in every week at our Bradford outlet.",
+      "Browse hundreds of carpet roll ends at clearance prices. 4m and 5m widths, wool, twist, saxony and berber. New roll ends in every week at our Yorkshire outlet.",
     intro:
       "A roll end is the last piece left on a carpet roll - same carpet, same quality, a fraction of the price. Every roll end below is in stock right now, priced by the piece, and sold first come, first served.",
     sections: [
@@ -65,7 +65,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     h1: "Carpet Remnants",
     title: `Carpet Remnants - Cheap Remnant Carpet in Stock | ${SITE.name}`,
     description:
-      "Cheap carpet remnants in stock now - wool, twist, saxony and berber remnants in 4m and 5m widths at up to 70% off. Bradford carpet remnant specialists.",
+      "Cheap carpet remnants in stock now - wool, twist, saxony and berber remnants in 4m and 5m widths at up to 70% off. Yorkshire carpet remnant specialists.",
     intro:
       "Carpet remnants are the leftover pieces from full rolls, sold off at clearance prices. We hold one of the biggest remnant stocks in Yorkshire, with new pieces arriving weekly.",
     sections: [
@@ -104,9 +104,9 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/cheap-carpets",
     breadcrumb: "Cheap Carpets",
     h1: "Cheap Carpets",
-    title: `Cheap Carpets in Bradford - Clearance Prices | ${SITE.name}`,
+    title: `Cheap Carpets in Yorkshire - Clearance Prices | ${SITE.name}`,
     description:
-      "Cheap carpets in Bradford without cheap quality. Branded roll ends, remnants and end of line carpet at clearance prices, in 4m and 5m widths. In stock today.",
+      "Cheap carpets in Yorkshire without cheap quality. Branded roll ends, remnants and end of line carpet at clearance prices, in 4m and 5m widths. In stock today.",
     intro:
       "Cheap carpet does not have to mean poor carpet. Everything we sell is quality carpet from full rolls - priced low because it is a roll end, a remnant or an end of line range.",
     sections: [
@@ -148,7 +148,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     h1: "End of Line Carpets",
     title: `End of Line Carpets - Discontinued Ranges Cleared | ${SITE.name}`,
     description:
-      "End of line and discontinued carpet cleared at outlet prices. Quality wool, twist and saxony ranges in 4m and 5m widths, in stock at our Bradford outlet.",
+      "End of line and discontinued carpet cleared at outlet prices. Quality wool, twist and saxony ranges in 4m and 5m widths, in stock at our Yorkshire outlet.",
     intro:
       "End of line carpet is stock from ranges the mills have discontinued. Nothing wrong with it - it simply is not being made any more, so it has to clear.",
     sections: [
@@ -188,7 +188,7 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     h1: "Carpet Offcuts",
     title: `Carpet Offcuts For Sale - Cheap Offcut Carpet | ${SITE.name}`,
     description:
-      "Carpet offcuts for sale from £ per piece. Small and large offcuts in 4m and 5m widths - ideal for bedrooms, stairs, vans, rugs and rentals. Bradford outlet.",
+      "Carpet offcuts for sale from £ per piece. Small and large offcuts in 4m and 5m widths - ideal for bedrooms, stairs, vans, rugs and rentals. Yorkshire outlet.",
     intro:
       "Carpet offcuts are the pieces trimmed from full rolls. We measure, price and list every one, so you can grab exactly the size you need for a fraction of the full price.",
     sections: [
