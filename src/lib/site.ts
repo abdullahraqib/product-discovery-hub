@@ -2,9 +2,9 @@ export const SITE = {
   url: "https://www.rollendshop.co.uk",
   name: "RollEndShop",
   shortName: "RollEndShop",
-  tagline: "Bradford's Best Roll Ends",
+  tagline: "Yorkshire's Best Roll Ends",
   description:
-    "Quality carpet roll ends and off-cuts in Bradford. 4m & 5m widths, all styles, unbeatable prices. A family business with half a century of carpet experience.",
+    "Quality carpet roll ends and off-cuts across the north of England. 4m & 5m widths, all styles, unbeatable prices. A family business with half a century of carpet experience.",
   phone: "01274 057433",
   phoneTel: "tel:01274057433",
   email: "info@srcarpetsandfloors.co.uk",

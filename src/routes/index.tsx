@@ -19,10 +19,10 @@ import { FAQS } from "@/data/faqs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Carpet Roll Ends & Remnants | Cheap Carpets Bradford" },
-      { name: "description", content: "Carpet roll ends, remnants, offcuts and end of line carpets at clearance prices. 4m & 5m widths, up to 70% off, new stock weekly at our Bradford outlet." },
-      { property: "og:title", content: `Carpet Roll Ends, Remnants & Offcuts - ${SITE.name}` },
-      { property: "og:description", content: "Cheap carpet roll ends, remnants and end of line carpets at clearance prices. First come, first served at our Bradford outlet." },
+      { title: "Mega Value Carpet Roll End Outlet - Yorkshire" },
+      { name: "description", content: "Carpet roll ends, remnants, offcuts and end of line carpets at clearance prices. 4m & 5m widths, up to 70% off, new stock weekly. Delivery across the north of England." },
+      { property: "og:title", content: `Mega Value Carpet Roll End Outlet - ${SITE.name}` },
+      { property: "og:description", content: "Cheap carpet roll ends, remnants and end of line carpets at clearance prices. First come, first served. Delivery across the north of England." },
       { property: "og:url", content: absUrl("/") },
     ],
     links: [{ rel: "canonical", href: absUrl("/") }],
