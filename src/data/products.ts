@@ -100,25 +100,25 @@ export function widthOptionsFrom(products: Product[]) {
 export const CATEGORIES: { slug: string; name: string; description: string }[] = [
   {
     slug: "saxony-carpets-bradford",
-    name: "Saxony Carpets in Bradford",
+    name: "Saxony Carpets",
     description:
-      "Discover luxurious saxony carpet roll ends in Bradford. Deep, soft pile with massive discounts on premium wool blends.",
+      "Discover luxurious saxony carpet roll ends across the north of England. Deep, soft pile with massive discounts on premium wool blends.",
   },
   {
     slug: "berber-loop-carpets-bradford",
-    name: "Berber Loop Carpets in Bradford",
+    name: "Berber Loop Carpets",
     description:
-      "Hard-wearing berber loop carpet roll ends. Perfect for hallways, stairs and high-traffic rooms across Bradford.",
+      "Hard-wearing berber loop carpet roll ends. Perfect for hallways, stairs and high-traffic rooms across the north of England.",
   },
   {
     slug: "twist-pile-carpets-bradford",
-    name: "Twist Pile Carpets in Bradford",
+    name: "Twist Pile Carpets",
     description:
-      "Classic twist pile carpet roll ends in Bradford - versatile, durable and competitively priced.",
+      "Classic twist pile carpet roll ends - versatile, durable and competitively priced.",
   },
   {
     slug: "wool-carpet-remnants-bradford",
-    name: "Wool Carpet Remnants in Bradford",
+    name: "Wool Carpet Remnants",
     description:
       "Premium wool blend carpet remnants and off-cuts. Half a century of carpet expertise behind every roll.",
   },
