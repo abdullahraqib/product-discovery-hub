@@ -17,6 +17,7 @@ import { SITE, absUrl } from "@/lib/site";
 import { FAQS } from "@/data/faqs";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery()),
   head: () => ({
     meta: [
       { title: "Mega Value Carpet Roll End Outlet - Yorkshire" },

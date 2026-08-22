@@ -9,9 +9,10 @@ import { EnquireButtons } from "@/components/EnquireButtons";
 import { SITE, absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/carpets/$category")({
-  loader: ({ params }) => {
+  loader: async ({ params, context }) => {
     const cat = CATEGORIES.find((c) => c.slug === params.category);
     if (!cat) throw notFound();
+    await context.queryClient.ensureQueryData(productsQuery());
     return { cat };
   },
   head: ({ loaderData }) => {
