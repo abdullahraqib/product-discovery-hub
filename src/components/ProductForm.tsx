@@ -217,7 +217,11 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   function addImageUrl() {
     const u = imageUrl.trim();
     if (!u) return;
-    setP((prev) => ({ ...prev, images: [...prev.images, u], imageAlts: [...prev.imageAlts, ""] }));
+    setP((prev) => ({
+      ...prev,
+      images: [...prev.images, u],
+      imageAlts: [...prev.imageAlts, generateAltText(prev, prev.images.length, isVideo(u))],
+    }));
     setImageUrl("");
   }
 
@@ -237,6 +241,23 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
       return { ...prev, imageAlts: next };
     });
   }
+
+  function regenerateAlt(i: number) {
+    setP((prev) => {
+      const next = [...prev.imageAlts];
+      while (next.length < prev.images.length) next.push("");
+      next[i] = generateAltText(prev, i, isVideo(prev.images[i] ?? ""));
+      return { ...prev, imageAlts: next };
+    });
+  }
+
+  function regenerateAllAlts() {
+    setP((prev) => ({
+      ...prev,
+      imageAlts: prev.images.map((src, i) => generateAltText(prev, i, isVideo(src))),
+    }));
+  }
+
 
   async function save(e: React.FormEvent) {
     e.preventDefault();
