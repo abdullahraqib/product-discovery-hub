@@ -5,7 +5,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { type Product, type Size } from "@/data/products";
 import { Trash2, Plus, Upload, Crop, ArrowUp, ArrowDown } from "lucide-react";
 import { isVideo } from "@/lib/media";
+import { generateAltText } from "@/lib/alt-text";
 import ImageCropper from "@/components/ImageCropper";
+
 
 type Mode = "create" | "edit";
 
