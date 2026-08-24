@@ -235,6 +235,12 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
           `Each offcut is priced individually by the square metre rate of that carpet. Note the reference number beside the price and ${CALL} to pay and reserve. Collection from ${SITE.address.full}.`,
         ],
       },
+      {
+        h2: "How much do carpet offcuts cost?",
+        body: [
+          "Because off cuts are priced by the square metre rate of that particular carpet, a small bedroom piece can cost less than a takeaway while a lounge-sized off cut still lands well under half the full-roll price. Typical savings run from 40% to 70%.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -245,6 +251,56 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
         q: "Can I get a carpet offcut bound into a rug?",
         a: `Ask when you call on ${SITE.phone} and we will let you know what is possible.`,
       },
+      {
+        q: "Where can I buy carpet offcuts near me?",
+        a: `Our outlet is at ${SITE.address.full}, and we deliver carpet offcuts across the north of England. Everything listed online is what is on the floor today.`,
+      },
+    ],
+  },
+  "carpet-outlet": {
+    slug: "/carpet-outlet",
+    breadcrumb: "Carpet Outlet",
+    h1: "Carpet Outlet",
+    title: `Carpet Outlet - Clearance Carpet Warehouse | ${SITE.name}`,
+    description:
+      "A proper carpet outlet: roll ends, remnants, offcuts and end of line carpet cleared at warehouse prices. In stock today in Bradford, delivery across the north.",
+    intro:
+      "We are a carpet outlet, not a showroom. One warehouse full of roll ends, remnants, offcuts and end of line stock, all priced to clear and all available to take away today.",
+    sections: [
+      {
+        h2: "What is a carpet outlet?",
+        body: [
+          "A carpet outlet buys surplus stock - roll ends, remnants and discontinued ranges - and clears it at a fraction of high street pricing. There is no showroom mark-up, no ordering wait and no minimum quantity: you see the piece, you see the price, you take it home.",
+        ],
+      },
+      {
+        h2: "What you'll find in our outlet",
+        body: [
+          "Hard-wearing twist and berber loop for stairs and hallways, deep saxony and wool blends for bedrooms and lounges, and budget felt-backed carpet for rentals and quick refreshes. Widths are mainly 4m and 5m with lengths from around 2m upwards.",
+          "Stock changes every week, so the online list is the best way to see what is on the floor right now.",
+        ],
+      },
+      {
+        h2: "Visiting the outlet",
+        body: [
+          `Find us at ${SITE.address.full}, open seven days. Come and see the piece, or ${CALL} with the reference number shown next to the price to pay and reserve it before you travel.`,
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Where is your carpet outlet?",
+        a: `${SITE.address.full} - just off Forster Square in Bradford, with parking outside. We deliver across the north of England.`,
+      },
+      {
+        q: "Is outlet carpet the same quality as high street carpet?",
+        a: "Yes. It comes from the same mills and the same rolls - the discount comes from fixed lengths and discontinued ranges, not from lower quality.",
+      },
+      {
+        q: "Do I need an appointment to visit the carpet outlet?",
+        a: `No, just turn up during opening hours. If you have seen something online, call ${SITE.phone} first so we can check it is still there.`,
+      },
     ],
   },
 };
+
