@@ -209,11 +209,12 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/carpet-offcuts",
     breadcrumb: "Carpet Offcuts",
     h1: "Carpet Offcuts",
-    title: `Carpet Offcuts For Sale - Cheap Offcut Carpet | ${SITE.name}`,
+    title: `Carpet Offcuts For Sale - Cheap Carpet Off Cuts | ${SITE.name}`,
     description:
-      "Carpet offcuts for sale from £ per piece. Small and large offcuts in 4m and 5m widths - ideal for bedrooms, stairs, vans, rugs and rentals. Yorkshire outlet.",
+      "Carpet offcuts for sale at outlet prices. Small and large off cuts in 4m and 5m widths - ideal for bedrooms, stairs, vans, rugs and rentals. New offcuts weekly.",
     intro:
-      "Carpet offcuts are the pieces trimmed from full rolls. We measure, price and list every one, so you can grab exactly the size you need for a fraction of the full price.",
+      "Carpet offcuts are the pieces trimmed from full rolls, sold off cheap. We measure, price and photograph every off cut, so you can grab exactly the size you need for a fraction of the full price.",
+
     sections: [
       {
         h2: "What are carpet offcuts used for?",
