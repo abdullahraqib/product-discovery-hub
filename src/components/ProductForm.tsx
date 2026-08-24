@@ -369,6 +369,17 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
       </Section>
 
       <Section title="Photos & videos">
+        {p.images.length > 0 && (
+          <div className="flex justify-end mb-2">
+            <button
+              type="button"
+              onClick={regenerateAllAlts}
+              className="inline-flex items-center gap-1 text-xs font-black uppercase tracking-wider px-2 py-1 rounded border-2 border-border"
+            >
+              <Wand2 size={12} /> Regenerate all alt text
+            </button>
+          </div>
+        )}
         <div className="space-y-3">
           {p.images.map((src, i) => (
             <div key={src + i} className="flex items-start gap-3 bg-secondary rounded-md p-2">
@@ -384,16 +395,28 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
                   </span>
                   {src}
                 </div>
-                <input
-                  type="text"
-                  value={p.imageAlts[i] ?? ""}
-                  onChange={(e) => setImageAlt(i, e.target.value)}
-                  maxLength={200}
-                  placeholder={`Alt text (describe this ${isVideo(src) ? "video" : "image"}) - defaults to product name`}
-                  className="w-full px-3 py-2 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
-                  aria-label={`Alt text for ${isVideo(src) ? "video" : "image"} ${i + 1}`}
-                />
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={p.imageAlts[i] ?? ""}
+                    onChange={(e) => setImageAlt(i, e.target.value)}
+                    maxLength={200}
+                    placeholder={`Alt text (describe this ${isVideo(src) ? "video" : "image"}) - defaults to product name`}
+                    className="w-full px-3 py-2 text-sm font-bold border-2 border-border rounded-md focus:border-brand outline-none bg-white"
+                    aria-label={`Alt text for ${isVideo(src) ? "video" : "image"} ${i + 1}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => regenerateAlt(i)}
+                    className="shrink-0 text-mid hover:text-brand"
+                    aria-label={`Auto-generate alt text for ${isVideo(src) ? "video" : "image"} ${i + 1}`}
+                    title="Auto-generate SEO alt text"
+                  >
+                    <Wand2 size={16} />
+                  </button>
+                </div>
               </div>
+
               <div className="flex flex-col items-center gap-2 mt-1">
                 <div className="flex gap-1">
                   <button
