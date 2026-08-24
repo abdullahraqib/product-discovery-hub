@@ -48,6 +48,19 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
           `Found one you like? Note the reference number shown next to the price and ${CALL} to pay and reserve it.`,
         ],
       },
+      {
+        h2: "Roll end carpets vs buying off the roll",
+        body: [
+          "Buying roll end carpets means you are paying for the exact piece in front of you rather than a cut from a fresh roll plus wastage. For a single room that almost always works out cheaper, and you can take it away the same day instead of waiting for an order to come in.",
+          "The trade-off is choice: each roll end carpet is a one-off, so if a colour and size combination suits you, it is worth reserving quickly.",
+        ],
+      },
+      {
+        h2: "Where we deliver roll ends",
+        body: [
+          "Collection is from our Bradford outlet, and we deliver carpet roll ends across the north of England - Leeds, Manchester, Liverpool, Sheffield, York, Hull, Huddersfield, Halifax and Wakefield included.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -58,7 +71,16 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
         q: "How often do you get new roll ends in?",
         a: "New roll ends land every week. Our online stock list is updated as pieces come in and sell, so it always reflects what is actually on the floor.",
       },
+      {
+        q: "What is the difference between a roll end and a roll end carpet?",
+        a: "Nothing - they are the same thing. A roll end carpet is simply the piece left at the end of a carpet roll, sold as one fixed-size piece at a clearance price.",
+      },
+      {
+        q: "How big are your carpet roll ends?",
+        a: "Widths are almost always 4m or 5m, with lengths from around 2m up to 12m or more. Each listing shows the exact length x width and price for that piece.",
+      },
     ],
+
   },
   "carpet-remnants": {
     slug: "/carpet-remnants",
