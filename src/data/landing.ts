@@ -19,12 +19,13 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
   "roll-ends": {
     slug: "/roll-ends",
     breadcrumb: "Carpet Roll Ends",
-    h1: "Carpet Roll Ends",
-    title: `Carpet Roll Ends - Huge Clearance Stock | ${SITE.name}`,
+    h1: "Carpet Roll Ends & Roll End Carpets",
+    title: `Carpet Roll Ends - Roll End Carpets Cleared | ${SITE.name}`,
     description:
-      "Browse hundreds of carpet roll ends at clearance prices. 4m and 5m widths, wool, twist, saxony and berber. New roll ends in every week at our Yorkshire outlet.",
+      "Carpet roll ends and roll end carpets at clearance prices. Hundreds of pieces in 4m and 5m widths - wool, twist, saxony and berber. New roll ends in weekly.",
     intro:
-      "A roll end is the last piece left on a carpet roll - same carpet, same quality, a fraction of the price. Every roll end below is in stock right now, priced by the piece, and sold first come, first served.",
+      "A carpet roll end is the last piece left on a roll - same carpet, same quality, a fraction of the price. Every roll end carpet below is in stock right now, priced by the piece, and sold first come, first served.",
+
     sections: [
       {
         h2: "What is a carpet roll end?",
