@@ -191,10 +191,14 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           return {
             ...prev,
             images: [...prev.images, signedUrl],
-            imageAlts: [...prev.imageAlts, ""],
+            imageAlts: [
+              ...prev.imageAlts,
+              generateAltText(prev, prev.images.length, isVideo(signedUrl)),
+            ],
           };
         });
       }
+
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
