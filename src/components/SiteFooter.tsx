@@ -151,6 +151,12 @@ export function SiteFooter() {
                 End of Line Carpets
               </Link>
             </li>
+            <li>
+              <Link to="/carpet-outlet" className="hover:text-white">
+                Carpet Outlet
+              </Link>
+            </li>
+
           </ul>
         </div>
       </div>

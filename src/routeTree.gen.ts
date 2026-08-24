@@ -18,6 +18,7 @@ import { Route as DeliveryRouteImport } from './routes/delivery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheapCarpetsRouteImport } from './routes/cheap-carpets'
 import { Route as CarpetRemnantsRouteImport } from './routes/carpet-remnants'
+import { Route as CarpetOutletRouteImport } from './routes/carpet-outlet'
 import { Route as CarpetOffcutsRouteImport } from './routes/carpet-offcuts'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -77,6 +78,11 @@ const CheapCarpetsRoute = CheapCarpetsRouteImport.update({
 const CarpetRemnantsRoute = CarpetRemnantsRouteImport.update({
   id: '/carpet-remnants',
   path: '/carpet-remnants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarpetOutletRoute = CarpetOutletRouteImport.update({
+  id: '/carpet-outlet',
+  path: '/carpet-outlet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CarpetOffcutsRoute = CarpetOffcutsRouteImport.update({
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/carpet-offcuts': typeof CarpetOffcutsRoute
+  '/carpet-outlet': typeof CarpetOutletRoute
   '/carpet-remnants': typeof CarpetRemnantsRoute
   '/cheap-carpets': typeof CheapCarpetsRoute
   '/contact': typeof ContactRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/carpet-offcuts': typeof CarpetOffcutsRoute
+  '/carpet-outlet': typeof CarpetOutletRoute
   '/carpet-remnants': typeof CarpetRemnantsRoute
   '/cheap-carpets': typeof CheapCarpetsRoute
   '/contact': typeof ContactRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/carpet-offcuts': typeof CarpetOffcutsRoute
+  '/carpet-outlet': typeof CarpetOutletRoute
   '/carpet-remnants': typeof CarpetRemnantsRoute
   '/cheap-carpets': typeof CheapCarpetsRoute
   '/contact': typeof ContactRoute
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/carpet-offcuts'
+    | '/carpet-outlet'
     | '/carpet-remnants'
     | '/cheap-carpets'
     | '/contact'
@@ -264,6 +274,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/carpet-offcuts'
+    | '/carpet-outlet'
     | '/carpet-remnants'
     | '/cheap-carpets'
     | '/contact'
@@ -289,6 +300,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/carpet-offcuts'
+    | '/carpet-outlet'
     | '/carpet-remnants'
     | '/cheap-carpets'
     | '/contact'
@@ -316,6 +328,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   CarpetOffcutsRoute: typeof CarpetOffcutsRoute
+  CarpetOutletRoute: typeof CarpetOutletRoute
   CarpetRemnantsRoute: typeof CarpetRemnantsRoute
   CheapCarpetsRoute: typeof CheapCarpetsRoute
   ContactRoute: typeof ContactRoute
@@ -397,6 +410,13 @@ declare module '@tanstack/react-router' {
       path: '/carpet-remnants'
       fullPath: '/carpet-remnants'
       preLoaderRoute: typeof CarpetRemnantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carpet-outlet': {
+      id: '/carpet-outlet'
+      path: '/carpet-outlet'
+      fullPath: '/carpet-outlet'
+      preLoaderRoute: typeof CarpetOutletRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/carpet-offcuts': {
@@ -538,6 +558,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   CarpetOffcutsRoute: CarpetOffcutsRoute,
+  CarpetOutletRoute: CarpetOutletRoute,
   CarpetRemnantsRoute: CarpetRemnantsRoute,
   CheapCarpetsRoute: CheapCarpetsRoute,
   ContactRoute: ContactRoute,

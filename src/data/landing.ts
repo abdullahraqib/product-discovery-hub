@@ -19,12 +19,13 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
   "roll-ends": {
     slug: "/roll-ends",
     breadcrumb: "Carpet Roll Ends",
-    h1: "Carpet Roll Ends",
-    title: `Carpet Roll Ends - Huge Clearance Stock | ${SITE.name}`,
+    h1: "Carpet Roll Ends & Roll End Carpets",
+    title: `Carpet Roll Ends - Roll End Carpets Cleared | ${SITE.name}`,
     description:
-      "Browse hundreds of carpet roll ends at clearance prices. 4m and 5m widths, wool, twist, saxony and berber. New roll ends in every week at our Yorkshire outlet.",
+      "Carpet roll ends and roll end carpets at clearance prices. Hundreds of pieces in 4m and 5m widths - wool, twist, saxony and berber. New roll ends in weekly.",
     intro:
-      "A roll end is the last piece left on a carpet roll - same carpet, same quality, a fraction of the price. Every roll end below is in stock right now, priced by the piece, and sold first come, first served.",
+      "A carpet roll end is the last piece left on a roll - same carpet, same quality, a fraction of the price. Every roll end carpet below is in stock right now, priced by the piece, and sold first come, first served.",
+
     sections: [
       {
         h2: "What is a carpet roll end?",
@@ -47,6 +48,19 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
           `Found one you like? Note the reference number shown next to the price and ${CALL} to pay and reserve it.`,
         ],
       },
+      {
+        h2: "Roll end carpets vs buying off the roll",
+        body: [
+          "Buying roll end carpets means you are paying for the exact piece in front of you rather than a cut from a fresh roll plus wastage. For a single room that almost always works out cheaper, and you can take it away the same day instead of waiting for an order to come in.",
+          "The trade-off is choice: each roll end carpet is a one-off, so if a colour and size combination suits you, it is worth reserving quickly.",
+        ],
+      },
+      {
+        h2: "Where we deliver roll ends",
+        body: [
+          "Collection is from our Bradford outlet, and we deliver carpet roll ends across the north of England - Leeds, Manchester, Liverpool, Sheffield, York, Hull, Huddersfield, Halifax and Wakefield included.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -57,7 +71,16 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
         q: "How often do you get new roll ends in?",
         a: "New roll ends land every week. Our online stock list is updated as pieces come in and sell, so it always reflects what is actually on the floor.",
       },
+      {
+        q: "What is the difference between a roll end and a roll end carpet?",
+        a: "Nothing - they are the same thing. A roll end carpet is simply the piece left at the end of a carpet roll, sold as one fixed-size piece at a clearance price.",
+      },
+      {
+        q: "How big are your carpet roll ends?",
+        a: "Widths are almost always 4m or 5m, with lengths from around 2m up to 12m or more. Each listing shows the exact length x width and price for that piece.",
+      },
     ],
+
   },
   "carpet-remnants": {
     slug: "/carpet-remnants",
@@ -186,11 +209,12 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
     slug: "/carpet-offcuts",
     breadcrumb: "Carpet Offcuts",
     h1: "Carpet Offcuts",
-    title: `Carpet Offcuts For Sale - Cheap Offcut Carpet | ${SITE.name}`,
+    title: `Carpet Offcuts For Sale - Cheap Carpet Off Cuts | ${SITE.name}`,
     description:
-      "Carpet offcuts for sale from £ per piece. Small and large offcuts in 4m and 5m widths - ideal for bedrooms, stairs, vans, rugs and rentals. Yorkshire outlet.",
+      "Carpet offcuts for sale at outlet prices. Small and large off cuts in 4m and 5m widths - ideal for bedrooms, stairs, vans, rugs and rentals. New offcuts weekly.",
     intro:
-      "Carpet offcuts are the pieces trimmed from full rolls. We measure, price and list every one, so you can grab exactly the size you need for a fraction of the full price.",
+      "Carpet offcuts are the pieces trimmed from full rolls, sold off cheap. We measure, price and photograph every off cut, so you can grab exactly the size you need for a fraction of the full price.",
+
     sections: [
       {
         h2: "What are carpet offcuts used for?",
@@ -211,6 +235,12 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
           `Each offcut is priced individually by the square metre rate of that carpet. Note the reference number beside the price and ${CALL} to pay and reserve. Collection from ${SITE.address.full}.`,
         ],
       },
+      {
+        h2: "How much do carpet offcuts cost?",
+        body: [
+          "Because off cuts are priced by the square metre rate of that particular carpet, a small bedroom piece can cost less than a takeaway while a lounge-sized off cut still lands well under half the full-roll price. Typical savings run from 40% to 70%.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -221,6 +251,56 @@ export const LANDING_HUBS: Record<string, LandingHub> = {
         q: "Can I get a carpet offcut bound into a rug?",
         a: `Ask when you call on ${SITE.phone} and we will let you know what is possible.`,
       },
+      {
+        q: "Where can I buy carpet offcuts near me?",
+        a: `Our outlet is at ${SITE.address.full}, and we deliver carpet offcuts across the north of England. Everything listed online is what is on the floor today.`,
+      },
+    ],
+  },
+  "carpet-outlet": {
+    slug: "/carpet-outlet",
+    breadcrumb: "Carpet Outlet",
+    h1: "Carpet Outlet",
+    title: `Carpet Outlet - Clearance Carpet Warehouse | ${SITE.name}`,
+    description:
+      "A proper carpet outlet: roll ends, remnants, offcuts and end of line carpet cleared at warehouse prices. In stock today in Bradford, delivery across the north.",
+    intro:
+      "We are a carpet outlet, not a showroom. One warehouse full of roll ends, remnants, offcuts and end of line stock, all priced to clear and all available to take away today.",
+    sections: [
+      {
+        h2: "What is a carpet outlet?",
+        body: [
+          "A carpet outlet buys surplus stock - roll ends, remnants and discontinued ranges - and clears it at a fraction of high street pricing. There is no showroom mark-up, no ordering wait and no minimum quantity: you see the piece, you see the price, you take it home.",
+        ],
+      },
+      {
+        h2: "What you'll find in our outlet",
+        body: [
+          "Hard-wearing twist and berber loop for stairs and hallways, deep saxony and wool blends for bedrooms and lounges, and budget felt-backed carpet for rentals and quick refreshes. Widths are mainly 4m and 5m with lengths from around 2m upwards.",
+          "Stock changes every week, so the online list is the best way to see what is on the floor right now.",
+        ],
+      },
+      {
+        h2: "Visiting the outlet",
+        body: [
+          `Find us at ${SITE.address.full}, open seven days. Come and see the piece, or ${CALL} with the reference number shown next to the price to pay and reserve it before you travel.`,
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Where is your carpet outlet?",
+        a: `${SITE.address.full} - just off Forster Square in Bradford, with parking outside. We deliver across the north of England.`,
+      },
+      {
+        q: "Is outlet carpet the same quality as high street carpet?",
+        a: "Yes. It comes from the same mills and the same rolls - the discount comes from fixed lengths and discontinued ranges, not from lower quality.",
+      },
+      {
+        q: "Do I need an appointment to visit the carpet outlet?",
+        a: `No, just turn up during opening hours. If you have seen something online, call ${SITE.phone} first so we can check it is still there.`,
+      },
     ],
   },
 };
+
