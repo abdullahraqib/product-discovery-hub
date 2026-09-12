@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
-import logoAsset from "@/assets/rollendshop-logo-v2.png";
+import logoAsset from "@/assets/rollendshop-logo.webp";
 
 function TikTokIcon({ size = 18 }: { size?: number }) {
   return (

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { track } from "@/lib/analytics";
-import logoAsset from "@/assets/rollendshop-logo-v2.png";
+import logoAsset from "@/assets/rollendshop-logo.webp";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
