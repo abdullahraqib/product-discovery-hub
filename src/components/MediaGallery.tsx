@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, Play, Maximize2 } from "lucide-react";
 import { isVideo } from "@/lib/media";
+import { galleryImageProps, thumbImage } from "@/lib/image-variants";
 
 const MIN_SCALE = 1;
 const MAX_SCALE = 5;
@@ -393,7 +394,7 @@ function Lightbox({
                     </span>
                   </>
                 ) : (
-                  <img src={m} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={thumbImage(m)} alt="" className="w-full h-full object-cover" loading="lazy" />
                 )}
               </button>
             ))}
