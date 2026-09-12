@@ -290,11 +290,17 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
   }
 
   function removeImage(i: number) {
-    setP((prev) => ({
-      ...prev,
-      images: prev.images.filter((_, idx) => idx !== i),
-      imageAlts: prev.imageAlts.filter((_, idx) => idx !== i),
-    }));
+    setP((prev) => {
+      const key = /\/object\/sign\/product-images\/([^?]+)/.exec(prev.images[i] ?? "")?.[1];
+      const imageVariants = { ...(prev.imageVariants ?? {}) };
+      if (key) delete imageVariants[key];
+      return {
+        ...prev,
+        images: prev.images.filter((_, idx) => idx !== i),
+        imageAlts: prev.imageAlts.filter((_, idx) => idx !== i),
+        imageVariants,
+      };
+    });
   }
 
   function setImageAlt(i: number, value: string) {
@@ -344,6 +350,7 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
           : Number(p.pricePerSqm) || 0,
         images: p.images,
         image_alts: p.images.map((_, i) => p.imageAlts[i] ?? ""),
+        image_variants: p.imageVariants ?? {},
         description: p.description,
         features: p.features,
         sizes: p.sizes,
