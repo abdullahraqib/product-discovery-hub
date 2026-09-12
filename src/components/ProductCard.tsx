@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
         {cover ? (
           <img
-            src={cover}
+            {...cardImageProps(cover)}
             alt={altFor(cover)}
             loading="lazy"
             decoding="async"
