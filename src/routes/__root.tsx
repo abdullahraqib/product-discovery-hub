@@ -92,6 +92,14 @@ const orgJsonLd = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  alternateName: "Roll End Shop",
+  url: SITE.url,
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -101,6 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
       { name: "theme-color", content: "#E00000" },
       { name: "author", content: SITE.name },
+      { name: "application-name", content: SITE.name },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE.name },
       { name: "twitter:card", content: "summary_large_image" },
@@ -119,6 +128,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         type: "application/ld+json",
         children: JSON.stringify(orgJsonLd),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(websiteJsonLd),
       },
     ],
   }),
