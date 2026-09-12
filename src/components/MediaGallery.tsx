@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, Play, Maximize2 } from "lucide-react";
 import { isVideo } from "@/lib/media";
+import { galleryImageProps, thumbImage } from "@/lib/image-variants";
 
 const MIN_SCALE = 1;
 const MAX_SCALE = 5;
@@ -66,8 +67,9 @@ export function MediaGallery({
             aria-label="Open full-size image"
           >
             <img
-              src={current}
+              {...galleryImageProps(current)}
               alt={altFor(safeIndex)}
+              fetchPriority="high"
               className="w-full h-full object-contain"
             />
             <span className="absolute bottom-3 right-3 bg-charcoal/80 text-white rounded-full p-2">
@@ -131,7 +133,7 @@ export function MediaGallery({
                   </span>
                 </>
               ) : (
-                <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                <img src={thumbImage(src)} alt="" className="w-full h-full object-cover" loading="lazy" />
               )}
             </button>
           ))}
@@ -392,7 +394,7 @@ function Lightbox({
                     </span>
                   </>
                 ) : (
-                  <img src={m} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={thumbImage(m)} alt="" className="w-full h-full object-cover" loading="lazy" />
                 )}
               </button>
             ))}
