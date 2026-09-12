@@ -66,8 +66,9 @@ export function MediaGallery({
             aria-label="Open full-size image"
           >
             <img
-              src={current}
+              {...galleryImageProps(current)}
               alt={altFor(safeIndex)}
+              fetchPriority="high"
               className="w-full h-full object-contain"
             />
             <span className="absolute bottom-3 right-3 bg-charcoal/80 text-white rounded-full p-2">
@@ -131,7 +132,7 @@ export function MediaGallery({
                   </span>
                 </>
               ) : (
-                <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                <img src={thumbImage(src)} alt="" className="w-full h-full object-cover" loading="lazy" />
               )}
             </button>
           ))}

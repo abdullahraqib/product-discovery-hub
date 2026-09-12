@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { fromWasPrice, type Product } from "@/data/products";
 import { firstImage, isVideo } from "@/lib/media";
+import { cardImageProps } from "@/lib/image-variants";
 import { Play } from "lucide-react";
 
 export function ProductCard({ product }: { product: Product }) {
