@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { type Product, type Size } from "@/data/products";
+import { type ImageVariantEntry, type Product, type Size } from "@/data/products";
 import { Trash2, Plus, Upload, Crop, ArrowUp, ArrowDown, Wand2 } from "lucide-react";
 import { isVideo } from "@/lib/media";
 import { generateAltText } from "@/lib/alt-text";
@@ -29,6 +29,7 @@ const blank: Product = {
   wasPricePerSqm: 0,
   images: [],
   imageAlts: [],
+  imageVariants: {},
   description: "",
   features: [],
   sizes: [],
@@ -48,6 +49,35 @@ function slugify(s: string) {
 }
 
 const TEN_YEARS = 60 * 60 * 24 * 365 * 10;
+
+/** Downscale an image to `targetWidth` px wide WebP in the browser. Returns null when not needed or not possible. */
+async function toWebpVariant(file: Blob, targetWidth: number) {
+  try {
+    const bitmap = await createImageBitmap(file);
+    const srcW = bitmap.width;
+    const srcH = bitmap.height;
+    if (srcW <= targetWidth) {
+      bitmap.close();
+      return null;
+    }
+    const canvas = document.createElement("canvas");
+    canvas.width = targetWidth;
+    canvas.height = Math.max(1, Math.round((srcH * targetWidth) / srcW));
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      bitmap.close();
+      return null;
+    }
+    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    bitmap.close();
+    const blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob(resolve, "image/webp", 0.82),
+    );
+    return blob ? { blob, srcW, srcH } : null;
+  } catch {
+    return null;
+  }
+}
 
 export function ProductForm({ mode, product }: { mode: Mode; product?: Product }) {
   const navigate = useNavigate();
@@ -182,25 +212,59 @@ export function ProductForm({ mode, product }: { mode: Mode; product?: Product }
         .from("product-images")
         .createSignedUrl(path, TEN_YEARS);
       if (signErr) throw signErr;
-      if (data?.signedUrl) {
-        const signedUrl = data.signedUrl;
-        setP((prev) => {
-          if (replaceIndex !== undefined && replaceIndex < prev.images.length) {
-            const images = [...prev.images];
-            images[replaceIndex] = signedUrl;
-            return { ...prev, images };
+      const signedUrl = data?.signedUrl;
+      if (!signedUrl) return;
+
+      // Automatically create small fast-loading copies (400px & 800px WebP)
+      // for images, so product tiles never load the full-size photo.
+      const variants: Record<string, ImageVariantEntry> = {};
+      if (!file.type.startsWith("video/")) {
+        const base = path.replace(/\.[a-zA-Z0-9]+$/, "");
+        for (const width of [400, 800]) {
+          const variant = await toWebpVariant(file, width);
+          if (!variant) continue;
+          const vPath = `variants/${base}-${width}.webp`;
+          const { error: vErr } = await supabase.storage
+            .from("product-images")
+            .upload(vPath, variant.blob);
+          if (vErr) continue;
+          const { data: vData } = await supabase.storage
+            .from("product-images")
+            .createSignedUrl(vPath, TEN_YEARS);
+          if (vData?.signedUrl) {
+            variants[path] = {
+              ...variants[path],
+              [String(width)]: vData.signedUrl,
+              w: variant.srcW,
+              h: variant.srcH,
+            };
           }
-          return {
-            ...prev,
-            images: [...prev.images, signedUrl],
-            imageAlts: [
-              ...prev.imageAlts,
-              generateAltText(prev, prev.images.length, isVideo(signedUrl)),
-            ],
-          };
-        });
+        }
       }
 
+      setP((prev) => {
+        const imageVariants = { ...(prev.imageVariants ?? {}) };
+        if (replaceIndex !== undefined && replaceIndex < prev.images.length) {
+          const old = prev.images[replaceIndex];
+          const oldKey = /\/object\/sign\/product-images\/([^?]+)/.exec(old)?.[1];
+          if (oldKey) delete imageVariants[oldKey];
+        }
+        Object.assign(imageVariants, variants);
+        if (replaceIndex !== undefined && replaceIndex < prev.images.length) {
+          const images = [...prev.images];
+          images[replaceIndex] = signedUrl;
+          return { ...prev, images, imageVariants };
+        }
+        return {
+          ...prev,
+          images: [...prev.images, signedUrl],
+          imageAlts: [
+            ...prev.imageAlts,
+            generateAltText(prev, prev.images.length, isVideo(signedUrl)),
+          ],
+          imageVariants,
+        };
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {

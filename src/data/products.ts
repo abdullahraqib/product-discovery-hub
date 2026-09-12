@@ -59,7 +59,7 @@ export type ProductRow = {
   was_price_per_sqm?: number | null;
   images: string[] | null;
   image_alts: string[] | null;
-  image_variants?: Json | null;
+  image_variants?: Record<string, ImageVariantEntry> | null;
   description: string;
   features: string[] | null;
   sizes: unknown;
