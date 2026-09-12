@@ -1,13 +1,21 @@
 import variantMap from "@/data/image-variants.json";
+import { type ImageVariantEntry } from "@/data/products";
 
-type VariantEntry = {
-  "400"?: string;
-  "800"?: string;
-  w?: number;
-  h?: number;
-};
+const VARIANTS = variantMap as unknown as Record<string, ImageVariantEntry>;
 
-const VARIANTS = variantMap as unknown as Record<string, VariantEntry>;
+/**
+ * Merge per-product variants stored in the database (created automatically
+ * on upload) into the runtime lookup, so newly uploaded images get small
+ * responsive copies without rebuilding the bundled JSON map.
+ */
+export function registerProductVariants(
+  variants?: Record<string, ImageVariantEntry> | null,
+) {
+  if (!variants) return;
+  for (const [key, entry] of Object.entries(variants)) {
+    if (entry && (entry["400"] || entry["800"])) VARIANTS[key] = entry;
+  }
+}
 
 /** Storage object key for a signed product-images URL, if it is one. */
 function storageKey(url: string): string | undefined {
@@ -15,7 +23,7 @@ function storageKey(url: string): string | undefined {
   return m?.[1];
 }
 
-function entryFor(url?: string): VariantEntry | undefined {
+function entryFor(url?: string): ImageVariantEntry | undefined {
   if (!url) return undefined;
   const key = storageKey(url);
   return key ? VARIANTS[key] : undefined;

@@ -27,6 +27,7 @@ export type Database = {
           from_price: number
           id: string
           image_alts: string[]
+          image_variants: Json | null
           images: string[]
           is_active: boolean
           material: string
@@ -53,6 +54,7 @@ export type Database = {
           from_price?: number
           id?: string
           image_alts?: string[]
+          image_variants?: Json | null
           images?: string[]
           is_active?: boolean
           material?: string
@@ -79,6 +81,7 @@ export type Database = {
           from_price?: number
           id?: string
           image_alts?: string[]
+          image_variants?: Json | null
           images?: string[]
           is_active?: boolean
           material?: string
