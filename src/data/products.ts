@@ -6,6 +6,14 @@ export type Size = {
   wasPrice?: number;
 };
 
+/** Pre-generated small web copies of a product image, keyed by storage path. */
+export type ImageVariantEntry = {
+  "400"?: string;
+  "800"?: string;
+  w?: number;
+  h?: number;
+};
+
 export type Product = {
   id?: string;
   sku: string;
@@ -25,6 +33,7 @@ export type Product = {
   wasPricePerSqm: number;
   images: string[];
   imageAlts: string[];
+  imageVariants: Record<string, ImageVariantEntry>;
   description: string;
   features: string[];
   sizes: Size[];
@@ -50,6 +59,7 @@ export type ProductRow = {
   was_price_per_sqm?: number | null;
   images: string[] | null;
   image_alts: string[] | null;
+  image_variants?: Json | null;
   description: string;
   features: string[] | null;
   sizes: unknown;
@@ -76,6 +86,7 @@ export function rowToProduct(r: ProductRow): Product {
     wasPricePerSqm: Number(r.was_price_per_sqm ?? 0),
     images: r.images ?? [],
     imageAlts: r.image_alts ?? [],
+    imageVariants: (r.image_variants ?? {}) as Record<string, ImageVariantEntry>,
     description: r.description,
     features: r.features ?? [],
     sizes: Array.isArray(r.sizes) ? (r.sizes as Size[]) : [],
